@@ -1,5 +1,4 @@
-import 'package:VBThreeMobile/core/extension/string_extension.dart';
-import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
 import 'package:flutter/material.dart';
 
 class Router {
@@ -8,12 +7,7 @@ class Router {
       case homeRoute:
       default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            appBar: AppBar(),
-            body: Center(
-              child: Text(LocaleKeys.routeFailed.locale),
-            ),
-          ),
+          builder: (_) => WrongRouteView(),
         );
     }
   }
