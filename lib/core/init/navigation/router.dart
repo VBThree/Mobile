@@ -1,3 +1,5 @@
+import 'package:VBThreeMobile/core/extension/string_extension.dart';
+import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class Router {
@@ -9,7 +11,7 @@ class Router {
           builder: (_) => Scaffold(
             appBar: AppBar(),
             body: Center(
-              child: Text('Bir şeyler ters gitti'),
+              child: Text(LocaleKeys.routeFailed.locale),
             ),
           ),
         );
