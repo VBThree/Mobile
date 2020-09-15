@@ -48,21 +48,27 @@ class _ProfilePageState extends BaseState<ProfilePage> {
             ) */
             Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Column(
                   children: [
                     Container(
                       child: CircleAvatar(
-                        radius: 50,
+                        radius: 60,
                         backgroundImage: NetworkImage(
                           "https://avatars3.githubusercontent.com/u/34376691?s=460&u=bb49f483424c3330768c12112b67fc93273896d9&v=4",
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
-                    Text("Abdullah Oğuz"),
+                    Text(
+                      "Abdullah Oğuz",
+                      style: TextStyle(
+                          color: PROFILE_TWILIGHT,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ],
                 ),
               ),
@@ -84,11 +90,17 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   AppBar profileAppBar() {
     return AppBar(
       backgroundColor: PROFILE_APPBAR_LIGHT_PEACH,
+      toolbarOpacity: 0.7,
       automaticallyImplyLeading: false,
       leading: Icon(
         Icons.menu,
       ),
-      actions: [Icon(Icons.edit)],
+      actions: [
+        Icon(
+          Icons.edit,
+          color: PROFILE_TWILIGHT,
+        )
+      ],
     );
   }
 }
