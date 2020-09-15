@@ -32,6 +32,7 @@ dependencies:
   provider: ^4.3.2+2
   dots_indicator: ^1.2.0
   lottie: ^0.6.0
+  flutter_svg: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/lang/
+    - assets/images/profilePage/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
