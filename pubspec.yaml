@@ -30,6 +30,8 @@ dependencies:
   easy_localization: ^2.3.3
   flutter_mobx: ^1.1.0+2
   provider: ^4.3.2+2
+  dots_indicator: ^1.2.0
+  lottie: ^0.6.0
 
 dev_dependencies:
   flutter_test:
