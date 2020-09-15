@@ -25,9 +25,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: Provider.of<ThemeNotifier>(context, listen: true).currentTheme,
-      onGenerateRoute: Router.generateRoute,
-      initialRoute: homeRoute,
-    );
+        theme: Provider.of<ThemeNotifier>(context, listen: true).currentTheme,
+        onGenerateRoute: Router.generateRoute,
+        initialRoute: profilePage);
   }
 }
