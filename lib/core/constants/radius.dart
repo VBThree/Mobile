@@ -1,1 +1,2 @@
 double PROFILE_RADIUS = 70.0;
+double PROFILE_CARD_RADIUS = 25.0;
