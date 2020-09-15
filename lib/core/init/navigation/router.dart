@@ -1,5 +1,6 @@
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
+import 'package:VBThreeMobile/views/loginPage/loginPage.dart';
 import 'package:flutter/material.dart';
 
 class Router {
@@ -10,6 +11,10 @@ class Router {
           builder: (_) => OnboardingPage(),
         );
       case homeRoute:
+      case loginRoute:
+        return MaterialPageRoute(
+          builder: (_) => LoginPage(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => WrongRouteView(),
@@ -20,3 +25,4 @@ class Router {
 
 const String homeRoute = '/';
 const String onboarding = '/onboarding';
+const String loginRoute = '/loginPage';
