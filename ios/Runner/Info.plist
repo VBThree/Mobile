@@ -41,5 +41,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to upload image in post screen</string>
+
+	<key>NSCameraUsageDescription </key>
+	<string>Need to upload image in post screen</string>
+
+	<key>NSMicrophoneUsageDescription </key>
+	<string>Need to upload image in post screen</string>
+
+
 </dict>
 </plist>
