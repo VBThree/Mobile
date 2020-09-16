@@ -2,6 +2,11 @@
 
 abstract class  LocaleKeys {
   static const routeFailed = 'routeFailed';
+  static const Achievements = 'Achievements';
+  static const Resolved = 'Resolved';
+  static const Published = 'Published';
+  static const ChangePassword = 'ChangePassword';
+  static const Logout = 'Logout';
   static const announcementTypes_Food = 'announcementTypes.Food';
   static const announcementTypes_Lost = 'announcementTypes.Lost';
   static const announcementTypes_Ownership = 'announcementTypes.Ownership';

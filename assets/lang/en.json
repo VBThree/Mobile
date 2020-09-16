@@ -1,5 +1,10 @@
 {
-    "routeFailed": "There is a problem!",
+    "routeFailed":"There is a problem!",
+    "Achievements":  "Achievements",
+    "Resolved" : "Resolved",
+    "Published" : "Published",
+    "ChangePassword": "ChangePassword",
+    "Logout" : "Logout" 
     "announcementTypes": {
         "Food": "Food",
         "Lost": "Lost",

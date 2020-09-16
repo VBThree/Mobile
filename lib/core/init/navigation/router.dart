@@ -1,3 +1,4 @@
+import 'package:VBThreeMobile/views/profile_page/profile.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_add_image_view.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
@@ -7,6 +8,11 @@ import 'package:flutter/material.dart';
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case profilePage:
+        return MaterialPageRoute(
+          builder: (_) => ProfilePage(),
+        );
+
       case onboarding:
         return MaterialPageRoute(
           builder: (_) => OnboardingPage(),
@@ -30,6 +36,7 @@ class Router {
 }
 
 const String homeRoute = '/';
+const String profilePage = '/profilePage';
 const String postAnnouncementPage = '/postAnnouncementPage';
 const String postAnnouncementPageAddImageView =
     '/postAnnouncementPageAddImageView';

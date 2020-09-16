@@ -1,5 +1,10 @@
 {
     "routeFailed": "Bir sorun oluştu!",
+    "Achievements":  "Başarılar",
+    "Resolved" : "Çözüldü",
+    "Published" : "Yayınlanan",
+    "ChangePassword": "Parola Değiştir",
+    "Logout" : "Çıkış Yap"   
     "announcementTypes": {
         "Food": "Besleme",
         "Lost": "Kayıp",
@@ -33,7 +38,7 @@
         "addPhotoButton": "Görsel Ekle"
 
 
-
+    },
     "NavBar": {
         "Profile": "Profil",
         "Announcements": "İlanlar",
