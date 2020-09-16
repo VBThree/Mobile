@@ -1,6 +1,6 @@
 {
     "routeFailed": "There is a problem!",
-    "profilePage": {
+    "NavBar": {
         "Profile": "Profile",
         "Announcements": "Announcements",
         "Languages": "Languages",
