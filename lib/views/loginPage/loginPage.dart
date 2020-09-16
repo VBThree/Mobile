@@ -1,4 +1,6 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
+import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,33 +22,37 @@ class _LoginPageState extends BaseState<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Spacer(flex: 1),
-              Expanded(flex: 1, child: signInText()),
-              Expanded(flex: 5, child: buildArtwork()),
+              Spacer(flex: 2),
+              Expanded(flex: 2, child: signInText()),
+              Expanded(flex: 6, child: buildArtwork()),
               Spacer(flex: 1),
               Expanded(
-                flex: 4,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    emailTextField(),
-                    passwordTextField(),
-                  ],
-                ),
+                flex: 5,
+                child: emailAndPasswordTextField(),
               ),
               Spacer(flex: 1),
               Expanded(flex: 1, child: signInButton()),
               Expanded(flex: 1, child: forgotPasswordButton()),
-              Spacer(flex: 2),
+              Spacer(flex: 6),
               Expanded(flex: 1, child: bottomAreaWidgets())
             ],
           ),
         ));
   }
 
+  Column emailAndPasswordTextField() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        emailTextField(),
+        passwordTextField(),
+      ],
+    );
+  }
+
   FlatButton forgotPasswordButton() => FlatButton(
         onPressed: () {},
-        child: Text("Forgot Password?"),
+        child: Text(LocaleKeys.forgotPassword.locale),
         textColor: Colors.blue[400],
       );
 
@@ -59,7 +65,7 @@ class _LoginPageState extends BaseState<LoginPage> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Text(
-              "Sign In",
+              LocaleKeys.signIn.locale,
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
@@ -79,7 +85,7 @@ class _LoginPageState extends BaseState<LoginPage> {
             },
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-                hintText: "Password",
+                hintText: LocaleKeys.password.locale,
                 hintStyle: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -103,7 +109,7 @@ class _LoginPageState extends BaseState<LoginPage> {
               },
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                  hintText: "E-mail",
+                  hintText: LocaleKeys.email.locale,
                   hintStyle: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -117,7 +123,7 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   SvgPicture buildArtwork() => SvgPicture.asset(artwork, fit: BoxFit.fill);
 
-  Text signInText() => Text("Sign In",
+  Text signInText() => Text(LocaleKeys.signIn.locale,
       style: TextStyle(
           color: Color.fromRGBO(201, 87, 64, 1),
           fontWeight: FontWeight.bold,
@@ -136,12 +142,12 @@ class _LoginPageState extends BaseState<LoginPage> {
   FlatButton signUpButton() => FlatButton(
         onPressed: () {},
         child: Text(
-          "Sign Up",
+          LocaleKeys.signUp.locale,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         color: Colors.transparent,
         textColor: Colors.black,
       );
 
-  Text askAccountText() => Text("Don't have an account?");
+  Text askAccountText() => Text(LocaleKeys.dontHaveAnAccount.locale);
 }
