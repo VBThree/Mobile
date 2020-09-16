@@ -35,12 +35,15 @@ class CodegenLoader extends AssetLoader{
   },
   "postAnnouncementPage": {
     "otherAnimals": "Other",
-    "title": "Save The\nAnimals\nStart To Helping",
+    "title": "Save The\nAnimals",
     "announcementTypeHint": "Announcement Type",
-    "speciesHine": "Species",
+    "speciesHint": "Species",
     "breedHint": "Breed",
     "genderHint": "Gender",
-    "descriptionHin": "Description"
+    "descriptionHint": "Description (optional)",
+    "pleaseAddImages": "Please upload clear and relevant images.",
+    "images": "Images",
+    "addPhotoButton": "Add Images"
   }
 };
 static const Map<String,dynamic> tr = {
@@ -64,12 +67,15 @@ static const Map<String,dynamic> tr = {
   },
   "postAnnouncementPage": {
     "otherAnimals": "Diğer",
-    "title": "Dostların İçin\nBir İlan Yayınla",
+    "title": "Dostlarına Yardım\nEli Uzat",
     "announcementTypeHint": "İlan Konusu",
-    "speciesHine": "Pet Türü",
+    "speciesHint": "Pet Türü",
     "breedHint": "Cinsi",
     "genderHint": "Cinsiyeti",
-    "descriptionHin": "Açıklama"
+    "descriptionHint": "Açıklama (opsiyonel)",
+    "pleaseAddImages": "Lütfen net ve konuya uygun\ngörseller ekleyiniz.",
+    "images": "Görseller",
+    "addPhotoButton": "Görsel Ekle"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};

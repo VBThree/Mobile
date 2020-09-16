@@ -21,12 +21,18 @@
 
     "postAnnouncementPage": {
         "otherAnimals": "Diğer",
-        "title": "Dostların İçin\nBir İlan Yayınla",
+        "title": "Dostlarına Yardım\nEli Uzat",
 
         "announcementTypeHint": "İlan Konusu",
-        "speciesHine": "Pet Türü",
+        "speciesHint": "Pet Türü",
         "breedHint": "Cinsi",
         "genderHint": "Cinsiyeti",
-        "descriptionHin": "Açıklama"
+        "descriptionHint": "Açıklama (opsiyonel)",
+        "pleaseAddImages": "Lütfen net ve konuya uygun\ngörseller ekleyiniz.",
+        "images": "Görseller",
+        "addPhotoButton": "Görsel Ekle"
+
+
+
     }
 }

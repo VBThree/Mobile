@@ -22,13 +22,17 @@
     "postAnnouncementPage": {
         "otherAnimals": "Other",
 
-        "title": "Save The\nAnimals\nStart To Helping",
+        "title": "Save The\nAnimals",
 
         "announcementTypeHint": "Announcement Type",
-        "speciesHine": "Species",
+        "speciesHint": "Species",
         "breedHint": "Breed",
         "genderHint": "Gender",
-        "descriptionHin": "Description"
+        "descriptionHint": "Description (optional)",
+        "pleaseAddImages": "Please upload clear and relevant images.",
+        "images":"Images",
+        "addPhotoButton":"Add Images"
+
     }
 
 }

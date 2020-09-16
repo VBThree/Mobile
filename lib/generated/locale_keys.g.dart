@@ -19,10 +19,13 @@ abstract class  LocaleKeys {
   static const postAnnouncementPage_otherAnimals = 'postAnnouncementPage.otherAnimals';
   static const postAnnouncementPage_title = 'postAnnouncementPage.title';
   static const postAnnouncementPage_announcementTypeHint = 'postAnnouncementPage.announcementTypeHint';
-  static const postAnnouncementPage_speciesHine = 'postAnnouncementPage.speciesHine';
+  static const postAnnouncementPage_speciesHint = 'postAnnouncementPage.speciesHint';
   static const postAnnouncementPage_breedHint = 'postAnnouncementPage.breedHint';
   static const postAnnouncementPage_genderHint = 'postAnnouncementPage.genderHint';
-  static const postAnnouncementPage_descriptionHin = 'postAnnouncementPage.descriptionHin';
+  static const postAnnouncementPage_descriptionHint = 'postAnnouncementPage.descriptionHint';
+  static const postAnnouncementPage_pleaseAddImages = 'postAnnouncementPage.pleaseAddImages';
+  static const postAnnouncementPage_images = 'postAnnouncementPage.images';
+  static const postAnnouncementPage_addPhotoButton = 'postAnnouncementPage.addPhotoButton';
   static const postAnnouncementPage = 'postAnnouncementPage';
 
 }
