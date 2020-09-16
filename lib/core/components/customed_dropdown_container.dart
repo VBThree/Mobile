@@ -1,4 +1,4 @@
-import 'package:VBThreeMobile/core/constants/Color.dart';
+import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomedDropdownContainer extends StatelessWidget {
@@ -15,7 +15,7 @@ class CustomedDropdownContainer extends StatelessWidget {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: AllColors.greyForBoxShadow.withAlpha(100),
+                color: AllColors.GREY_FOR_BOX_SHADOW.withAlpha(100),
                 blurRadius: 6.0,
               ),
             ],
