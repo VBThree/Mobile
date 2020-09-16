@@ -9,4 +9,12 @@ abstract class  LocaleKeys {
   static const NavBar_Logout = 'NavBar.Logout';
   static const NavBar = 'NavBar';
 
+  static const signIn = 'signIn';
+  static const email = 'email';
+  static const password = 'password';
+  static const forgotPassword = 'forgotPassword';
+  static const dontHaveAnAccount = 'dontHaveAnAccount';
+  static const signUp = 'signUp';
+
+
 }
