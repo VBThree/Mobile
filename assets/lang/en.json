@@ -1,10 +1,10 @@
 {
-    "routeFailed":"There is a problem!",
-    "Achievements":  "Achievements",
-    "Resolved" : "Resolved",
-    "Published" : "Published",
+    "routeFailed": "There is a problem!",
+    "Achievements": "Achievements",
+    "Resolved": "Resolved",
+    "Published": "Published",
     "ChangePassword": "ChangePassword",
-    "Logout" : "Logout" 
+    "Logout": "Logout",
     "announcementTypes": {
         "Food": "Food",
         "Lost": "Lost",
@@ -35,11 +35,10 @@
         "genderHint": "Gender",
         "descriptionHint": "Description (optional)",
         "pleaseAddImages": "Please upload clear and relevant images.",
-        "images":"Images",
-        "addPhotoButton":"Add Images"
+        "images": "Images",
+        "addPhotoButton": "Add Images"
 
-    }
-
+    },
     "NavBar": {
         "Profile": "Profile",
         "Announcements": "Announcements",
