@@ -2,12 +2,10 @@ import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/components/profile_card_text.dart';
 import 'package:VBThreeMobile/core/components/profile_listTile_widget.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
-import 'package:VBThreeMobile/core/constants/color.dart';
+import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/constants/radius.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -53,8 +51,8 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         ShadedButton(
           LocaleKeys.ChangePassword.locale,
           changePass(),
-          foregroundColor: PROFILE_LIGHT_PEACH,
-          textColor: PROFILE_BLOWISH_GRAY,
+          foregroundColor: AllColors.PROFILE_LIGHT_PEACH,
+          textColor: AllColors.PROFILE_BLOWISH_GRAY,
         ),
         SizedBox(
           height: dynamicHeight(0.02),
@@ -62,8 +60,8 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         ShadedButton(
           LocaleKeys.Logout.locale,
           logoutOnpress(),
-          foregroundColor: PROFILE_ROSE_PINK,
-          textColor: PROFILE_BLOWISH_GRAY,
+          foregroundColor: AllColors.PROFILE_ROSE_PINK,
+          textColor: AllColors.PROFILE_BLOWISH_GRAY,
         ),
       ],
     );
@@ -92,12 +90,10 @@ class _ProfilePageState extends BaseState<ProfilePage> {
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20,
-            color: PROFILE_DARK_GREY_BLUE,
+            color: AllColors.PROFILE_DARK_GREY_BLUE,
           ),
         ));
   }
-
-  Container achievementsTextArea() {}
 
   Stack topCardArea() {
     return Stack(overflow: Overflow.visible, children: [
@@ -141,7 +137,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     return Container(
       child: imageTextComponents(),
       decoration: BoxDecoration(
-        color: PROFILE_LIGHT_PEACH,
+        color: AllColors.PROFILE_LIGHT_PEACH,
         borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(PROFILE_RADIUS),
             bottomRight: Radius.circular(PROFILE_RADIUS)),
@@ -174,7 +170,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
           Text(
             "Abdullah Oğuz",
             style: TextStyle(
-                color: PROFILE_DARK_GREY_BLUE,
+                color: AllColors.PROFILE_DARK_GREY_BLUE,
                 fontSize: 25,
                 fontWeight: FontWeight.w600),
           ),
@@ -185,17 +181,17 @@ class _ProfilePageState extends BaseState<ProfilePage> {
 
   AppBar profileAppBar() {
     return AppBar(
-      backgroundColor: PROFILE_LIGHT_PEACH,
+      backgroundColor: AllColors.PROFILE_LIGHT_PEACH,
       shadowColor: Colors.transparent,
       toolbarOpacity: 0.7,
       automaticallyImplyLeading: false,
-      leading: Icon(Icons.menu, color: PROFILE_DARK_GREY_BLUE),
+      leading: Icon(Icons.menu, color: AllColors.PROFILE_DARK_GREY_BLUE),
       actions: [
         Padding(
           padding: EdgeInsets.only(right: dynamicWidth(0.03)),
           child: Icon(
             Icons.edit,
-            color: PROFILE_DARK_GREY_BLUE,
+            color: AllColors.PROFILE_DARK_GREY_BLUE,
           ),
         )
       ],
