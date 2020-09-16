@@ -1,3 +1,32 @@
 {
-    "routeFailed": "Bir sorun oluştu!"
+    "routeFailed": "Bir sorun oluştu!",
+    "announcementTypes": {
+        "Food": "Besleme",
+        "Lost": "Kayıp",
+        "Ownership": "Sahiplenme",
+        "Vaccination": "Aşılama"
+    },
+
+    "genders": {
+        "maleHumanAndAnimal": "Erkek",
+        "femaleAnimal": "Dişi",
+        "femaleHuman": "Kadın"
+    },
+    "animalNames": {
+        "Dog": "Köpek",
+        "Cat": "Kedi",
+        "Bird": "Kuş",
+        "Rabbit": "Tavşan"
+    },
+
+    "postAnnouncementPage": {
+        "otherAnimals": "Diğer",
+        "title": "Dostların İçin\nBir İlan Yayınla",
+
+        "announcementTypeHint": "İlan Konusu",
+        "speciesHine": "Pet Türü",
+        "breedHint": "Cinsi",
+        "genderHint": "Cinsiyeti",
+        "descriptionHin": "Açıklama"
+    }
 }
