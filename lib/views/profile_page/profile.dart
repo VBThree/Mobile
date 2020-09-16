@@ -1,5 +1,7 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/components/profile_card_text.dart';
+import 'package:VBThreeMobile/core/components/profile_listTile_widget.dart';
+import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/constants/color.dart';
 import 'package:VBThreeMobile/core/constants/radius.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -33,10 +35,51 @@ class _ProfilePageState extends BaseState<ProfilePage> {
           Stack(overflow: Overflow.visible, children: [
             imageTextCardArea(),
             Positioned(
-                top: MediaQuery.of(context).size.height * 0.28,
-                left: MediaQuery.of(context).size.width * 0.125,
-                child: contactInfoCard()),
+              top: MediaQuery.of(context).size.height * 0.28,
+              left: MediaQuery.of(context).size.width * 0.125,
+              child: contactInfoCard(),
+            ),
           ]),
+          SizedBox(
+            height: dynamicHeight(0.2124),
+          ),
+          Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.symmetric(horizontal: dynamicWidth(0.17)),
+              child: Text(
+                LocaleKeys.Achievements.locale,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20,
+                  color: PROFILE_DARK_GREY_BLUE,
+                ),
+              )),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: dynamicWidth(0.09)),
+            child: Column(
+              children: [
+                ProfileListTile(
+                    Icons.assignment_turned_in, LocaleKeys.Resolved.locale, 50),
+                ProfileListTile(
+                    Icons.assignment, LocaleKeys.Published.locale, 80),
+              ],
+            ),
+          ),
+          ShadedButton(
+            LocaleKeys.ChangePassword.locale,
+            onpress(),
+            foregroundColor: PROFILE_APPBAR_LIGHT_PEACH,
+            textColor: PROFILE_BLOWISH_GRAY,
+          ),
+          SizedBox(
+            height: dynamicHeight(0.02),
+          ),
+          ShadedButton(
+            LocaleKeys.Logout.locale,
+            onpress(),
+            foregroundColor: PROFILE_ROSE_PINK,
+            textColor: PROFILE_BLOWISH_GRAY,
+          ),
         ],
       ),
     );
@@ -89,13 +132,13 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          /* Container(  
-            alignment: Alignment.topLeft,
-            child: SvgPicture.asset(
-              "assets/shapes/profile_shape1.svg",
-            ),
-            SVG RESİM ALİGN ETME KONUSUNDA SORUN YAŞADIK
-          ) */
+          /* Container(
+                                alignment: Alignment.topLeft,
+                                child: SvgPicture.asset(
+                                  "assets/shapes/profile_shape1.svg",
+                                ),
+                                SVG RESİM ALİGN ETME KONUSUNDA SORUN YAŞADIK
+                              ) */
           Container(
             child: CircleAvatar(
               radius: 60,
@@ -107,7 +150,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
           Text(
             "Abdullah Oğuz",
             style: TextStyle(
-                color: PROFILE_TWILIGHT,
+                color: PROFILE_DARK_GREY_BLUE,
                 fontSize: 25,
                 fontWeight: FontWeight.w600),
           ),
@@ -127,9 +170,11 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       actions: [
         Icon(
           Icons.edit,
-          color: PROFILE_TWILIGHT,
+          color: PROFILE_DARK_GREY_BLUE,
         )
       ],
     );
   }
+
+  Function onpress() {}
 }

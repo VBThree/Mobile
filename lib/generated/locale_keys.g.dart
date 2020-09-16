@@ -2,5 +2,10 @@
 
 abstract class  LocaleKeys {
   static const routeFailed = 'routeFailed';
+  static const Achievements = 'Achievements';
+  static const Resolved = 'Resolved';
+  static const Published = 'Published';
+  static const ChangePassword = 'ChangePassword';
+  static const Logout = 'Logout';
 
 }
