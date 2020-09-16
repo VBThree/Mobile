@@ -5,4 +5,46 @@
     "Published" : "Published",
     "ChangePassword": "ChangePassword",
     "Logout" : "Logout" 
+    "announcementTypes": {
+        "Food": "Food",
+        "Lost": "Lost",
+        "Ownership": "Ownership",
+        "Vaccination": "Vaccination"
+    },
+
+    "genders": {
+        "maleHumanAndAnimal": "Male",
+        "femaleAnimal": "Female",
+        "femaleHuman": "Female"
+    },
+
+    "animalNames": {
+        "Dog": "Dog",
+        "Cat": "Cat",
+        "Bird": "Bird",
+        "Rabbit": "Rabbit"
+    },
+    "postAnnouncementPage": {
+        "otherAnimals": "Other",
+
+        "title": "Save The\nAnimals",
+
+        "announcementTypeHint": "Announcement Type",
+        "speciesHint": "Species",
+        "breedHint": "Breed",
+        "genderHint": "Gender",
+        "descriptionHint": "Description (optional)",
+        "pleaseAddImages": "Please upload clear and relevant images.",
+        "images":"Images",
+        "addPhotoButton":"Add Images"
+
+    }
+
+    "NavBar": {
+        "Profile": "Profile",
+        "Announcements": "Announcements",
+        "Languages": "Languages",
+        "DarkMode": "Dark/Light Mode",
+        "Logout": "Log out"
+    }
 }
