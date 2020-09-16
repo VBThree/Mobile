@@ -13,7 +13,7 @@ class Router {
           builder: (_) => ProfilePage(),
         );
 
-      case onboarding:
+      case onBoarding:
         return MaterialPageRoute(
           builder: (_) => OnboardingPage(),
         );
@@ -40,4 +40,4 @@ const String profilePage = '/profilePage';
 const String postAnnouncementPage = '/postAnnouncementPage';
 const String postAnnouncementPageAddImageView =
     '/postAnnouncementPageAddImageView';
-const String onboarding = '/onboarding';
+const String onBoarding = '/onboarding';
