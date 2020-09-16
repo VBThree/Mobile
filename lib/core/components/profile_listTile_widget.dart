@@ -1,4 +1,4 @@
-import 'package:VBThreeMobile/core/constants/color.dart';
+import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/constants/radius.dart';
 import 'package:flutter/material.dart';
 
