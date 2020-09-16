@@ -16,6 +16,29 @@ class CodegenLoader extends AssetLoader{
 
   static const Map<String,dynamic> en = {
   "routeFailed": "There is a problem!",
+  "signIn": "Sign In",
+  "email": "E-mail",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signUp": "Sign Up",
+  "nameSurname": "Name Surname",
+  "phoneNumber": "Phone number",
+  "dateOfBirth": "Date of birth",
+  "alreadySignedUp": "Already Signed Up?"
+};
+static const Map<String,dynamic> tr = {
+  "routeFailed": "Bir sorun oluştu!",
+  "signIn": "Giriş Yap",
+  "email": "E-posta",
+  "password": "Şifre",
+  "forgotPassword": "Şifremi Unuttum",
+  "dontHaveAnAccount": "Hesabın var mı?",
+  "signUp": "Kayıt Ol",
+  "nameSurname": "İsim Soyisim",
+  "phoneNumber": "Telefon Numarası",
+  "dateOfBirth": "Doğum Tarihi",
+  "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
   "Achievements": "Achievements",
   "Resolved": "Resolved",
   "Published": "Published",

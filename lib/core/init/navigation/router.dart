@@ -2,7 +2,9 @@ import 'package:VBThreeMobile/views/profile_page/profile.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_add_image_view.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
+import 'package:VBThreeMobile/views/register/view/register.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
+import 'package:VBThreeMobile/views/loginPage/view/loginPage.dart';
 import 'package:flutter/material.dart';
 
 class Router {
@@ -18,6 +20,13 @@ class Router {
           builder: (_) => OnboardingPage(),
         );
       case homeRoute:
+      case loginRoute:
+        return MaterialPageRoute(
+          builder: (_) => LoginPage(),
+        );
+      case register:
+        return MaterialPageRoute(
+          builder: (_) => RegisterPage(),
       case postAnnouncementPage:
         return MaterialPageRoute(
           builder: (_) => PostAnnouncementView(),
@@ -36,6 +45,9 @@ class Router {
 }
 
 const String homeRoute = '/';
+const String onboarding = '/onboarding';
+const String loginRoute = '/loginPage';
+const String register = '/registerPage';
 const String profilePage = '/profilePage';
 const String postAnnouncementPage = '/postAnnouncementPage';
 const String postAnnouncementPageAddImageView =
