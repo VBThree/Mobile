@@ -35,4 +35,11 @@
 
     }
 
+    "NavBar": {
+        "Profile": "Profile",
+        "Announcements": "Announcements",
+        "Languages": "Languages",
+        "DarkMode": "Dark/Light Mode",
+        "Logout": "Log out"
+    }
 }

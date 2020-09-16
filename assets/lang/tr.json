@@ -34,5 +34,11 @@
 
 
 
+    "NavBar": {
+        "Profile": "Profil",
+        "Announcements": "İlanlar",
+        "Languages": "Diller",
+        "DarkMode": "Karanlık/Açık tema",
+        "Logout": "Çıkış"
     }
 }
