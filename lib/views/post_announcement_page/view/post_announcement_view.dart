@@ -2,8 +2,8 @@ import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/base/view/base_view.dart';
 import 'package:VBThreeMobile/core/components/customed_dropdown_container.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
-import 'package:VBThreeMobile/core/constants/Color.dart';
 import 'package:VBThreeMobile/core/constants/app_constants.dart';
+import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
 import 'package:VBThreeMobile/core/init/notifiers/theme_notifier.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
@@ -100,7 +100,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
     return Text(LocaleKeys.postAnnouncementPage_title.locale,
         style: TextStyle(
           fontSize: dynamicHeight(0.05),
-          color: AllColors.darkGreyBlue,
+          color: AllColors.GREY_FOR_BOX_SHADOW,
         ));
   }
 
@@ -205,7 +205,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: AllColors.greyForBoxShadow.withAlpha(100),
+                color: AllColors.GREY_FOR_BOX_SHADOW.withAlpha(100),
                 blurRadius: 6.0,
               ),
             ],
