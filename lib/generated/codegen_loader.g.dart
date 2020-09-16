@@ -15,10 +15,62 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
-  "routeFailed": "There is a problem!"
+  "routeFailed": "There is a problem!",
+  "announcementTypes": {
+    "Food": "Food",
+    "Lost": "Lost",
+    "Ownership": "Ownership",
+    "Vaccination": "Vaccination"
+  },
+  "genders": {
+    "maleHumanAndAnimal": "Male",
+    "femaleAnimal": "Female",
+    "femaleHuman": "Female"
+  },
+  "animalNames": {
+    "Dog": "Dog",
+    "Cat": "Cat",
+    "Bird": "Bird",
+    "Rabbit": "Rabbit"
+  },
+  "postAnnouncementPage": {
+    "otherAnimals": "Other",
+    "title": "Save The\nAnimals\nStart To Helping",
+    "announcementTypeHint": "Announcement Type",
+    "speciesHine": "Species",
+    "breedHint": "Breed",
+    "genderHint": "Gender",
+    "descriptionHin": "Description"
+  }
 };
 static const Map<String,dynamic> tr = {
-  "routeFailed": "Bir sorun oluştu!"
+  "routeFailed": "Bir sorun oluştu!",
+  "announcementTypes": {
+    "Food": "Besleme",
+    "Lost": "Kayıp",
+    "Ownership": "Sahiplenme",
+    "Vaccination": "Aşılama"
+  },
+  "genders": {
+    "maleHumanAndAnimal": "Erkek",
+    "femaleAnimal": "Dişi",
+    "femaleHuman": "Kadın"
+  },
+  "animalNames": {
+    "Dog": "Köpek",
+    "Cat": "Kedi",
+    "Bird": "Kuş",
+    "Rabbit": "Tavşan"
+  },
+  "postAnnouncementPage": {
+    "otherAnimals": "Diğer",
+    "title": "Dostların İçin\nBir İlan Yayınla",
+    "announcementTypeHint": "İlan Konusu",
+    "speciesHine": "Pet Türü",
+    "breedHint": "Cinsi",
+    "genderHint": "Cinsiyeti",
+    "descriptionHin": "Açıklama"
+  }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
 }
