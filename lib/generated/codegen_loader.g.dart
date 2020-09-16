@@ -39,6 +39,91 @@ static const Map<String,dynamic> tr = {
   "phoneNumber": "Telefon Numarası",
   "dateOfBirth": "Doğum Tarihi",
   "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
+  "Achievements": "Achievements",
+  "Resolved": "Resolved",
+  "Published": "Published",
+  "ChangePassword": "ChangePassword",
+  "Logout": "Logout",
+  "announcementTypes": {
+    "Food": "Food",
+    "Lost": "Lost",
+    "Ownership": "Ownership",
+    "Vaccination": "Vaccination"
+  },
+  "genders": {
+    "maleHumanAndAnimal": "Male",
+    "femaleAnimal": "Female",
+    "femaleHuman": "Female"
+  },
+  "animalNames": {
+    "Dog": "Dog",
+    "Cat": "Cat",
+    "Bird": "Bird",
+    "Rabbit": "Rabbit"
+  },
+  "postAnnouncementPage": {
+    "otherAnimals": "Other",
+    "title": "Save The\nAnimals",
+    "announcementTypeHint": "Announcement Type",
+    "speciesHint": "Species",
+    "breedHint": "Breed",
+    "genderHint": "Gender",
+    "descriptionHint": "Description (optional)",
+    "pleaseAddImages": "Please upload clear and relevant images.",
+    "images": "Images",
+    "addPhotoButton": "Add Images"
+  },
+  "NavBar": {
+    "Profile": "Profile",
+    "Announcements": "Announcements",
+    "Languages": "Languages",
+    "DarkMode": "Dark/Light Mode",
+    "Logout": "Log out"
+  }
+};
+static const Map<String,dynamic> tr = {
+  "routeFailed": "Bir sorun oluştu!",
+  "Achievements": "Başarılar",
+  "Resolved": "Çözüldü",
+  "Published": "Yayınlanan",
+  "ChangePassword": "Parola Değiştir",
+  "Logout": "Çıkış Yap",
+  "announcementTypes": {
+    "Food": "Besleme",
+    "Lost": "Kayıp",
+    "Ownership": "Sahiplenme",
+    "Vaccination": "Aşılama"
+  },
+  "genders": {
+    "maleHumanAndAnimal": "Erkek",
+    "femaleAnimal": "Dişi",
+    "femaleHuman": "Kadın"
+  },
+  "animalNames": {
+    "Dog": "Köpek",
+    "Cat": "Kedi",
+    "Bird": "Kuş",
+    "Rabbit": "Tavşan"
+  },
+  "postAnnouncementPage": {
+    "otherAnimals": "Diğer",
+    "title": "Dostlarına Yardım\nEli Uzat",
+    "announcementTypeHint": "İlan Konusu",
+    "speciesHint": "Pet Türü",
+    "breedHint": "Cinsi",
+    "genderHint": "Cinsiyeti",
+    "descriptionHint": "Açıklama (opsiyonel)",
+    "pleaseAddImages": "Lütfen net ve konuya uygun\ngörseller ekleyiniz.",
+    "images": "Görseller",
+    "addPhotoButton": "Görsel Ekle"
+  },
+  "NavBar": {
+    "Profile": "Profil",
+    "Announcements": "İlanlar",
+    "Languages": "Diller",
+    "DarkMode": "Karanlık/Açık tema",
+    "Logout": "Çıkış"
+  }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
 }
