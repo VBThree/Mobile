@@ -20,10 +20,15 @@ class CodegenLoader extends AssetLoader{
   "Resolved": "Çözüldü",
   "Published": "Yayınlanan",
   "ChangePassword": "Parola Değiştir",
-  "Logout": "Şifre Değiştir"
+  "Logout": "Çıkış Yap"
 };
 static const Map<String,dynamic> en = {
-  "routeFailed": "There is a problem!"
+  "routeFailed": "There is a problem!",
+  "Achievements": "Achievements",
+  "Resolved": "Resolved",
+  "Published": "Published",
+  "ChangePassword": "ChangePassword",
+  "Logout": "Logout"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"tr": tr, "en": en};
 }

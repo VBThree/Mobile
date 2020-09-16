@@ -9,7 +9,6 @@ import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -32,57 +31,83 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     return Container(
       child: Column(
         children: [
-          Stack(overflow: Overflow.visible, children: [
-            imageTextCardArea(),
-            Positioned(
-              top: MediaQuery.of(context).size.height * 0.28,
-              left: MediaQuery.of(context).size.width * 0.125,
-              child: contactInfoCard(),
-            ),
-          ]),
-          SizedBox(
-            height: dynamicHeight(0.2124),
-          ),
-          Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.symmetric(horizontal: dynamicWidth(0.17)),
-              child: Text(
-                LocaleKeys.Achievements.locale,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
-                  color: PROFILE_DARK_GREY_BLUE,
-                ),
-              )),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: dynamicWidth(0.09)),
-            child: Column(
-              children: [
-                ProfileListTile(
-                    Icons.assignment_turned_in, LocaleKeys.Resolved.locale, 50),
-                ProfileListTile(
-                    Icons.assignment, LocaleKeys.Published.locale, 80),
-              ],
-            ),
-          ),
-          ShadedButton(
-            LocaleKeys.ChangePassword.locale,
-            onpress(),
-            foregroundColor: PROFILE_APPBAR_LIGHT_PEACH,
-            textColor: PROFILE_BLOWISH_GRAY,
-          ),
-          SizedBox(
-            height: dynamicHeight(0.02),
-          ),
-          ShadedButton(
-            LocaleKeys.Logout.locale,
-            onpress(),
-            foregroundColor: PROFILE_ROSE_PINK,
-            textColor: PROFILE_BLOWISH_GRAY,
-          ),
+          Expanded(flex: 4, child: topCardArea()),
+          Expanded(flex: 1, child: dynamicBoxArea()),
+          Expanded(flex: 2, child: achievementsListTileArea()),
+          Expanded(flex: 2, child: buttonArea())
         ],
       ),
     );
+  }
+
+  SizedBox dynamicBoxArea() {
+    return SizedBox(
+      // iletişim cardı ile başarılar kısmını dinamik olarak ayarlar
+      height: dynamicHeight(0.2124),
+    );
+  }
+
+  Column buttonArea() {
+    return Column(
+      children: [
+        ShadedButton(
+          LocaleKeys.ChangePassword.locale,
+          changePass(),
+          foregroundColor: PROFILE_LIGHT_PEACH,
+          textColor: PROFILE_BLOWISH_GRAY,
+        ),
+        SizedBox(
+          height: dynamicHeight(0.02),
+        ),
+        ShadedButton(
+          LocaleKeys.Logout.locale,
+          logoutOnpress(),
+          foregroundColor: PROFILE_ROSE_PINK,
+          textColor: PROFILE_BLOWISH_GRAY,
+        ),
+      ],
+    );
+  }
+
+  Padding achievementsListTileArea() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: dynamicWidth(0.09)),
+      child: Column(
+        children: [
+          achievementsText(),
+          ProfileListTile(
+              Icons.assignment_turned_in, LocaleKeys.Resolved.locale, 50),
+          ProfileListTile(Icons.assignment, LocaleKeys.Published.locale, 80),
+        ],
+      ),
+    );
+  }
+
+  Container achievementsText() {
+    return Container(
+        alignment: Alignment.topLeft,
+        padding: EdgeInsets.symmetric(horizontal: dynamicWidth(0.05)),
+        child: Text(
+          LocaleKeys.Achievements.locale,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+            color: PROFILE_DARK_GREY_BLUE,
+          ),
+        ));
+  }
+
+  Container achievementsTextArea() {}
+
+  Stack topCardArea() {
+    return Stack(overflow: Overflow.visible, children: [
+      imageTextCardArea(),
+      Positioned(
+        top: MediaQuery.of(context).size.height * 0.28,
+        left: MediaQuery.of(context).size.width * 0.125,
+        child: contactInfoCard(),
+      ),
+    ]);
   }
 
   Container contactInfoCard() {
@@ -116,7 +141,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     return Container(
       child: imageTextComponents(),
       decoration: BoxDecoration(
-        color: PROFILE_APPBAR_LIGHT_PEACH,
+        color: PROFILE_LIGHT_PEACH,
         borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(PROFILE_RADIUS),
             bottomRight: Radius.circular(PROFILE_RADIUS)),
@@ -133,15 +158,14 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           /* Container(
-                                alignment: Alignment.topLeft,
-                                child: SvgPicture.asset(
-                                  "assets/shapes/profile_shape1.svg",
-                                ),
-                                SVG RESİM ALİGN ETME KONUSUNDA SORUN YAŞADIK
-                              ) */
+            alignment: Alignment.topLeft,
+            child: SvgPicture.asset(
+            "assets/shapes/profile_shape1.svg",
+            ),
+             SVG RESİM ALİGN ETME KONUSUNDA SORUN YAŞADIK) */
           Container(
             child: CircleAvatar(
-              radius: 60,
+              radius: dynamicWidth(0.18),
               backgroundImage: NetworkImage(
                 "https://avatars3.githubusercontent.com/u/34376691?s=460&u=bb49f483424c3330768c12112b67fc93273896d9&v=4",
               ),
@@ -161,20 +185,24 @@ class _ProfilePageState extends BaseState<ProfilePage> {
 
   AppBar profileAppBar() {
     return AppBar(
-      backgroundColor: PROFILE_APPBAR_LIGHT_PEACH,
+      backgroundColor: PROFILE_LIGHT_PEACH,
+      shadowColor: Colors.transparent,
       toolbarOpacity: 0.7,
       automaticallyImplyLeading: false,
-      leading: Icon(
-        Icons.menu,
-      ),
+      leading: Icon(Icons.menu, color: PROFILE_DARK_GREY_BLUE),
       actions: [
-        Icon(
-          Icons.edit,
-          color: PROFILE_DARK_GREY_BLUE,
+        Padding(
+          padding: EdgeInsets.only(right: dynamicWidth(0.03)),
+          child: Icon(
+            Icons.edit,
+            color: PROFILE_DARK_GREY_BLUE,
+          ),
         )
       ],
     );
   }
 
-  Function onpress() {}
+  Function changePass() {}
+
+  Function logoutOnpress() {}
 }

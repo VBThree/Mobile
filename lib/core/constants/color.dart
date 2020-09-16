@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-Color PROFILE_APPBAR_LIGHT_PEACH = Hexcolor("#ffc7ad");
+Color PROFILE_LIGHT_PEACH = Hexcolor("#ffc7ad");
 Color PROFILE_APPBAR_ROSE_PINK = Hexcolor("#534d4d");
 Color PROFILE_APPBAR_GREYISH_BROWN = Hexcolor("#00818a");
 Color PROFILE_APPBAR_DUSK_BLUE = Hexcolor("#216583");
