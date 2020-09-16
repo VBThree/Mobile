@@ -32,5 +32,11 @@ abstract class  LocaleKeys {
   static const postAnnouncementPage_images = 'postAnnouncementPage.images';
   static const postAnnouncementPage_addPhotoButton = 'postAnnouncementPage.addPhotoButton';
   static const postAnnouncementPage = 'postAnnouncementPage';
+  static const NavBar_Profile = 'NavBar.Profile';
+  static const NavBar_Announcements = 'NavBar.Announcements';
+  static const NavBar_Languages = 'NavBar.Languages';
+  static const NavBar_DarkMode = 'NavBar.DarkMode';
+  static const NavBar_Logout = 'NavBar.Logout';
+  static const NavBar = 'NavBar';
 
 }

@@ -14,23 +14,13 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> tr = {
-  "routeFailed": "Bir sorun oluştu!",
-  "Achievements": "Başarılar",
-  "Resolved": "Çözüldü",
-  "Published": "Yayınlanan",
-  "ChangePassword": "Parola Değiştir",
-  "Logout": "Çıkış Yap"
-};
-static const Map<String,dynamic> en = {
+  static const Map<String,dynamic> en = {
   "routeFailed": "There is a problem!",
   "Achievements": "Achievements",
   "Resolved": "Resolved",
   "Published": "Published",
   "ChangePassword": "ChangePassword",
-  "Logout": "Logout"
-  static const Map<String,dynamic> en = {
-  "routeFailed": "There is a problem!",
+  "Logout": "Logout",
   "announcementTypes": {
     "Food": "Food",
     "Lost": "Lost",
@@ -59,10 +49,22 @@ static const Map<String,dynamic> en = {
     "pleaseAddImages": "Please upload clear and relevant images.",
     "images": "Images",
     "addPhotoButton": "Add Images"
+  },
+  "NavBar": {
+    "Profile": "Profile",
+    "Announcements": "Announcements",
+    "Languages": "Languages",
+    "DarkMode": "Dark/Light Mode",
+    "Logout": "Log out"
   }
 };
 static const Map<String,dynamic> tr = {
   "routeFailed": "Bir sorun oluştu!",
+  "Achievements": "Başarılar",
+  "Resolved": "Çözüldü",
+  "Published": "Yayınlanan",
+  "ChangePassword": "Parola Değiştir",
+  "Logout": "Çıkış Yap",
   "announcementTypes": {
     "Food": "Besleme",
     "Lost": "Kayıp",
@@ -91,7 +93,14 @@ static const Map<String,dynamic> tr = {
     "pleaseAddImages": "Lütfen net ve konuya uygun\ngörseller ekleyiniz.",
     "images": "Görseller",
     "addPhotoButton": "Görsel Ekle"
+  },
+  "NavBar": {
+    "Profile": "Profil",
+    "Announcements": "İlanlar",
+    "Languages": "Diller",
+    "DarkMode": "Karanlık/Açık tema",
+    "Logout": "Çıkış"
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"tr": tr, "en": en};
+static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
 }
