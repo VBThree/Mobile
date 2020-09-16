@@ -2,7 +2,6 @@ import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
-import 'package:flutter/gestures.dart';
 
 class MyNavBar extends StatefulWidget {
   final Function onTap;
