@@ -21,7 +21,11 @@ class CodegenLoader extends AssetLoader{
   "password": "Password",
   "forgotPassword": "Forgot Password?",
   "dontHaveAnAccount": "Don't have an account?",
-  "signUp": "Sign Up"
+  "signUp": "Sign Up",
+  "nameSurname": "Name Surname",
+  "phoneNumber": "Phone number",
+  "dateOfBirth": "Date of birth",
+  "alreadySignedUp": "Already Signed Up?"
 };
 static const Map<String,dynamic> tr = {
   "routeFailed": "Bir sorun oluştu!",
@@ -30,7 +34,11 @@ static const Map<String,dynamic> tr = {
   "password": "Şifre",
   "forgotPassword": "Şifremi Unuttum",
   "dontHaveAnAccount": "Hesabın var mı?",
-  "signUp": "Kayıt Ol"
+  "signUp": "Kayıt Ol",
+  "nameSurname": "İsim Soyisim",
+  "phoneNumber": "Telefon Numarası",
+  "dateOfBirth": "Doğum Tarihi",
+  "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
 }
