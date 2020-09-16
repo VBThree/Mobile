@@ -5,5 +5,9 @@
     "password": "Şifre",
     "forgotPassword": "Şifremi Unuttum",
     "dontHaveAnAccount": "Hesabın var mı?",
-    "signUp": "Kayıt Ol"
+    "signUp": "Kayıt Ol",
+    "nameSurname": "İsim Soyisim",
+    "phoneNumber": "Telefon Numarası",
+    "dateOfBirth": "Doğum Tarihi",
+    "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
 }
