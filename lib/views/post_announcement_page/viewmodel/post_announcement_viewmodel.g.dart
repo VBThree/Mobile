@@ -118,6 +118,21 @@ mixin _$PostAnnouncementViewModel on _PostAnnouncementViewModelBase, Store {
     });
   }
 
+  final _$imagesAtom = Atom(name: '_PostAnnouncementViewModelBase.images');
+
+  @override
+  ObservableList<String> get images {
+    _$imagesAtom.reportRead();
+    return super.images;
+  }
+
+  @override
+  set images(ObservableList<String> value) {
+    _$imagesAtom.reportWrite(value, super.images, () {
+      super.images = value;
+    });
+  }
+
   final _$_PostAnnouncementViewModelBaseActionController =
       ActionController(name: '_PostAnnouncementViewModelBase');
 
@@ -127,6 +142,17 @@ mixin _$PostAnnouncementViewModel on _PostAnnouncementViewModelBase, Store {
         .startAction(name: '_PostAnnouncementViewModelBase.updateFillChecks');
     try {
       return super.updateFillChecks(index);
+    } finally {
+      _$_PostAnnouncementViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addImage(dynamic _image, dynamic index) {
+    final _$actionInfo = _$_PostAnnouncementViewModelBaseActionController
+        .startAction(name: '_PostAnnouncementViewModelBase.addImage');
+    try {
+      return super.addImage(_image, index);
     } finally {
       _$_PostAnnouncementViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -153,7 +179,8 @@ gender: ${gender},
 breed: ${breed},
 description: ${description},
 breedList: ${breedList},
-isFill: ${isFill}
+isFill: ${isFill},
+images: ${images}
     ''';
   }
 }

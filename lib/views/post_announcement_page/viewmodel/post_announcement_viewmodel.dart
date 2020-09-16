@@ -1,7 +1,5 @@
 import 'package:VBThreeMobile/core/constants/breeds.dart';
-import 'package:VBThreeMobile/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:mobx/mobx.dart';
 part 'post_announcement_viewmodel.g.dart';
 
@@ -35,20 +33,28 @@ abstract class _PostAnnouncementViewModelBase with Store {
     isFill[index] = true;
   }
 
+  @observable
+  ObservableList<String> images = ["", "", "", "", "", ""].asObservable();
+
+  @action
+  void addImage(_image, index) {
+    images[index] = _image;
+  }
+
   @action
   void changeFirstBreedName(String animal) {
     switch (animal) {
       case "Dog":
-        breed = null;
+        breed = breed == null ? null : Breeds.dogBreeds[0];
         breedList = Breeds.dogBreeds;
         break;
       case "Cat":
-        breed = null;
+        breed = breed == null ? null : Breeds.catBreeds[0];
         breedList = Breeds.catBreeds;
 
         break;
       case "Other":
-        breed = LocaleKeys.animalNames_Bird.tr();
+        breed = breed == null ? null : Breeds.otherAnimals[0];
         breedList = Breeds.otherAnimals;
         break;
     }
