@@ -1,3 +1,10 @@
 {
-    "routeFailed":"There is a problem!"
+    "routeFailed": "There is a problem!",
+    "NavBar": {
+        "Profile": "Profile",
+        "Announcements": "Announcements",
+        "Languages": "Languages",
+        "DarkMode": "Dark/Light Mode",
+        "Logout": "Log out"
+    }
 }
