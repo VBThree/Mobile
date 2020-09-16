@@ -1,3 +1,9 @@
 {
-    "routeFailed": "Bir sorun oluştu!"
+    "routeFailed": "Bir sorun oluştu!",
+    "signIn": "Giriş Yap",
+    "email": "E-posta",
+    "password": "Şifre",
+    "forgotPassword": "Şifremi Unuttum",
+    "dontHaveAnAccount": "Hesabın var mı?",
+    "signUp": "Kayıt Ol"
 }

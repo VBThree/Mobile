@@ -15,10 +15,22 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
-  "routeFailed": "There is a problem!"
+  "routeFailed": "There is a problem!",
+  "signIn": "Sign In",
+  "email": "E-mail",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signUp": "Sign Up"
 };
 static const Map<String,dynamic> tr = {
-  "routeFailed": "Bir sorun oluştu!"
+  "routeFailed": "Bir sorun oluştu!",
+  "signIn": "Giriş Yap",
+  "email": "E-posta",
+  "password": "Şifre",
+  "forgotPassword": "Şifremi Unuttum",
+  "dontHaveAnAccount": "Hesabın var mı?",
+  "signUp": "Kayıt Ol"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
 }

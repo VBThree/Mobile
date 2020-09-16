@@ -1,3 +1,9 @@
 {
-    "routeFailed":"There is a problem!"
+    "routeFailed": "There is a problem!",
+    "signIn": "Sign In",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign Up"
 }
