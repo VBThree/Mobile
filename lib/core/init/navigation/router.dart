@@ -1,3 +1,4 @@
+import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,10 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case homeRoute:
+      case postAnnouncementPage:
+        return MaterialPageRoute(
+          builder: (_) => PostAnnouncementView(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => WrongRouteView(),
@@ -14,3 +19,4 @@ class Router {
 }
 
 const String homeRoute = '/';
+const String postAnnouncementPage = '/postAnnouncementPage';
