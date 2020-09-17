@@ -64,7 +64,12 @@
     "ForgotPassword": {
         "forgotton_password_title":"Forgotten Password",
         "send_forgotPage": "Send",
-        "email_forgotPage": "E-mail Address"   
+        "email_forgotPage": "E-mail Address" ,
+        "reset_pass":"Reset Password",
+        "new_pass":"Enter new password",
+        "save":"Save",
+        "continue":"Continue",
+        "digitcode":"Enter your 6-digit number"
     },
     "signIn": "Sign In",
     "email": "E-mail",

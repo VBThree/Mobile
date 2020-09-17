@@ -53,6 +53,11 @@ abstract class  LocaleKeys {
   static const ForgotPassword_forgotton_password_title = 'ForgotPassword.forgotton_password_title';
   static const ForgotPassword_send_forgotPage = 'ForgotPassword.send_forgotPage';
   static const ForgotPassword_email_forgotPage = 'ForgotPassword.email_forgotPage';
+  static const ForgotPassword_reset_pass = 'ForgotPassword.reset_pass';
+  static const ForgotPassword_new_pass = 'ForgotPassword.new_pass';
+  static const ForgotPassword_save = 'ForgotPassword.save';
+  static const ForgotPassword_continue = 'ForgotPassword.continue';
+  static const ForgotPassword_digitcode = 'ForgotPassword.digitcode';
   static const ForgotPassword = 'ForgotPassword';
   static const signIn = 'signIn';
   static const email = 'email';

@@ -1,20 +1,20 @@
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
-import 'package:VBThreeMobile/views/forgotPassword/viewmodel/forgot_password_viewmodel.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword.dart';
 
-const String artwork = "assets/images/forgotPassword/img1.svg";
-var forgotPasswordPageViewModel = ForgotPasswordViewModel();
+String password = "";
+const String artwork = "assets/images/forgotPassword/img2.svg";
 
-class ForgotPassword extends StatefulWidget {
+class ForgotPassword_new extends StatefulWidget {
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
-  TextEditingController emailController = TextEditingController();
+class _ForgotPasswordState extends State<ForgotPassword_new> {
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +30,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   Expanded(flex: 1, child: buildTitle()),
                   Expanded(flex: 2, child: buildPicture()),
                   Expanded(flex: 1, child: buildTextField()),
-                  Expanded(flex: 1, child: buildSend()),
+                  Expanded(flex: 1, child: buildSave()),
                   Spacer(
                     flex: 1,
                   ),
-                  Expanded(child: buildSignUp()),
                 ],
               ),
             )));
   }
 
   Text buildTitle() => Text(
-        LocaleKeys.ForgotPassword_forgotton_password_title.locale,
+        LocaleKeys.ForgotPassword_reset_pass.locale,
         style: TextStyle(
             color: Color.fromRGBO(201, 87, 64, 1),
             fontSize: 30.0,
@@ -57,10 +56,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           Expanded(
             flex: 14,
             child: TextField(
-              controller: emailController,
+              controller: passwordController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: (LocaleKeys.ForgotPassword_email_forgotPage.tr()),
+                labelText: (LocaleKeys.ForgotPassword_new_pass.tr()),
               ),
             ),
           ),
@@ -70,28 +69,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     );
   }
 
-  Container buildSignUp() {
-    return Container(
-        child: Row(
-      children: <Widget>[
-        Text(
-          LocaleKeys.dontHaveAnAccount.locale,
-          style: TextStyle(fontSize: 20),
-        ),
-        FlatButton(
-          textColor: Colors.blue,
-          child: Text(
-            LocaleKeys.signUp.tr(),
-            style: TextStyle(fontSize: 20),
-          ),
-          onPressed: () {},
-        )
-      ],
-      mainAxisAlignment: MainAxisAlignment.center,
-    ));
-  }
-
-  Container buildSend() {
+  Container buildSave() {
     return Container(
       height: 50,
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -104,14 +82,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             flex: 18,
             child: RaisedButton(
               onPressed: () {
-                forgotPasswordPageViewModel.email = emailController.text;
-                forgotPasswordPageViewModel.sendEmail();
-                Navigator.pushNamed(context, "/forgotPassword_code");
+                forgotPasswordPageViewModel.newPassword =
+                    passwordController.text;
+                forgotPasswordPageViewModel.sendNewPassword();
               },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               child: Text(
-                LocaleKeys.ForgotPassword_send_forgotPage.locale,
+                LocaleKeys.ForgotPassword_save.locale,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

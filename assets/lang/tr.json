@@ -25,7 +25,6 @@
         "Ownership": "Sahiplenme",
         "Vaccination": "Aşılama"
     },
-
     "genders": {
         "maleHumanAndAnimal": "Erkek",
         "femaleAnimal": "Dişi",
@@ -37,11 +36,9 @@
         "Bird": "Kuş",
         "Rabbit": "Tavşan"
     },
-
     "postAnnouncementPage": {
         "otherAnimals": "Diğer",
         "title": "Dostlarına Yardım\nEli Uzat",
-
         "announcementTypeHint": "İlan Konusu",
         "speciesHint": "Pet Türü",
         "breedHint": "Cinsi",
@@ -50,8 +47,6 @@
         "pleaseAddImages": "Lütfen net ve konuya uygun\ngörseller ekleyiniz.",
         "images": "Görseller",
         "addPhotoButton": "Görsel Ekle"
-
-
     },
     "NavBar": {
         "Profile": "Profil",
@@ -59,18 +54,32 @@
         "Languages": "Diller",
         "DarkMode": "Karanlık/Açık tema",
         "Logout": "Çıkış",
-    
-
         "signIn": "Giriş Yap",
         "email": "E-posta",
         "password": "Şifre",
         "forgotPassword": "Şifremi Unuttum",
         "dontHaveAnAccount": "Hesabın var mı?",
-        "signUp": "Kayıt Ol"
+        "signUp": "Kayıt Ol",
+        "reset_pass": "Şifreni sıfırla",
+        "new_pass": "Yeni şifre",
+        "save": "Kaydet",
+        "continue": "Devam",
+        "digitcode": "6 haneli kodu girin"
     },
     "ForgotPassword": {
-        "forgotton_password_title":"şifremi Unuttum",
-        "email_forgotPage": "E-mail Adres",
-        "send_forgotPage": "Gönder"
-    }
+        "forgotton_password_title": "Unutulmuş Şifre",
+        "send_forgotPage": "Gönder",
+        "email_forgotPage": "E-mail Adresi",
+        "reset_pass": "Şifreyi Sıfırla",
+        "new_pass": "Yeni Şifre Gir",
+        "save": "Kaydet",
+        "continue": "Devam Et",
+        "digitcode": "Mailinize Gelen 6 Haneli Kodu Giriniz"
+    },
+    "signIn": "Giriş Yap",
+    "email": "E-mail",
+    "password": "Şifre",
+    "forgotPassword": "Şifremi Unuttum",
+    "dontHaveAnAccount": "Hesabım Yok",
+    "signUp": "Kayıt Ol"
 }
