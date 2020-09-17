@@ -17,7 +17,18 @@
         "Resolved": "Çözüldü",
         "Published": "Yayınlanan",
         "ChangePassword": "Parola Değiştir",
-        "Logout": "Çıkış Yap"
+        "Logout": "Çıkış Yap",
+        "Name": "İsim",
+        "Phone": "Telefon",
+        "Email": "E-mail",
+        "BirtdayDate": "Doğum Günü",
+        "Change":"Değiştir",
+        "EnterYourOldPassword" :"Eski Şifrenizi Giriniz",
+        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz",
+        "EditProfile": "Profili Düzenle",
+        "Update": "Güncelle"
+        
+
     },
     "announcementTypes": {
         "Food": "Besleme",

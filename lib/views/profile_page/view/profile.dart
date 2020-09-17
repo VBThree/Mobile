@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
 import 'package:VBThreeMobile/core/components/profile_card_text.dart';
+import 'package:VBThreeMobile/core/components/profile_change_password.dart';
+import 'package:VBThreeMobile/core/components/profile_edit_text_input.dart';
 import 'package:VBThreeMobile/core/components/profile_listTile_widget.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
@@ -11,6 +15,14 @@ import 'package:VBThreeMobile/views/profile_page/viewmodel/profile_viewmodel.dar
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../core/components/shadedButton.dart';
+import '../../../generated/locale_keys.g.dart';
+import '../../../generated/locale_keys.g.dart';
+import '../../../generated/locale_keys.g.dart';
+import '../../../generated/locale_keys.g.dart';
+import '../../../generated/locale_keys.g.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
@@ -28,6 +40,18 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     viewmodel.getUserData();
   }
 
+  var formkey = GlobalKey<FormState>();
+  var nameController = TextEditingController();
+  var phoneController = TextEditingController();
+  var emailController = TextEditingController();
+  var dateController = TextEditingController();
+  var oldPasswordController = TextEditingController();
+  var newPasswordController = TextEditingController();
+  File _sellectedImage;
+  String profileName = "Abdullah Oğuz";
+  String profilePhoneNumber = "+90 545 xxx xx xx";
+  String profileEmailInfo = "oguzabdullah@gmail.com";
+  String profileDateInfo = "dd/mm/yyyy";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +88,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       children: [
         ShadedButton(
           LocaleKeys.profilePage_ChangePassword.locale,
-          changePass(),
+          changePass,
           foregroundColor: AllColors.PROFILE_LIGHT_PEACH,
           textColor: AllColors.PROFILE_BLOWISH_GRAY,
         ),
@@ -127,9 +151,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ProfileCardText(Feather.phone, "+90 545 xxx xx xx"),
-          ProfileCardText(Fontisto.email, "oguzabdullah@gmail.com"),
-          ProfileCardText(Icons.date_range, "dd/mm/yyyy"),
+          ProfileCardText(Feather.phone, profilePhoneNumber),
+          ProfileCardText(Fontisto.email, profileEmailInfo),
+          ProfileCardText(Icons.date_range, profileDateInfo),
         ],
       ),
       decoration: BoxDecoration(
@@ -186,7 +210,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
             height: dynamicHeight(0.01),
           ),
           Text(
-            "Abdullah Oğuz",
+            profileName,
             style: TextStyle(
                 color: AllColors.PROFILE_DARK_GREY_BLUE,
                 fontSize: dynamicWidth(0.06),
@@ -209,8 +233,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: dynamicWidth(0.03)),
-          child: Icon(
-            Icons.edit,
+          child: IconButton(
+            onPressed: editOnPress,
+            icon: Icon(Icons.edit),
             color: AllColors.PROFILE_DARK_GREY_BLUE,
           ),
         )
@@ -218,7 +243,137 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     );
   }
 
-  Function changePass() {}
+  void changePass() {
+    setState(() {
+      showDialog(
+          context: context,
+          builder: (_) => new AlertDialog(
+                title: Text(LocaleKeys.profilePage_ChangePassword.locale),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                content: Builder(
+                  builder: (context) {
+                    return Container(
+                      height: dynamicHeight(0.23),
+                      width: dynamicHeight(0.4),
+                      child: Form(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ProfileChangePassTextInput(
+                              "${LocaleKeys.profilePage_EnterYourOldPassword.locale}",
+                              oldPasswordController),
+                          ProfileChangePassTextInput(
+                              "${LocaleKeys.profilePage_EnterYourNewPassword.locale}",
+                              newPasswordController),
+                          ShadedButton(
+                            "${LocaleKeys.profilePage_Change.locale}",
+                            changeModalPass,
+                            foregroundColor: AllColors.PROFILE_TWILIGHT,
+                          ),
+                        ],
+                      )),
+                    );
+                  },
+                ),
+              ));
+    });
+  }
 
   Function logoutOnpress() {}
+
+  void editOnPress() {
+    showDialog(
+      context: context,
+      builder: (_) => new AlertDialog(
+        title: Text(LocaleKeys.profilePage_EditProfile.locale),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        content: Builder(
+          builder: (context) {
+            return Container(
+                height: dynamicHeight(0.5),
+                width: dynamicWidth(1),
+                child: Form(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      InkWell(
+                          onTap: uploadImage,
+                          child: _sellectedImage == null
+                              ? CircleAvatar(
+                                  radius: dynamicWidth(0.1),
+                                  child: Icon(Icons.add_a_photo))
+                              : CircleAvatar(
+                                  radius: dynamicWidth(0.1),
+                                  backgroundImage: FileImage(_sellectedImage),
+                                )),
+                      Expanded(
+                        child: ProfileTextInputWidget(
+                          Icons.person,
+                          "${LocaleKeys.profilePage_Name.locale}",
+                          nameController,
+                          false,
+                        ),
+                      ),
+                      Expanded(
+                        child: ProfileTextInputWidget(
+                          Feather.phone,
+                          "${LocaleKeys.profilePage_Phone.locale}",
+                          phoneController,
+                          false,
+                        ),
+                      ),
+                      Expanded(
+                        child: ProfileTextInputWidget(
+                          Feather.mail,
+                          "${LocaleKeys.profilePage_Email.locale}",
+                          emailController,
+                          false,
+                        ),
+                      ),
+                      Expanded(
+                        child: ProfileTextInputWidget(
+                          Feather.mail,
+                          "${LocaleKeys.profilePage_BirtdayDate.locale}",
+                          dateController,
+                          false,
+                        ),
+                      ),
+                      ShadedButton(
+                        "${LocaleKeys.profilePage_Change.locale}",
+                        changeModalPass,
+                        foregroundColor: AllColors.PROFILE_TWILIGHT,
+                      ),
+                    ],
+                  ),
+                ));
+          },
+        ),
+      ),
+    );
+
+    /*   showDialog(
+                                                          context: this.context,
+                                                          builder: (_) {},
+                                                          child: AlertDialog(
+                                                            content: Form(
+                                                                child: Column(
+                                                              mainAxisSize: MainAxisSize.min,
+                                                              children: [
+                                                                ProfileTextInputWidget(Feather.phone,
+                                                                    "${LocaleKeys.profilePage_Name}", nameController, false)
+                                                              ],
+                                                            )),
+                                                          )); */
+  }
+
+  changeModalPass() {}
+
+  uploadImage() async {
+    var galleryImage = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _sellectedImage = galleryImage;
+    });
+  }
 }

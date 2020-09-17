@@ -17,7 +17,17 @@
         "Resolved": "Resolved",
         "Published": "Published",
         "ChangePassword": "Change Password",
-        "Logout": "Logout"
+        "Logout": "Logout",
+        "Name": "Name",
+        "Phone": "Phone",
+        "Email": "E-mail",
+        "BirtdayDate": "Birtday Date",
+        "Change":"Change",
+        "EnterYourOldPassword":"Enter Your Old Password",
+        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz",
+        "EditProfile": "Profili Düzenle",
+        "Update": "Update"
+        
     },
 
     "announcementTypes": {
