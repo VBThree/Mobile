@@ -74,7 +74,12 @@ class CodegenLoader extends AssetLoader{
   "ForgotPassword": {
     "forgotton_password_title": "Forgotten Password",
     "send_forgotPage": "Send",
-    "email_forgotPage": "E-mail Address"
+    "email_forgotPage": "E-mail Address",
+    "reset_pass": "Reset Password",
+    "new_pass": "Enter new password",
+    "save": "Save",
+    "continue": "Continue",
+    "digitcode": "Enter your 6-digit number"
   },
   "signIn": "Sign In",
   "email": "E-mail",
@@ -144,7 +149,12 @@ static const Map<String,dynamic> tr = {
     "password": "Şifre",
     "forgotPassword": "Şifremi Unuttum",
     "dontHaveAnAccount": "Hesabın var mı?",
-    "signUp": "Kayıt Ol"
+    "signUp": "Kayıt Ol",
+    "reset_pass": "Şifreni sıfırla",
+    "new_pass": "Yeni şifre",
+    "save": "Kaydet",
+    "continue": "Devam",
+    "digitcode": "6 haneli kodu girin"
   },
   "ForgotPassword": {
     "forgotton_password_title": "şifremi Unuttum",

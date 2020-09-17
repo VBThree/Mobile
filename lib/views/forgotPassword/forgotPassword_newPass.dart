@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
-String email = "";
-const String artwork = "assets/images/forgotPassword/img1.svg";
+String password = "";
+const String artwork = "assets/images/forgotPassword/img2.svg";
 
-class ForgotPassword extends StatefulWidget {
+class ForgotPassword_new extends StatefulWidget {
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _ForgotPasswordState extends State<ForgotPassword_new> {
   TextEditingController nameController = TextEditingController();
 
   @override
@@ -28,18 +28,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   Expanded(flex: 1, child: buildTitle()),
                   Expanded(flex: 2, child: buildPicture()),
                   Expanded(flex: 1, child: buildTextField()),
-                  Expanded(flex: 1, child: buildSend()),
+                  Expanded(flex: 1, child: buildSave()),
                   Spacer(
                     flex: 1,
                   ),
-                  Expanded(child: buildSignUp()),
                 ],
               ),
             )));
   }
 
   Text buildTitle() => Text(
-        LocaleKeys.ForgotPassword_forgotton_password_title.locale,
+        LocaleKeys.ForgotPassword_reset_pass.locale,
         style: TextStyle(
             color: Color.fromRGBO(201, 87, 64, 1),
             fontSize: 30.0,
@@ -58,7 +57,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               controller: nameController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: (LocaleKeys.ForgotPassword_email_forgotPage.locale),
+                labelText: (LocaleKeys.ForgotPassword_new_pass.locale),
               ),
             ),
           ),
@@ -68,28 +67,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     );
   }
 
-  Container buildSignUp() {
-    return Container(
-        child: Row(
-      children: <Widget>[
-        Text(
-          LocaleKeys.dontHaveAnAccount.locale,
-          style: TextStyle(fontSize: 20),
-        ),
-        FlatButton(
-          textColor: Colors.blue,
-          child: Text(
-            LocaleKeys.signUp.locale,
-            style: TextStyle(fontSize: 20),
-          ),
-          onPressed: () {},
-        )
-      ],
-      mainAxisAlignment: MainAxisAlignment.center,
-    ));
-  }
-
-  Container buildSend() {
+  Container buildSave() {
     return Container(
       height: 50,
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -105,7 +83,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               child: Text(
-                LocaleKeys.ForgotPassword_send_forgotPage.locale,
+                LocaleKeys.ForgotPassword_save.locale,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
