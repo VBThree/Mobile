@@ -35,6 +35,11 @@ class NetworkManager {
     "query":
         "mutation{\n  register(\n    name:\"dasdas\"\n    email:\"dasdfdfas@fjsdjfdsasd.com\"\n    password:\"1234\"\n\t\tphone:\"43233243432\"\n    birthday:\"2000-11-05T06:30:00.000Z\"\n    rating:1.2\n    photo:\"\"\n  )\n}\n\n# {\n#   users{\n#     birthday\n#   }\n# }"
   };
+
+  final postForgotPasswordDataQuery = {
+    "query": "mutation{\n  requestReset(email:\"\")\n}"
+  };
+
   Future<http.Response> getAnnouncements() async {
     var response = await client.post(baseUrl, body: getAllAnnouncementsQuery);
 
@@ -58,6 +63,12 @@ class NetworkManager {
       "Authorization":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjFiZmQ1ZTBlNTQ5MTJjNTE0M2VjMiIsImlhdCI6MTYwMDM0NTI2MSwiZXhwIjoxNjMxOTAyODYxfQ._VmUw581XSFrxt8Xt4JqVetKWnfrS5yusc_E0H7UVb8"
     });
+
+    return response;
+  }
+
+  Future<http.Response> postForgotPasswordData() async {
+    var response = await client.post(baseUrl, body: getUserDataQuery);
 
     return response;
   }
