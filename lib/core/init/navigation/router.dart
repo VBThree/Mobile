@@ -1,3 +1,4 @@
+import 'package:VBThreeMobile/views/mapPage/mapPageView.dart';
 import 'package:VBThreeMobile/views/profile_page/profile.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_add_image_view.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';
@@ -20,6 +21,9 @@ class Router {
           builder: (_) => OnboardingPage(),
         );
       case homeRoute:
+        return MaterialPageRoute(
+          builder: (_) => MapPage(),
+        );
       case loginRoute:
         return MaterialPageRoute(
           builder: (_) => LoginPage(),
