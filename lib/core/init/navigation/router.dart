@@ -1,5 +1,5 @@
-import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_code.dart';
-import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_newPass.dart';
+import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword_code.dart';
+import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword_newPass.dart';
 import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword.dart';
 import 'package:VBThreeMobile/views/loginPage/loginPage.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
@@ -33,7 +33,6 @@ class Router {
         return MaterialPageRoute(
           builder: (_) => OnboardingPage(),
         );
-      case mapRoute:
       case mapRoute:
         return MaterialPageRoute(
           builder: (_) => MapPage(),
