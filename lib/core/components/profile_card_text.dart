@@ -7,14 +7,18 @@ class ProfileCardText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Icon(icon),
+        Icon(
+          icon,
+          size: width * 0.064,
+        ),
         Spacer(
           flex: 9,
         ),
-        Text(profile_contact_text),
+        Text(profile_contact_text, style: TextStyle(fontSize: width * 0.032)),
       ],
     );
   }

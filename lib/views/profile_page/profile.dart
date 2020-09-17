@@ -96,7 +96,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
           LocaleKeys.profilePage_Achievements.locale,
           style: TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 20,
+            fontSize: dynamicWidth(0.05),
             color: AllColors.PROFILE_DARK_GREY_BLUE,
           ),
         ));
@@ -174,13 +174,17 @@ class _ProfilePageState extends BaseState<ProfilePage> {
               ),
             ),
           ),
+          SizedBox(
+            height: dynamicHeight(0.01),
+          ),
           Text(
             "Abdullah Oğuz",
             style: TextStyle(
                 color: AllColors.PROFILE_DARK_GREY_BLUE,
-                fontSize: 25,
+                fontSize: dynamicWidth(0.06),
                 fontWeight: FontWeight.w600),
           ),
+          SizedBox(height: dynamicHeight(0.03)),
         ],
       ),
     );

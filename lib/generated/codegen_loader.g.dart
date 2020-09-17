@@ -14,19 +14,19 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> ar = {
-  "routeFailed": "هناك مشكلة!",
+  static const Map<String,dynamic> tr = {
+  "routeFailed": "Bir sorun oluştu!",
   "authStrings": {
-    "signIn": "تسجيل الدخول",
-    "email": "البريد الإلكتروني",
-    "password": "كلمه السر",
-    "forgotPassword": "لقد نسيت كلمة المرور",
-    "dontHaveAnAccount": "هل لديك حساب؟",
-    "signUp": "سجل",
-    "nameSurname": "اسم اللقب",
-    "phoneNumber": "رقم الهاتف",
-    "dateOfBirth": "تاريخ الميلاد",
-    "alreadySignedUp": "هل لديك بالفعل حساب مسجل؟"
+    "signIn": "Giriş Yap",
+    "email": "E-posta",
+    "password": "Şifre",
+    "forgotPassword": "Şifremi Unuttum",
+    "dontHaveAnAccount": "Hesabın var mı?",
+    "signUp": "Kayıt Ol",
+    "nameSurname": "İsim Soyisim",
+    "phoneNumber": "Telefon Numarası",
+    "dateOfBirth": "Doğum Tarihi",
+    "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
   },
   "profilePage": {
     "Achievements": "Başarılar",
@@ -90,7 +90,7 @@ static const Map<String,dynamic> en = {
     "Achievements": "Achievements",
     "Resolved": "Resolved",
     "Published": "Published",
-    "ChangePassword": "ChangePassword",
+    "ChangePassword": "Change Password",
     "Logout": "Logout"
   },
   "announcementTypes": {
@@ -130,63 +130,5 @@ static const Map<String,dynamic> en = {
     "Logout": "Log out"
   }
 };
-static const Map<String,dynamic> tr = {
-  "routeFailed": "Bir sorun oluştu!",
-  "authStrings": {
-    "signIn": "Giriş Yap",
-    "email": "E-posta",
-    "password": "Şifre",
-    "forgotPassword": "Şifremi Unuttum",
-    "dontHaveAnAccount": "Hesabın var mı?",
-    "signUp": "Kayıt Ol",
-    "nameSurname": "İsim Soyisim",
-    "phoneNumber": "Telefon Numarası",
-    "dateOfBirth": "Doğum Tarihi",
-    "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
-  },
-  "profilePage": {
-    "Achievements": "Başarılar",
-    "Resolved": "Çözüldü",
-    "Published": "Yayınlanan",
-    "ChangePassword": "Parola Değiştir",
-    "Logout": "Çıkış Yap"
-  },
-  "announcementTypes": {
-    "Food": "Besleme",
-    "Lost": "Kayıp",
-    "Ownership": "Sahiplenme",
-    "Vaccination": "Aşılama"
-  },
-  "genders": {
-    "maleHumanAndAnimal": "Erkek",
-    "femaleAnimal": "Dişi",
-    "femaleHuman": "Kadın"
-  },
-  "animalNames": {
-    "Dog": "Köpek",
-    "Cat": "Kedi",
-    "Bird": "Kuş",
-    "Rabbit": "Tavşan"
-  },
-  "postAnnouncementPage": {
-    "otherAnimals": "Diğer",
-    "title": "Dostlarına Yardım\nEli Uzat",
-    "announcementTypeHint": "İlan Konusu",
-    "speciesHint": "Pet Türü",
-    "breedHint": "Cinsi",
-    "genderHint": "Cinsiyeti",
-    "descriptionHint": "Açıklama (opsiyonel)",
-    "pleaseAddImages": "Lütfen net ve konuya uygun\ngörseller ekleyiniz.",
-    "images": "Görseller",
-    "addPhotoButton": "Görsel Ekle"
-  },
-  "NavBar": {
-    "Profile": "Profil",
-    "Announcements": "İlanlar",
-    "Languages": "Diller",
-    "DarkMode": "Karanlık/Açık tema",
-    "Logout": "Çıkış"
-  }
-};
-static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en, "tr": tr};
+static const Map<String, Map<String,dynamic>> mapLocales = {"tr": tr, "en": en};
 }
