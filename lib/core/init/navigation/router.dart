@@ -27,6 +27,7 @@ class Router {
       case register:
         return MaterialPageRoute(
           builder: (_) => RegisterPage(),
+        );
       case postAnnouncementPage:
         return MaterialPageRoute(
           builder: (_) => PostAnnouncementView(),
