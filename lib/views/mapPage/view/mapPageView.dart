@@ -7,7 +7,7 @@ import '../model/mapPageModel.dart';
 import '../viewmodel/map__page_view_model.dart';
 
 abstract class MapPageInterface {
-  void setAnnotations(List<MapPageModel> annotation);
+  void setAnnotations();
   void setLoading(bool isLoading);
 }
 
@@ -27,7 +27,7 @@ class MapPage extends StatefulWidget implements MapPageInterface {
   }
 
   void loadData() {
-    viewModel.load();
+    setAnnotations();
   }
 
   MapPageModel selectData(String uuid) {
@@ -35,8 +35,10 @@ class MapPage extends StatefulWidget implements MapPageInterface {
   }
 
   @override
-  void setAnnotations(List<MapPageModel> annotations) {
-    mapPage.setAnnotations(annotations);
+  void setAnnotations() {
+    viewModel.getAllAnnouncements();
+    print(viewModel.deneme);
+    //mapPage.setAnnotations(viewModel.annotations);
   }
 
   @override
@@ -62,13 +64,13 @@ class _MapPage extends BaseState<MapPage> {
       "Bekliyor",
       36.00,
       30.704044,
-      MapPageTypes.value1); // TODO this must remove, find any solution
+      MapPageTypes.FOOD); // TODO this must remove, find any solution
 
   @override
   void initState() {
-    super.initState();
     _setAnnotationIcon();
-    _loadLocation();
+
+    super.initState();
   }
 
   void setAnnotations(List<MapPageModel> annotations) {
@@ -95,16 +97,17 @@ class _MapPage extends BaseState<MapPage> {
   void _onMapCreated(GoogleMapController controller) {
     widget._controller = controller;
     widget.loadData();
+    _loadLocation();
   }
 
   void _setAnnotationIcon() async {
-    iconsMap[MapPageTypes.value1] = await BitmapDescriptor.fromAssetImage(
+    iconsMap[MapPageTypes.FOOD] = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(), "assets/images/beach.png");
 
-    iconsMap[MapPageTypes.value2] = await BitmapDescriptor.fromAssetImage(
+    iconsMap[MapPageTypes.LOST] = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(), "assets/images/beach.png");
 
-    iconsMap[MapPageTypes.value3] = await BitmapDescriptor.fromAssetImage(
+    iconsMap[MapPageTypes.OWNERSHIP] = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(), "assets/images/beach.png");
   }
 
@@ -214,8 +217,7 @@ class _MapPage extends BaseState<MapPage> {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(selectedAnnotationData.imageURL))),
+                    fit: BoxFit.cover, image: NetworkImage("asdasd"))),
           ),
         ),
         Column(
@@ -223,7 +225,7 @@ class _MapPage extends BaseState<MapPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              selectedAnnotationData.title,
+              "asdas",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(selectedAnnotationData.distance.toString() + "km"),

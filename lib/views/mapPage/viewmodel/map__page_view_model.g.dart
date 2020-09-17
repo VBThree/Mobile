@@ -13,17 +13,6 @@ mixin _$MapPageViewModel on _MapPageViewModelBase, Store {
       ActionController(name: '_MapPageViewModelBase');
 
   @override
-  void load() {
-    final _$actionInfo = _$_MapPageViewModelBaseActionController.startAction(
-        name: '_MapPageViewModelBase.load');
-    try {
-      return super.load();
-    } finally {
-      _$_MapPageViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   MapPageModel selectPoint(String uuid) {
     final _$actionInfo = _$_MapPageViewModelBaseActionController.startAction(
         name: '_MapPageViewModelBase.selectPoint');
