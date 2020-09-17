@@ -6,6 +6,9 @@ import 'package:VBThreeMobile/core/base/view/base_view.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
+import 'package:VBThreeMobile/core/init/network/cloud_storage_result.dart';
+import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
+import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
 import 'package:VBThreeMobile/core/init/notifiers/theme_notifier.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';
@@ -16,9 +19,11 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 
+CloudStorageService imageService = CloudStorageService();
+
 class PostAnnouncementAddImageView extends StatefulWidget {
   PostAnnouncementAddImageView({Key key}) : super(key: key);
-
+  CloudStorageResult result;
   @override
   _PostAnnouncementAddImageViewState createState() =>
       _PostAnnouncementAddImageViewState();
@@ -119,6 +124,11 @@ Widget imageField(int index, viewModel) => GestureDetector(
       ),
       onTap: () async {
         var image = await ImagePicker().getImage(source: ImageSource.gallery);
+
+        CloudStorageResult result =
+            await imageService.uploadImage(imageToUpload: File(image.path));
+
+        viewModel.resultUrlList.add('"' + result.imageUrl + '"');
         final bytes = base64Encode(File(image.path).readAsBytesSync());
         viewModel.addImage(bytes, index);
       },

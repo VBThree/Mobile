@@ -1,4 +1,6 @@
 import 'package:VBThreeMobile/core/constants/breeds.dart';
+import 'package:VBThreeMobile/core/init/network/cloud_storage_result.dart';
+import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
 import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -51,6 +53,8 @@ abstract class _PostAnnouncementViewModelBase with Store {
     images[index] = _image;
   }
 
+  List<String> resultUrlList = List<String>();
+
   @action
   void changeFirstBreedName(String animal) {
     switch (animal) {
@@ -89,7 +93,7 @@ abstract class _PostAnnouncementViewModelBase with Store {
           status:Active,
           date:"2013-10-01T00:00:00.000Z",
           coordinates:$coordinates,
-          photo:["1"],
+          photo:${[...resultUrlList]},
           
           
           ){

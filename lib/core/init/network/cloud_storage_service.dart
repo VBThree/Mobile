@@ -7,12 +7,10 @@ import 'cloud_storage_result.dart';
 class CloudStorageService {
   Future<CloudStorageResult> uploadImage({
     File imageToUpload,
-    String title,
   }) async {
-    var imageFileName = title +
-        DateTime.now()
-            .millisecondsSinceEpoch
-            .toString(); // burada object id olsun ya da datetime + objectid olsun
+    var imageFileName = DateTime.now()
+        .millisecondsSinceEpoch
+        .toString(); // burada object id olsun ya da datetime + objectid olsun
 
     final StorageReference firebaseStorageRef =
         FirebaseStorage.instance.ref().child(imageFileName);
