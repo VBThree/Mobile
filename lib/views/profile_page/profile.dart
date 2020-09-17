@@ -1,11 +1,14 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
+import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
 import 'package:VBThreeMobile/core/components/profile_card_text.dart';
 import 'package:VBThreeMobile/core/components/profile_listTile_widget.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/constants/radius.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
+import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +23,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyNavBar((value) => {
+            context.locale = value,
+          }),
       appBar: profileAppBar(),
       body: profileBody(),
     );
@@ -49,7 +55,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     return Column(
       children: [
         ShadedButton(
-          LocaleKeys.ChangePassword.locale,
+          LocaleKeys.profilePage_ChangePassword.locale,
           changePass(),
           foregroundColor: AllColors.PROFILE_LIGHT_PEACH,
           textColor: AllColors.PROFILE_BLOWISH_GRAY,
@@ -58,7 +64,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
           height: dynamicHeight(0.02),
         ),
         ShadedButton(
-          LocaleKeys.Logout.locale,
+          LocaleKeys.profilePage_Logout.locale,
           logoutOnpress(),
           foregroundColor: AllColors.PROFILE_ROSE_PINK,
           textColor: AllColors.PROFILE_BLOWISH_GRAY,
@@ -73,9 +79,10 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       child: Column(
         children: [
           achievementsText(),
+          ProfileListTile(Icons.assignment_turned_in,
+              LocaleKeys.profilePage_Resolved.locale, 50),
           ProfileListTile(
-              Icons.assignment_turned_in, LocaleKeys.Resolved.locale, 50),
-          ProfileListTile(Icons.assignment, LocaleKeys.Published.locale, 80),
+              Icons.assignment, LocaleKeys.profilePage_Published.locale, 80),
         ],
       ),
     );
@@ -86,7 +93,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         alignment: Alignment.topLeft,
         padding: EdgeInsets.symmetric(horizontal: dynamicWidth(0.05)),
         child: Text(
-          LocaleKeys.Achievements.locale,
+          LocaleKeys.profilePage_Achievements.locale,
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20,
@@ -184,8 +191,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       backgroundColor: AllColors.PROFILE_LIGHT_PEACH,
       shadowColor: Colors.transparent,
       toolbarOpacity: 0.7,
-      automaticallyImplyLeading: false,
-      leading: Icon(Icons.menu, color: AllColors.PROFILE_DARK_GREY_BLUE),
+      iconTheme: IconThemeData(
+        color: AllColors.PROFILE_DARK_GREY_BLUE,
+      ),
       actions: [
         Padding(
           padding: EdgeInsets.only(right: dynamicWidth(0.03)),

@@ -1,11 +1,10 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/base/view/base_view.dart';
 import 'package:VBThreeMobile/core/components/customed_dropdown_container.dart';
+import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/constants/app_constants.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
-import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
-import 'package:VBThreeMobile/core/init/notifiers/theme_notifier.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/viewmodel/post_announcement_viewmodel.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -13,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
+
 
 class PostAnnouncementView extends StatefulWidget {
   PostAnnouncementView({Key key}) : super(key: key);
@@ -24,6 +23,7 @@ class PostAnnouncementView extends StatefulWidget {
 
 class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
   PostAnnouncementViewModel viewModel = PostAnnouncementViewModel();
+  final GlobalKey _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,23 +37,17 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
   }
 
   Scaffold buildScaffold() => Scaffold(
+        key: _scaffoldKey,
+        drawer: MyNavBar((value) => {
+              context.locale = value,
+            }),
         body: buildSingleChildScrollViewAsScaffoldBody(),
         appBar: AppBar(
-          actions: [
-            IconButton(
-                icon: Icon(Icons.cached),
-                onPressed: () {
-                  Provider.of<ThemeNotifier>(context, listen: false)
-                      .changeTheme();
-                }),
-            IconButton(
-                icon: Icon(Icons.language),
-                onPressed: () {
-                  final tr = LanguageManager.instance.trLocale;
-                  final en = LanguageManager.instance.enLocale;
-                  context.locale = context.locale == tr ? en : tr;
-                })
-          ],
+          iconTheme: IconThemeData(
+            color: AllColors.PROFILE_DARK_GREY_BLUE,
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
       );
 
@@ -85,7 +79,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacer(flex: 1),
-              Expanded(child: buildPageTitle(), flex: 4),
+              Expanded(child: buildPageTitle(), flex: 5),
               Expanded(
                 flex: 5,
                 child: SvgPicture.asset(
@@ -100,7 +94,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
     return Text(LocaleKeys.postAnnouncementPage_title.locale,
         style: TextStyle(
           fontSize: dynamicHeight(0.05),
-          color: AllColors.GREY_FOR_BOX_SHADOW,
+          color: AllColors.PROFILE_DARK_GREY_BLUE,
         ));
   }
 
@@ -183,19 +177,20 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
   }
 
   // If upper field is not empty, build dropdown field
-  StatelessWidget pickSpeciesDropdownOrContainer() {
-    return (viewModel.isFill[0] == true ? buildSpeciesDropdown() : Container());
-  }
+  Widget pickSpeciesDropdownOrContainer() =>
+      (viewModel.isFill[0] == true
+          ? buildSpeciesDropdown()
+          : Container());
 
-  StatelessWidget pickBreedsDropdownOrContainer() {
+  Widget pickBreedsDropdownOrContainer() {
     return (viewModel.isFill[1] == true ? buildBreedsDropdown() : Container());
   }
 
-  StatelessWidget pickGenderDropdownOrContainer() {
+  Widget pickGenderDropdownOrContainer() {
     return (viewModel.isFill[2] == true ? buildGenderDropdown : Container());
   }
 
-  StatelessWidget pickDescriptionFieldOrContainer() {
+  Widget pickDescriptionFieldOrContainer() {
     return (viewModel.isFill[3] == true ? buildDescriptionField : Container());
   }
 
