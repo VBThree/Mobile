@@ -2,8 +2,6 @@ import 'package:VBThreeMobile/core/init/locale/locale_manager.dart';
 import 'package:VBThreeMobile/views/splashScreen/viewmodel/splash_screen_viewmodel.dart';
 import 'package:flutter/material.dart';
 
-SplashScreenViewModel viewModel = SplashScreenViewModel();
-
 class SplashScreenView extends StatefulWidget {
   SplashScreenView({Key key}) : super(key: key);
 
@@ -12,6 +10,7 @@ class SplashScreenView extends StatefulWidget {
 }
 
 class _SplashScreenViewState extends State<SplashScreenView> {
+  SplashScreenViewModel viewModel = SplashScreenViewModel();
   @override
   void initState() {
     super.initState();

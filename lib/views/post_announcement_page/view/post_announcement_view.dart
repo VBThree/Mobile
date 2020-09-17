@@ -7,12 +7,14 @@ import 'package:VBThreeMobile/core/constants/app_constants.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/viewmodel/post_announcement_viewmodel.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 
+var postAnnouncementViewModel = PostAnnouncementViewModel();
 
 class PostAnnouncementView extends StatefulWidget {
   PostAnnouncementView({Key key}) : super(key: key);
@@ -22,16 +24,15 @@ class PostAnnouncementView extends StatefulWidget {
 }
 
 class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
-  PostAnnouncementViewModel viewModel = PostAnnouncementViewModel();
   final GlobalKey _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return BaseView(
       onPageBuilder: (context, value) => buildScaffold(),
-      viewModel: viewModel,
+      viewModel: postAnnouncementViewModel,
       onModelReady: (model) {
-        viewModel = model;
+        postAnnouncementViewModel = model;
       },
     );
   }
@@ -178,20 +179,26 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
 
   // If upper field is not empty, build dropdown field
   Widget pickSpeciesDropdownOrContainer() =>
-      (viewModel.isFill[0] == true
+      (postAnnouncementViewModel.isFill[0] == true
           ? buildSpeciesDropdown()
           : Container());
 
   Widget pickBreedsDropdownOrContainer() {
-    return (viewModel.isFill[1] == true ? buildBreedsDropdown() : Container());
+    return (postAnnouncementViewModel.isFill[1] == true
+        ? buildBreedsDropdown()
+        : Container());
   }
 
   Widget pickGenderDropdownOrContainer() {
-    return (viewModel.isFill[2] == true ? buildGenderDropdown : Container());
+    return (postAnnouncementViewModel.isFill[2] == true
+        ? buildGenderDropdown
+        : Container());
   }
 
   Widget pickDescriptionFieldOrContainer() {
-    return (viewModel.isFill[3] == true ? buildDescriptionField : Container());
+    return (postAnnouncementViewModel.isFill[3] == true
+        ? buildDescriptionField
+        : Container());
   }
 
   Container get buildDescriptionField => Container(
@@ -218,6 +225,9 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
               ),
               hintText: LocaleKeys.postAnnouncementPage_descriptionHint.locale,
             ),
+            onChanged: (value) {
+              postAnnouncementViewModel.description = value;
+            },
           ),
         ),
       );
@@ -236,7 +246,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
                   style: TextStyle(fontSize: dynamicHeight(0.02))),
             ],
           ),
-          value: viewModel.announcementType,
+          value: postAnnouncementViewModel.announcementType,
           items: <String>['Lost', 'Food', 'Ownership', 'Vaccination']
               .map((String value) {
             String _pickedValue = LocaleKeys.announcementTypes_Lost.locale;
@@ -269,8 +279,8 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
             );
           }).toList(),
           onChanged: (selected) {
-            viewModel.announcementType = selected;
-            viewModel.updateFillChecks(0);
+            postAnnouncementViewModel.announcementType = selected;
+            postAnnouncementViewModel.updateFillChecks(0);
           },
         ),
       ),
@@ -283,7 +293,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
       child: Observer(
         builder: (_) => DropdownButton<String>(
           isExpanded: true,
-          value: viewModel.animalSpecies,
+          value: postAnnouncementViewModel.animalSpecies,
           hint: Row(
             children: [
               SizedBox(
@@ -322,9 +332,9 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
             );
           }).toList(),
           onChanged: (selected) {
-            viewModel.changeFirstBreedName(selected);
-            viewModel.animalSpecies = selected;
-            viewModel.updateFillChecks(1);
+            postAnnouncementViewModel.changeFirstBreedName(selected);
+            postAnnouncementViewModel.animalSpecies = selected;
+            postAnnouncementViewModel.updateFillChecks(1);
           },
         ),
       ),
@@ -346,8 +356,8 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
                   style: TextStyle(fontSize: dynamicHeight(0.02))),
             ],
           ),
-          value: viewModel.breed,
-          items: viewModel.breedList.map((String value) {
+          value: postAnnouncementViewModel.breed,
+          items: postAnnouncementViewModel.breedList.map((String value) {
             return new DropdownMenuItem<String>(
               value: value,
               child: Row(
@@ -361,8 +371,8 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
             );
           }).toList(),
           onChanged: (selected) {
-            viewModel.breed = selected;
-            viewModel.updateFillChecks(2);
+            postAnnouncementViewModel.breed = selected;
+            postAnnouncementViewModel.updateFillChecks(2);
           },
         ),
       ),
@@ -384,7 +394,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
                           style: TextStyle(fontSize: dynamicHeight(0.02))),
                     ],
                   ),
-                  value: viewModel.gender,
+                  value: postAnnouncementViewModel.gender,
                   items: <String>['Female', 'Male'].map((String _value) {
                     String _pickedValue =
                         LocaleKeys.announcementTypes_Lost.locale;
@@ -412,8 +422,8 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
                     );
                   }).toList(),
                   onChanged: (selected) {
-                    viewModel.gender = selected;
-                    viewModel.updateFillChecks(3);
+                    postAnnouncementViewModel.gender = selected;
+                    postAnnouncementViewModel.updateFillChecks(3);
                   },
                 )),
       );

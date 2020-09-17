@@ -15,6 +15,81 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> tr = {
+  static const Map<String,dynamic> en = {
+  "routeFailed": "There is a problem!",
+  "authStrings": {
+    "signIn": "Sign In",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "nameSurname": "Name Surname",
+    "phoneNumber": "Phone number",
+    "dateOfBirth": "Date of birth",
+    "alreadySignedUp": "Already Signed Up?"
+  },
+  "profilePage": {
+    "Achievements": "Achievements",
+    "Resolved": "Resolved",
+    "Published": "Published",
+    "ChangePassword": "Change Password",
+    "Logout": "Logout"
+  },
+  "announcementTypes": {
+    "Food": "Food",
+    "Lost": "Lost",
+    "Ownership": "Ownership",
+    "Vaccination": "Vaccination"
+  },
+  "genders": {
+    "maleHumanAndAnimal": "Male",
+    "femaleAnimal": "Female",
+    "femaleHuman": "Female"
+  },
+  "animalNames": {
+    "Dog": "Dog",
+    "Cat": "Cat",
+    "Bird": "Bird",
+    "Rabbit": "Rabbit"
+  },
+  "postAnnouncementPage": {
+    "otherAnimals": "Other",
+    "title": "Save The\nAnimals",
+    "announcementTypeHint": "Announcement Type",
+    "speciesHint": "Species",
+    "breedHint": "Breed",
+    "genderHint": "Gender",
+    "descriptionHint": "Description (optional)",
+    "pleaseAddImages": "Please upload clear and relevant images.",
+    "images": "Images",
+    "addPhotoButton": "Add Images"
+  },
+  "NavBar": {
+    "Profile": "Profile",
+    "Announcements": "Announcements",
+    "Languages": "Languages",
+    "DarkMode": "Dark/Light Mode",
+    "Logout": "Log out"
+  },
+  "ForgotPassword": {
+    "forgotton_password_title": "Forgotten Password",
+    "send_forgotPage": "Send",
+    "email_forgotPage": "E-mail Address",
+    "reset_pass": "Reset Password",
+    "new_pass": "Enter new password",
+    "save": "Save",
+    "continue": "Continue",
+    "digitcode": "Enter your 6-digit number"
+  },
+  "signIn": "Sign In",
+  "email": "E-mail",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signUp": "Sign Up"
+};
+static const Map<String,dynamic> tr = {
   "routeFailed": "Bir sorun oluştu!",
   "authStrings": {
     "signIn": "Giriş Yap",
@@ -84,13 +159,29 @@ class CodegenLoader extends AssetLoader{
     "password": "Şifre",
     "forgotPassword": "Şifremi Unuttum",
     "dontHaveAnAccount": "Hesabın var mı?",
-    "signUp": "Kayıt Ol"
+    "signUp": "Kayıt Ol",
+    "reset_pass": "Şifreni sıfırla",
+    "new_pass": "Yeni şifre",
+    "save": "Kaydet",
+    "continue": "Devam",
+    "digitcode": "6 haneli kodu girin"
   },
   "ForgotPassword": {
-    "forgotton_password_title": "şifremi Unuttum",
-    "email_forgotPage": "E-mail Adres",
-    "send_forgotPage": "Gönder"
-  }
+    "forgotton_password_title": "Unutulmuş Şifre",
+    "send_forgotPage": "Gönder",
+    "email_forgotPage": "E-mail Adresi",
+    "reset_pass": "Şifreyi Sıfırla",
+    "new_pass": "Yeni Şifre Gir",
+    "save": "Kaydet",
+    "continue": "Devam Et",
+    "digitcode": "Mailinize Gelen 6 Haneli Kodu Giriniz"
+  },
+  "signIn": "Giriş Yap",
+  "email": "E-mail",
+  "password": "Şifre",
+  "forgotPassword": "Şifremi Unuttum",
+  "dontHaveAnAccount": "Hesabım Yok",
+  "signUp": "Kayıt Ol"
 };
 static const Map<String,dynamic> en = {
   "routeFailed": "There is a problem!",

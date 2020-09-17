@@ -21,10 +21,10 @@ abstract class _MapPageViewModelBase with Store {
   }
 
   Future<void> getAllAnnouncements() async {
-    Response response = await NetworkManager.instance.getAnnouncements();
+    Response response =
+        await NetworkManager.instance.postGraphqlQuery("ada", "asd");
     deneme = response.body;
 
-    
     print(deneme + " viewmodel içi");
   }
 }
