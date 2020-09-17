@@ -1,19 +1,14 @@
-import 'mapPageModel.dart';
-import 'mapPageView.dart';
+import 'package:VBThreeMobile/views/mapPage/model/mapPageModel.dart';
+import 'package:mobx/mobx.dart';
+part 'map__page_view_model.g.dart';
 
-abstract class MapPageViewModelInterface {
-  MapPageInterface view;
-  void load();
-  MapPageModel selectPoint(String uuid);
-  void updateStatus(String uuid);
-}
+class MapPageViewModel = _MapPageViewModelBase with _$MapPageViewModel;
 
-class MapPageViewModel implements MapPageViewModelInterface {
+abstract class _MapPageViewModelBase with Store {
   List<MapPageModel> annotations;
-  MapPageInterface view;
-  MapPageViewModel();
 
-  @override
+  
+  @action
   void load() {
     annotations = [
       // TODO remove mock data pls
@@ -51,15 +46,14 @@ class MapPageViewModel implements MapPageViewModelInterface {
           30.704044,
           MapPageTypes.value1)
     ];
-    view.setAnnotations(annotations);
   }
 
-  @override
+  @action
   MapPageModel selectPoint(String uuid) {
     return annotations.where((item) => item.uuid == uuid).first;
   }
 
-  @override
+  @action
   void updateStatus(String uuid) {
     // TODO: implement updateStatus
   }

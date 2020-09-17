@@ -1,4 +1,4 @@
-import 'package:VBThreeMobile/views/mapPage/mapPageView.dart';
+import 'package:VBThreeMobile/views/mapPage/view/mapPageView.dart';
 import 'package:VBThreeMobile/views/profile_page/profile.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_add_image_view.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';

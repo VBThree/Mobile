@@ -3,8 +3,8 @@ import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'mapPageModel.dart';
-import 'mapPageViewModel.dart';
+import '../model/mapPageModel.dart';
+import '../viewmodel/map__page_view_model.dart';
 
 abstract class MapPageInterface {
   void setAnnotations(List<MapPageModel> annotation);
@@ -12,13 +12,13 @@ abstract class MapPageInterface {
 }
 
 class MapPage extends StatefulWidget implements MapPageInterface {
-  MapPageViewModelInterface viewModel = MapPageViewModel();
+  MapPageViewModel viewModel = MapPageViewModel();
 
   GoogleMapController _controller;
   _MapPage mapPage = _MapPage();
 
   MapPage() {
-    viewModel.view = this;
+    //viewModel.view = this;
   }
 
   @override
