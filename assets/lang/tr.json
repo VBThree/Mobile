@@ -1,19 +1,23 @@
 {
     "routeFailed": "Bir sorun oluştu!",
-<<<<<<< HEAD
     "NavBar": {
         "Profile": "Profil",
         "Announcements": "İlanlar",
         "Languages": "Diller",
         "DarkMode": "Karanlık/Açık tema",
-        "Logout": "Çıkış"
+        "Logout": "Çıkış",
+    
+
+        "signIn": "Giriş Yap",
+        "email": "E-posta",
+        "password": "Şifre",
+        "forgotPassword": "Şifremi Unuttum",
+        "dontHaveAnAccount": "Hesabın var mı?",
+        "signUp": "Kayıt Ol"
+    },
+    "ForgotPassword": {
+        "forgotton_password_title":"şifremi Unuttum",
+        "email_forgotPage": "E-mail Adres",
+        "send_forgotPage": "Gönder"
     }
-=======
-    "signIn": "Giriş Yap",
-    "email": "E-posta",
-    "password": "Şifre",
-    "forgotPassword": "Şifremi Unuttum",
-    "dontHaveAnAccount": "Hesabın var mı?",
-    "signUp": "Kayıt Ol"
->>>>>>> bd25009b86e63d80f9941aae2b2e850ab1825c6f
 }
