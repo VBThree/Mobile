@@ -1,8 +1,10 @@
+import 'dart:collection';
 import 'dart:convert';
 import 'dart:math';
 
 import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:VBThreeMobile/views/mapPage/model/mapPageModel.dart';
+import 'package:VBThreeMobile/views/mapPage/view/mapPageView.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobx/mobx.dart';
 import 'package:http/http.dart';
@@ -13,7 +15,9 @@ class MapPageViewModel = _MapPageViewModelBase with _$MapPageViewModel;
 
 abstract class _MapPageViewModelBase with Store {
   @observable
-  List<MapPageModel> annotations = List<MapPageModel>();
+  ObservableList<MapPageModel> annotations =
+      List<MapPageModel>().asObservable();
+
   @action
   MapPageModel selectPoint(String uuid) {
     return annotations.where((item) => item.uuid == uuid).first;
@@ -23,6 +27,9 @@ abstract class _MapPageViewModelBase with Store {
   void updateStatus(String uuid) {
     // TODO: implement updateStatus
   }
+  MapPage page;
+  @observable
+  Set<Marker> annotationsMarkers = HashSet<Marker>();
 
   Future<void> getAllAnnouncements() async {
     Response response = await NetworkManager.instance.getAnnouncements();
@@ -32,7 +39,7 @@ abstract class _MapPageViewModelBase with Store {
 
     for (var data in result.data.announcements) {
       MapPageTypes type = MapPageTypes.OWNERSHIP;
-
+      print(data);
       if (data.type == "Ownership") {
         type = MapPageTypes.OWNERSHIP;
       } else if (data.type == "Lost") {
@@ -54,6 +61,7 @@ abstract class _MapPageViewModelBase with Store {
         type,
       ));
     }
+    page.setAnnotations();
   }
 
   double getDistanceFromGPSPointsInRoute(LatLng c1, LatLng c2) {

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/base/view/base_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import '../model/mapPageModel.dart';
@@ -13,14 +14,14 @@ abstract class MapPageInterface {
   void setLoading(bool isLoading);
 }
 
-class MapPage extends StatefulWidget implements MapPageInterface {
-  MapPageViewModel viewModel = MapPageViewModel();
+MapPageViewModel viewModel = MapPageViewModel();
 
+class MapPage extends StatefulWidget implements MapPageInterface {
   GoogleMapController _controller;
   _MapPage mapPage = _MapPage();
 
   MapPage() {
-    //viewModel.view = this;
+    viewModel.page = this;
   }
 
   @override
@@ -38,8 +39,7 @@ class MapPage extends StatefulWidget implements MapPageInterface {
 
   @override
   void setAnnotations() {
-    viewModel.getAllAnnouncements();
-    mapPage.setAnnotations(viewModel.annotations);
+    mapPage.setAnnotations();
   }
 
   @override
@@ -49,7 +49,6 @@ class MapPage extends StatefulWidget implements MapPageInterface {
 }
 
 class _MapPage extends BaseState<MapPage> {
-  Set<Marker> _annotations = HashSet<Marker>();
   var iconsMap = Map<MapPageTypes, BitmapDescriptor>();
   Location location = new Location();
   LatLng currentLocationData = LatLng(1.0, 1.0);
@@ -70,13 +69,17 @@ class _MapPage extends BaseState<MapPage> {
   @override
   void initState() {
     _setAnnotationIcon();
+    viewModel.getAllAnnouncements();
+
     super.initState();
   }
 
-  void setAnnotations(List<MapPageModel> annotations) {
-    for (var annotation in annotations) {
+  void setAnnotations() {
+    for (var annotation in viewModel.annotations) {
+      print("ads");
+      print(annotation);
       setState(() {
-        _annotations.add(
+        viewModel.annotationsMarkers.add(
           Marker(
               markerId: MarkerId(annotation.uuid),
               position: LatLng(annotation.latitude, annotation.longitude),
@@ -96,7 +99,7 @@ class _MapPage extends BaseState<MapPage> {
 
   void _onMapCreated(GoogleMapController controller) {
     widget._controller = controller;
-    widget.loadData();
+
     _loadLocation();
   }
 
@@ -157,10 +160,12 @@ class _MapPage extends BaseState<MapPage> {
   @override
   Widget build(BuildContext context) {
     return BaseView(
-        onPageBuilder: (context, value) => buildScaffold(),
-        viewModel: widget.viewModel,
+        onPageBuilder: (context, value) => viewModel.annotationsMarkers.isEmpty
+            ? CircularProgressIndicator()
+            : buildScaffold(),
+        viewModel: viewModel,
         onModelReady: (model) {
-          widget.viewModel = model;
+          viewModel = model;
         });
   }
 
@@ -246,7 +251,7 @@ class _MapPage extends BaseState<MapPage> {
               selectedAnnotationData.name,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text(widget.viewModel
+            Text(viewModel
                 .getDistanceFromGPSPointsInRoute(
                     LatLng(selectedAnnotationData.latitude,
                         selectedAnnotationData.longitude),
@@ -270,6 +275,8 @@ class _MapPage extends BaseState<MapPage> {
   }
 
   GoogleMap buildGoogleMap() {
+    print("Neler");
+    print(viewModel.annotationsMarkers);
     return GoogleMap(
         onTap: (_) {
           setState(() {
@@ -279,7 +286,7 @@ class _MapPage extends BaseState<MapPage> {
           });
         },
         onMapCreated: _onMapCreated,
-        markers: _annotations,
+        markers: viewModel.annotationsMarkers,
         myLocationEnabled: true,
         myLocationButtonEnabled: false,
         initialCameraPosition:

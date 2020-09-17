@@ -12,16 +12,41 @@ mixin _$MapPageViewModel on _MapPageViewModelBase, Store {
   final _$annotationsAtom = Atom(name: '_MapPageViewModelBase.annotations');
 
   @override
-  List<MapPageModel> get annotations {
+  ObservableList<MapPageModel> get annotations {
     _$annotationsAtom.reportRead();
     return super.annotations;
   }
 
   @override
-  set annotations(List<MapPageModel> value) {
+  set annotations(ObservableList<MapPageModel> value) {
     _$annotationsAtom.reportWrite(value, super.annotations, () {
       super.annotations = value;
     });
+  }
+
+  final _$annotationsMarkersAtom =
+      Atom(name: '_MapPageViewModelBase.annotationsMarkers');
+
+  @override
+  Set<Marker> get annotationsMarkers {
+    _$annotationsMarkersAtom.reportRead();
+    return super.annotationsMarkers;
+  }
+
+  @override
+  set annotationsMarkers(Set<Marker> value) {
+    _$annotationsMarkersAtom.reportWrite(value, super.annotationsMarkers, () {
+      super.annotationsMarkers = value;
+    });
+  }
+
+  final _$getAllAnnouncementsAsyncAction =
+      AsyncAction('_MapPageViewModelBase.getAllAnnouncements');
+
+  @override
+  Future<void> getAllAnnouncements() {
+    return _$getAllAnnouncementsAsyncAction
+        .run(() => super.getAllAnnouncements());
   }
 
   final _$_MapPageViewModelBaseActionController =
@@ -52,7 +77,8 @@ mixin _$MapPageViewModel on _MapPageViewModelBase, Store {
   @override
   String toString() {
     return '''
-annotations: ${annotations}
+annotations: ${annotations},
+annotationsMarkers: ${annotationsMarkers}
     ''';
   }
 }
