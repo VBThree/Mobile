@@ -60,5 +60,16 @@
         "Languages": "Languages",
         "DarkMode": "Dark/Light Mode",
         "Logout": "Log out"
-    }
+    },
+    "ForgotPassword": {
+        "forgotton_password_title":"Forgotten Password",
+        "send_forgotPage": "Send",
+        "email_forgotPage": "E-mail Address"   
+    },
+    "signIn": "Sign In",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign Up"
 }
