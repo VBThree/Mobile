@@ -43,7 +43,10 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   var dateController = TextEditingController();
   var oldPasswordController = TextEditingController();
   var newPasswordController = TextEditingController();
-
+  String profileName = "Abdullah Oğuz";
+  String profilePhoneNumber = "+90 545 xxx xx xx";
+  String profileEmailInfo = "oguzabdullah@gmail.com";
+String profileDateInfo = "dd/mm/yyyy",
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,9 +146,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ProfileCardText(Feather.phone, "+90 545 xxx xx xx"),
-          ProfileCardText(Fontisto.email, "oguzabdullah@gmail.com"),
-          ProfileCardText(Icons.date_range, "dd/mm/yyyy"),
+          ProfileCardText(Feather.phone, profilePhoneNumber),
+          ProfileCardText(Fontisto.email, profileEmailInfo),
+          ProfileCardText(Icons.date_range, profileDateInfo),
         ],
       ),
       decoration: BoxDecoration(
@@ -202,7 +205,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
             height: dynamicHeight(0.01),
           ),
           Text(
-            "Abdullah Oğuz",
+            profileName,
             style: TextStyle(
                 color: AllColors.PROFILE_DARK_GREY_BLUE,
                 fontSize: dynamicWidth(0.06),
@@ -257,7 +260,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                               oldPasswordController),
                           ProfileChangePassTextInput(
                               "${LocaleKeys.profilePage_EnterYourNewPassword.locale}",
-                              oldPasswordController),
+                              newPasswordController),
                           ShadedButton(
                               "${LocaleKeys.profilePage_Change.locale}",
                               changeModalPass)
