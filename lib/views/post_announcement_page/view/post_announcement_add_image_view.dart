@@ -8,6 +8,7 @@ import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
 import 'package:VBThreeMobile/core/init/notifiers/theme_notifier.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/viewmodel/post_announcement_viewmodel.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +26,6 @@ class PostAnnouncementAddImageView extends StatefulWidget {
 
 class _PostAnnouncementAddImageViewState
     extends BaseState<PostAnnouncementAddImageView> {
-  PostAnnouncementViewModel viewModel = PostAnnouncementViewModel();
-
   @override
   Widget build(BuildContext context) {
     return BaseView(
@@ -72,12 +71,12 @@ class _PostAnnouncementAddImageViewState
                         crossAxisSpacing: dynamicHeight(0.02),
                         mainAxisSpacing: dynamicHeight(0.02),
                         children: [
-                          imageField(0, viewModel),
-                          imageField(1, viewModel),
-                          imageField(2, viewModel),
-                          imageField(3, viewModel),
-                          imageField(4, viewModel),
-                          imageField(5, viewModel),
+                          imageField(0, postAnnouncementViewModel),
+                          imageField(1, postAnnouncementViewModel),
+                          imageField(2, postAnnouncementViewModel),
+                          imageField(3, postAnnouncementViewModel),
+                          imageField(4, postAnnouncementViewModel),
+                          imageField(5, postAnnouncementViewModel),
                         ],
                       ),
                     ],
@@ -96,14 +95,15 @@ class _PostAnnouncementAddImageViewState
                 ),
               ),
             ),
-            Expanded(child: ShadedButton("Gönder", () {}))
+            Expanded(
+                child: ShadedButton("Gönder", () {
+              postAnnouncementViewModel.postAnnouncement();
+            }))
           ],
         ),
       ),
-      viewModel: viewModel,
-      onModelReady: (model) => {
-        viewModel = model,
-      },
+      viewModel: postAnnouncementViewModel,
+      onModelReady: (model) => {postAnnouncementViewModel = model},
     );
   }
 }
