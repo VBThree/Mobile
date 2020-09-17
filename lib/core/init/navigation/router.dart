@@ -1,5 +1,7 @@
+import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_code.dart';
+import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_newPass.dart';
 import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword.dart';
-import 'package:VBThreeMobile/views/loginPage/view/loginPage.dart';
+import 'package:VBThreeMobile/views/loginPage/loginPage.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
 import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
@@ -32,6 +34,7 @@ class Router {
           builder: (_) => OnboardingPage(),
         );
       case mapRoute:
+      case mapRoute:
         return MaterialPageRoute(
           builder: (_) => MapPage(),
         );
@@ -39,6 +42,16 @@ class Router {
       case forgotPasswordRoute:
         return MaterialPageRoute(
           builder: (_) => ForgotPassword(),
+        );
+
+      case forgotPassword_codeRoute:
+        return MaterialPageRoute(
+          builder: (_) => ForgotPassword_code(),
+        );
+
+        case forgotPassword_newPass:
+        return MaterialPageRoute(
+          builder: (_) => ForgotPassword_new(),
         );
 
       case register:
@@ -54,6 +67,7 @@ class Router {
         return MaterialPageRoute(
           builder: (_) => PostAnnouncementAddImageView(),
         );
+
       default:
         return MaterialPageRoute(
           builder: (_) => WrongRouteView(),
@@ -68,8 +82,11 @@ const String onboarding = '/onboarding';
 const String loginRoute = '/loginPage';
 const String forgotPasswordRoute = '/forgotpassword';
 const String register = '/registerPage';
+const String forgotPassword_codeRoute = '/forgotPassword_code';
+const String forgotPassword_newPass='/forgotPassword_newPass';
 const String profilePage = '/profilePage';
 const String postAnnouncementPage = '/postAnnouncementPage';
 const String postAnnouncementPageAddImageView =
     '/postAnnouncementPageAddImageView';
 const String onBoarding = '/onboarding';
+
