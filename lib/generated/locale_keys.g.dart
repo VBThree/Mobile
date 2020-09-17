@@ -25,6 +25,8 @@ abstract class  LocaleKeys {
   static const profilePage_Change = 'profilePage.Change';
   static const profilePage_EnterYourOldPassword = 'profilePage.EnterYourOldPassword';
   static const profilePage_EnterYourNewPassword = 'profilePage.EnterYourNewPassword';
+  static const profilePage_EditProfile = 'profilePage.EditProfile';
+  static const profilePage_Update = 'profilePage.Update';
   static const profilePage = 'profilePage';
   static const announcementTypes_Food = 'announcementTypes.Food';
   static const announcementTypes_Lost = 'announcementTypes.Lost';

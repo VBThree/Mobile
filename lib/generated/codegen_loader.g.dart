@@ -40,7 +40,9 @@ class CodegenLoader extends AssetLoader{
     "BirtdayDate": "Doğum Günü",
     "Change": "Değiştir",
     "EnterYourOldPassword": "Eski Şifrenizi Giriniz",
-    "EnterYourNewPassword": "Yeni Şifrenizi Giriniz"
+    "EnterYourNewPassword": "Yeni Şifrenizi Giriniz",
+    "EditProfile": "Profili Düzenle",
+    "Update": "Güncelle"
   },
   "announcementTypes": {
     "Food": "Besleme",
@@ -116,7 +118,9 @@ static const Map<String,dynamic> en = {
     "BirtdayDate": "Birtday Date",
     "Change": "Change",
     "EnterYourOldPassword": "Enter Your Old Password",
-    "EnterYourNewPassword": "Yeni Şifrenizi Giriniz"
+    "EnterYourNewPassword": "Yeni Şifrenizi Giriniz",
+    "EditProfile": "Profili Düzenle",
+    "Update": "Update"
   },
   "announcementTypes": {
     "Food": "Food",

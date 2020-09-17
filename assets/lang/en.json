@@ -24,7 +24,9 @@
         "BirtdayDate": "Birtday Date",
         "Change":"Change",
         "EnterYourOldPassword":"Enter Your Old Password",
-        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz"
+        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz",
+        "EditProfile": "Profili Düzenle",
+        "Update": "Update"
         
     },
 

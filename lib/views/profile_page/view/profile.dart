@@ -19,6 +19,7 @@ import '../../../generated/locale_keys.g.dart';
 import '../../../generated/locale_keys.g.dart';
 import '../../../generated/locale_keys.g.dart';
 import '../../../generated/locale_keys.g.dart';
+import '../../../generated/locale_keys.g.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
@@ -46,7 +47,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   String profileName = "Abdullah Oğuz";
   String profilePhoneNumber = "+90 545 xxx xx xx";
   String profileEmailInfo = "oguzabdullah@gmail.com";
-String profileDateInfo = "dd/mm/yyyy",
+  String profileDateInfo = "dd/mm/yyyy";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -245,7 +246,7 @@ String profileDateInfo = "dd/mm/yyyy",
           builder: (_) => new AlertDialog(
                 title: Text(LocaleKeys.profilePage_ChangePassword.locale),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 content: Builder(
                   builder: (context) {
                     return Container(
@@ -262,8 +263,10 @@ String profileDateInfo = "dd/mm/yyyy",
                               "${LocaleKeys.profilePage_EnterYourNewPassword.locale}",
                               newPasswordController),
                           ShadedButton(
-                              "${LocaleKeys.profilePage_Change.locale}",
-                              changeModalPass)
+                            "${LocaleKeys.profilePage_Change.locale}",
+                            changeModalPass,
+                            foregroundColor: AllColors.PROFILE_TWILIGHT,
+                          ),
                         ],
                       )),
                     );
@@ -279,6 +282,7 @@ String profileDateInfo = "dd/mm/yyyy",
     showDialog(
       context: context,
       builder: (_) => new AlertDialog(
+        title: Text(LocaleKeys.profilePage_EditProfile.locale),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         content: Builder(
@@ -290,16 +294,47 @@ String profileDateInfo = "dd/mm/yyyy",
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ProfileTextInputWidget(
-                          Feather.phone,
+                      CircleAvatar(
+                        radius: dynamicWidth(0.1),
+                        child: Icon(Icons.add_a_photo),
+                      ),
+                      Expanded(
+                        child: ProfileTextInputWidget(
+                          Icons.person,
                           "${LocaleKeys.profilePage_Name.locale}",
                           nameController,
-                          false),
-                      ProfileTextInputWidget(
+                          false,
+                        ),
+                      ),
+                      Expanded(
+                        child: ProfileTextInputWidget(
+                          Feather.phone,
+                          "${LocaleKeys.profilePage_Phone.locale}",
+                          phoneController,
+                          false,
+                        ),
+                      ),
+                      Expanded(
+                        child: ProfileTextInputWidget(
                           Feather.mail,
-                          "${LocaleKeys.profilePage_Name.locale}",
+                          "${LocaleKeys.profilePage_Email.locale}",
                           emailController,
-                          false),
+                          false,
+                        ),
+                      ),
+                      Expanded(
+                        child: ProfileTextInputWidget(
+                          Feather.mail,
+                          "${LocaleKeys.profilePage_BirtdayDate.locale}",
+                          dateController,
+                          false,
+                        ),
+                      ),
+                      ShadedButton(
+                        "${LocaleKeys.profilePage_Change.locale}",
+                        changeModalPass,
+                        foregroundColor: AllColors.PROFILE_TWILIGHT,
+                      ),
                     ],
                   ),
                 ));
