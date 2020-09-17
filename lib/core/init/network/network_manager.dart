@@ -40,6 +40,8 @@ class NetworkManager {
     "query": "mutation{\n  requestReset(email:\"\")\n}"
   };
 
+  
+
   Future<http.Response> getAnnouncements() async {
     var response = await client.post(baseUrl, body: getAllAnnouncementsQuery);
 
@@ -68,7 +70,15 @@ class NetworkManager {
   }
 
   Future<http.Response> postForgotPasswordData() async {
-    var response = await client.post(baseUrl, body: getUserDataQuery);
+    var response =
+        await client.post(baseUrl, body: postForgotPasswordDataQuery);
+
+    return response;
+  }
+
+  Future<http.Response> postAnnouncementData(body,headers) async {
+    var response =
+        await client.post(baseUrl, body: body, headers: headers);
 
     return response;
   }
