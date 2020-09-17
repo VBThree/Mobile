@@ -36,6 +36,8 @@ dependencies:
   image_picker: ^0.6.7+7
   dots_indicator: ^1.2.0
   lottie: ^0.6.0
+  google_maps_flutter: ^0.5.32
+  location: ^3.0.2
 
 dev_dependencies:
   flutter_test:
