@@ -1,8 +1,8 @@
 import 'dart:wasm';
 
 class MapPageModel {
-  String title;
-  String imageURL;
+  String name;
+  String imageUrl;
   String description;
   double latitude;
   double longitude;
@@ -14,8 +14,8 @@ class MapPageModel {
 
   MapPageModel(
       this.uuid,
-      this.title,
-      this.imageURL,
+      this.name,
+      this.imageUrl,
       this.description,
       this.date,
       this.distance,
@@ -25,4 +25,4 @@ class MapPageModel {
       this.type);
 }
 
-enum MapPageTypes { value1, value2, value3 }
+enum MapPageTypes { FOOD, VACCINATION,OWNERSHIP,LOST }

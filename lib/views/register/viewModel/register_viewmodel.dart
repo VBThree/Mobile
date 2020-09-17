@@ -1,3 +1,4 @@
+import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:mobx/mobx.dart';
 part 'register_viewmodel.g.dart';
 
@@ -15,10 +16,8 @@ abstract class _RegisterViewModelBase with Store {
   @observable
   String password;
 
-  @action
-  void sendData(){
-    print(nameSurname);
+  Future<void> sendData() async {
+    var response = await NetworkManager.instance.postRegisterData();
+    print(response.body);
   }
 }
-
-
