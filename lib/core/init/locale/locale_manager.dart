@@ -6,7 +6,6 @@ class LocaleManager {
 
   static Future<LocaleManager> getInstance() async {
     if (_localeManager == null) {
-      print("gir artık ");
 
       // keep local instance till it is fully initialized.
       var secureStorage = LocaleManager._();
@@ -20,7 +19,6 @@ class LocaleManager {
 
   Future _init() async {
     _preferences = await SharedPreferences.getInstance();
-    print(_preferences);
   }
 
   // get string
@@ -31,7 +29,6 @@ class LocaleManager {
 
   // put string
   static Future<bool> putToken(String key, String token) {
-    print(_preferences);
     if (_preferences == null) return null;
     return _preferences.setString(key, token);
   }

@@ -1,3 +1,5 @@
+import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,11 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+            drawer: MyNavBar(),
             appBar: AppBar(
+              iconTheme: IconThemeData(
+            color: AllColors.PROFILE_DARK_GREY_BLUE,
+          ),
               backgroundColor: Colors.transparent,
               elevation: 0.0,
             ),

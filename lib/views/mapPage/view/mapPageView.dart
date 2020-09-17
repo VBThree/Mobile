@@ -2,6 +2,9 @@ import 'dart:collection';
 import 'dart:convert';
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/base/view/base_view.dart';
+import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/constants/colors.dart';
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -76,8 +79,6 @@ class _MapPage extends BaseState<MapPage> {
 
   void setAnnotations() {
     for (var annotation in viewModel.annotations) {
-      print("ads");
-      print(annotation);
       setState(() {
         viewModel.annotationsMarkers.add(
           Marker(
@@ -171,11 +172,19 @@ class _MapPage extends BaseState<MapPage> {
 
   Scaffold buildScaffold() {
     return Scaffold(
+      drawer: MyNavBar(),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+          iconTheme: IconThemeData(color: AllColors.PROFILE_DARK_GREY_BLUE),
+          backgroundColor: Colors.transparent,
+          elevation: 0),
       floatingActionButton: Visibility(
         visible: !showInfoCard,
         child: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: null,
+          onPressed: () {
+            Navigator.popAndPushNamed(context, postAnnouncementPage);
+          },
         ),
       ),
       body: Container(
@@ -275,8 +284,6 @@ class _MapPage extends BaseState<MapPage> {
   }
 
   GoogleMap buildGoogleMap() {
-    print("Neler");
-    print(viewModel.annotationsMarkers);
     return GoogleMap(
         onTap: (_) {
           setState(() {

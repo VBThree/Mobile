@@ -39,9 +39,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
 
   Scaffold buildScaffold() => Scaffold(
         key: _scaffoldKey,
-        drawer: MyNavBar((value) => {
-              context.locale = value,
-            }),
+        drawer: MyNavBar(),
         body: buildSingleChildScrollViewAsScaffoldBody(),
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -102,7 +100,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
   ShadedButton buildSubmitButton() =>
       ShadedButton(LocaleKeys.postAnnouncementPage_addPhotoButton.locale.tr(),
           () {
-        Navigator.pushNamed(context, "/postAnnouncementPageAddImageView");
+        Navigator.popAndPushNamed(context, "/postAnnouncementPageAddImageView");
       });
 
   Observer buildForm() {

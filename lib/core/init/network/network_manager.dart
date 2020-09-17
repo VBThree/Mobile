@@ -14,9 +14,7 @@ class NetworkManager {
 
   final client = http.Client();
 
-
-  Future<http.Response> postGraphqlQuery(body, headers) async {
-    print(headers);
+  Future<http.Response> postGraphqlQuery(String body, Map headers) async {
     var response = await client.post(
       baseUrl,
       body: body,

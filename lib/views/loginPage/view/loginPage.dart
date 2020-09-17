@@ -1,4 +1,6 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
+import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/views/loginPage/viewModel/login_viewmodel.dart';
@@ -6,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 const String artwork = "assets/images/profilePage/profilePageArtwork.svg";
+String email = "";
+String password = "";
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,10 +18,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends BaseState<LoginPage> {
   LoginViewModel viewModel = LoginViewModel();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: MyNavBar(),
+        appBar: AppBar(),
         backgroundColor: Color.fromRGBO(131, 175, 175, 75),
         body: Container(
           child: Column(
@@ -52,8 +60,10 @@ class _LoginPageState extends BaseState<LoginPage> {
   }
 
   FlatButton forgotPasswordButton() => FlatButton(
-        onPressed: () {},
-        child: Text(LocaleKeys.authStrings_forgotPassword.locale),
+        onPressed: () {
+          Navigator.popAndPushNamed(context, forgotPasswordRoute);
+        },
+        child: Text(LocaleKeys.ForgotPassword_forgotton_password_title.locale),
         textColor: Colors.blue[400],
       );
 
@@ -63,12 +73,14 @@ class _LoginPageState extends BaseState<LoginPage> {
           flex: 14,
           child: RaisedButton(
             onPressed: () {
+              viewModel.email = emailController.text;
+              viewModel.password = passwordController.text;
               viewModel.signIn();
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Text(
-              LocaleKeys.authStrings_signIn.locale,
+              LocaleKeys.signIn.locale,
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
@@ -83,16 +95,13 @@ class _LoginPageState extends BaseState<LoginPage> {
         Expanded(
           flex: 14,
           child: TextField(
-            onChanged: (inputPassword) {
-              viewModel.password = inputPassword;
-            },
+            controller: passwordController,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
                 hintText: LocaleKeys.authStrings_password.locale,
-                hintStyle: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
+                hintStyle: TextStyle(color: Colors.black),
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(245, 245, 245, 1), width: 2),
+                    borderSide: BorderSide(color: Colors.black, width: 2),
                     borderRadius: BorderRadius.all(Radius.circular(5)))),
             obscureText: true,
           ),
@@ -106,17 +115,14 @@ class _LoginPageState extends BaseState<LoginPage> {
           Expanded(
             flex: 14,
             child: TextField(
-              style: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
-              onChanged: (inputEmail) {
-                viewModel.email = inputEmail;
-              },
+              style: TextStyle(color: Colors.black),
+              controller: emailController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   hintText: LocaleKeys.authStrings_email.locale,
-                  hintStyle: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
+                  hintStyle: TextStyle(color: Colors.black),
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color.fromRGBO(245, 245, 245, 1), width: 2),
+                      borderSide: BorderSide(color: Colors.black, width: 2),
                       borderRadius: BorderRadius.all(Radius.circular(5)))),
             ),
           ),
@@ -126,7 +132,7 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   SvgPicture buildArtwork() => SvgPicture.asset(artwork, fit: BoxFit.fill);
 
-  Text signInText() => Text(LocaleKeys.authStrings_signIn.locale,
+  Text signInText() => Text(LocaleKeys.signIn.locale,
       style: TextStyle(
           color: Color.fromRGBO(201, 87, 64, 1),
           fontWeight: FontWeight.bold,
@@ -143,15 +149,16 @@ class _LoginPageState extends BaseState<LoginPage> {
   }
 
   FlatButton signUpButton() => FlatButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.popAndPushNamed(context, "/registerPage");
+        },
         child: Text(
-          LocaleKeys.authStrings_signUp.locale,
+          LocaleKeys.signUp.locale,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         color: Colors.transparent,
         textColor: Colors.black,
       );
 
-  Text askAccountText() =>
-      Text(LocaleKeys.authStrings_dontHaveAnAccount.locale);
+  Text askAccountText() => Text(LocaleKeys.dontHaveAnAccount.locale);
 }

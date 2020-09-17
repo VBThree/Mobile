@@ -1,5 +1,8 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
+import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword.dart';
 import 'package:VBThreeMobile/views/forgotPassword/viewmodel/forgot_password_viewmodel.dart';
@@ -16,8 +19,13 @@ class _ForgotPassword_codeState extends BaseState<ForgotPassword_code> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          drawer: MyNavBar(),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: AllColors.PROFILE_DARK_GREY_BLUE,
+        ),
         backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Container(
         child: Column(
@@ -63,9 +71,9 @@ Container buildContainerButton(BuildContext context) {
         Expanded(
           flex: 18,
           child: RaisedButton(
-            onPressed: () {
-              forgotPasswordPageViewModel.sendKey();
-              Navigator.pushNamed(context, "/forgotPassword_newPass");
+            onPressed: () async {
+              await forgotPasswordPageViewModel.sendKey();
+              Navigator.popAndPushNamed(context, forgotPassword_newPass);
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

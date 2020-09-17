@@ -14,9 +14,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   @override
   void initState() {
     super.initState();
-
-    viewModel.setToken();
-    viewModel.checkToken();
+    
   }
 
   @override

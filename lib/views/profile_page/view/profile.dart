@@ -10,6 +10,7 @@ import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/constants/radius.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/profile_page/viewmodel/profile_viewmodel.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -55,9 +56,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyNavBar((value) => {
-            context.locale = value,
-          }),
+      drawer: MyNavBar(),
       appBar: profileAppBar(),
       body: profileBody(),
     );
@@ -97,7 +96,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         ),
         ShadedButton(
           LocaleKeys.profilePage_Logout.locale,
-          logoutOnpress(),
+          logoutOnpress,
           foregroundColor: AllColors.PROFILE_ROSE_PINK,
           textColor: AllColors.PROFILE_BLOWISH_GRAY,
         ),
@@ -280,7 +279,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     });
   }
 
-  Function logoutOnpress() {}
+  void logoutOnpress() {
+    Navigator.popAndPushNamed(context, loginRoute);
+  }
 
   void editOnPress() {
     showDialog(

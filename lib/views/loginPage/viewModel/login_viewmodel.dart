@@ -21,6 +21,7 @@ abstract class _LoginViewModelBase with Store {
         }
           """;
     Map<String, String> headers = {"Content-Type": "application/graphql"};
+    print(postLoginDataQuery);
     var response = await NetworkManager.instance
         .postGraphqlQuery(postLoginDataQuery, headers);
 

@@ -75,7 +75,7 @@ class CodegenLoader extends AssetLoader{
   },
   "NavBar": {
     "Profile": "Profile",
-    "Announcements": "Announcements",
+    "Announcements": "Map",
     "Languages": "Languages",
     "DarkMode": "Dark/Light Mode",
     "Logout": "Log out"
@@ -158,7 +158,7 @@ static const Map<String,dynamic> tr = {
   },
   "NavBar": {
     "Profile": "Profil",
-    "Announcements": "İlanlar",
+    "Announcements": "Harita",
     "Languages": "Diller",
     "DarkMode": "Karanlık/Açık tema",
     "Logout": "Çıkış",

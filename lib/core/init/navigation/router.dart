@@ -1,7 +1,8 @@
-import 'package:VBThreeMobile/views/forgotPassword/forgotPassword.dart';
-import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_code.dart';
-import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_newPass.dart';
-import 'package:VBThreeMobile/views/loginPage/loginPage.dart';
+
+import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword.dart';
+import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword_code.dart';
+import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword_newPass.dart';
+import 'package:VBThreeMobile/views/loginPage/view/loginPage.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
 import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';

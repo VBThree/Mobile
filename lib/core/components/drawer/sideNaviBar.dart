@@ -9,9 +9,8 @@ typedef LocaleValue = Locale Function(Locale);
 
 class MyNavBar extends StatefulWidget {
   final Function onTap;
-  LocaleValue callback;
 
-  MyNavBar(callback, {this.onTap});
+  MyNavBar({this.onTap});
 
   @override
   _MyNavBarState createState() => _MyNavBarState();
@@ -68,7 +67,7 @@ class _MyNavBarState extends State<MyNavBar> {
     return ListTile(
       leading: Icon(Icons.exit_to_app),
       title: Text(LocaleKeys.NavBar_Logout.locale),
-      onTap: () => Navigator.pushNamed(context, "/"),
+      onTap: () => Navigator.popAndPushNamed(context, "/loginPage"),
     );
   }
 
@@ -94,9 +93,7 @@ class _MyNavBarState extends State<MyNavBar> {
     return ListTile(
       leading: Icon(Icons.announcement),
       title: Text(LocaleKeys.NavBar_Announcements.locale),
-      onTap: () => {
-        widget.onTap(context, 0),
-      },
+      onTap: () => {Navigator.popAndPushNamed(context, "/")},
     );
   }
 
@@ -105,7 +102,7 @@ class _MyNavBarState extends State<MyNavBar> {
       leading: Icon(Icons.person),
       title: Text(LocaleKeys.NavBar_Profile.locale),
       onTap: () => {
-        Navigator.pushNamed(context, "/profilePage"),
+        Navigator.popAndPushNamed(context, "/profilePage"),
       },
     );
   }

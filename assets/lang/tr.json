@@ -22,12 +22,12 @@
         "Phone": "Telefon",
         "Email": "E-mail",
         "BirtdayDate": "Doğum Günü",
-        "Change":"Değiştir",
-        "EnterYourOldPassword" :"Eski Şifrenizi Giriniz",
-        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz",
+        "Change": "Değiştir",
+        "EnterYourOldPassword": "Eski Şifrenizi Giriniz",
+        "EnterYourNewPassword": "Yeni Şifrenizi Giriniz",
         "EditProfile": "Profili Düzenle",
         "Update": "Güncelle"
-        
+
 
     },
     "announcementTypes": {
@@ -61,7 +61,7 @@
     },
     "NavBar": {
         "Profile": "Profil",
-        "Announcements": "İlanlar",
+        "Announcements": "Harita",
         "Languages": "Diller",
         "DarkMode": "Karanlık/Açık tema",
         "Logout": "Çıkış",

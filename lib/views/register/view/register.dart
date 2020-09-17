@@ -85,7 +85,9 @@ class _RegisterPageState extends BaseState<RegisterPage> {
 
   FlatButton signInButton() {
     return FlatButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.popAndPushNamed(context, "/loginPage");
+      },
       child: Text(
         LocaleKeys.authStrings_signIn.locale,
         style: TextStyle(fontWeight: FontWeight.bold),
