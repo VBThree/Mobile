@@ -42,8 +42,7 @@ class _WrongRouteViewState extends BaseState<WrongRouteView> {
         IconButton(
             icon: Icon(Icons.cached),
             onPressed: () {
-              Provider.of<ThemeNotifier>(context, listen: false)
-                  .changeTheme();
+              Provider.of<ThemeNotifier>(context, listen: false).changeTheme();
             }),
         IconButton(
             icon: Icon(Icons.language),

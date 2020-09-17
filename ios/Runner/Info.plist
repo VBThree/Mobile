@@ -26,6 +26,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<true/>
+	<key>io.flutter.embedded_views_preview</key>
+    <true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -41,5 +47,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to upload image in post screen</string>
+
+	<key>NSCameraUsageDescription </key>
+	<string>Need to upload image in post screen</string>
+
+	<key>NSMicrophoneUsageDescription </key>
+	<string>Need to upload image in post screen</string>
+
+
 </dict>
 </plist>

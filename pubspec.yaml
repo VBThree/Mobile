@@ -33,10 +33,20 @@ dependencies:
   dots_indicator: ^1.2.0
   lottie: ^0.6.0
   flutter_svg: ^0.19.0
+  flutter_vector_icons: ^0.2.1
+  hexcolor: ^1.0.4
+  image_picker: ^0.6.7+7
+  dots_indicator: ^1.2.0
+  lottie: ^0.6.0
+  google_maps_flutter: ^0.5.32
+  location: ^3.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  mobx_codegen: ^1.1.0+1
+  analyzer: "0.39.14"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -54,6 +64,10 @@ flutter:
     - assets/images/profilePage/
     - assets/images/forgotPassword/
  
+    - assets/shapes/
+    - assets/images/
+    - assets/images/postAnnouncementPage/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
@@ -77,4 +91,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
