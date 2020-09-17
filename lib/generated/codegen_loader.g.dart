@@ -14,6 +14,28 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
+  static const Map<String,dynamic> en = {
+  "routeFailed": "There is a problem!",
+  "NavBar": {
+    "Profile": "Profile",
+    "Announcements": "Announcements",
+    "Languages": "Languages",
+    "DarkMode": "Dark/Light Mode",
+    "Logout": "Log out"
+  },
+  "ForgotPassword": {
+    "forgotton_password_title": "Forgotten Password",
+    "send_forgotPage": "Send",
+    "email_forgotPage": "E-mail Address"
+  },
+  "signIn": "Sign In",
+  "email": "E-mail",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signUp": "Sign Up"
+};
+static const Map<String,dynamic> tr = {
   static const Map<String,dynamic> tr = {
   "routeFailed": "Bir sorun oluştu!",
   "authStrings": {
@@ -69,7 +91,18 @@ class CodegenLoader extends AssetLoader{
     "Announcements": "İlanlar",
     "Languages": "Diller",
     "DarkMode": "Karanlık/Açık tema",
-    "Logout": "Çıkış"
+    "Logout": "Çıkış",
+    "signIn": "Giriş Yap",
+    "email": "E-posta",
+    "password": "Şifre",
+    "forgotPassword": "Şifremi Unuttum",
+    "dontHaveAnAccount": "Hesabın var mı?",
+    "signUp": "Kayıt Ol"
+  },
+  "ForgotPassword": {
+    "forgotton_password_title": "şifremi Unuttum",
+    "email_forgotPage": "E-mail Adres",
+    "send_forgotPage": "Gönder"
   }
 };
 static const Map<String,dynamic> en = {
