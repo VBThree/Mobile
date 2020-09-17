@@ -254,11 +254,11 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                 content: Builder(
                   builder: (context) {
                     return Container(
-                      height: dynamicHeight(0.23),
+                      height: dynamicHeight(0.27),
                       width: dynamicHeight(0.4),
                       child: Form(
                           child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ProfileChangePassTextInput(
                               "${LocaleKeys.profilePage_EnterYourOldPassword.locale}",
@@ -292,10 +292,11 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         content: Builder(
           builder: (context) {
             return Container(
-                height: dynamicHeight(0.5),
+                height: dynamicHeight(0.7),
                 width: dynamicWidth(1),
                 child: Form(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       InkWell(
@@ -334,7 +335,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                       ),
                       Expanded(
                         child: ProfileTextInputWidget(
-                          Feather.mail,
+                          Icons.date_range,
                           "${LocaleKeys.profilePage_BirtdayDate.locale}",
                           dateController,
                           false,
@@ -352,20 +353,6 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         ),
       ),
     );
-
-    /*   showDialog(
-                                                          context: this.context,
-                                                          builder: (_) {},
-                                                          child: AlertDialog(
-                                                            content: Form(
-                                                                child: Column(
-                                                              mainAxisSize: MainAxisSize.min,
-                                                              children: [
-                                                                ProfileTextInputWidget(Feather.phone,
-                                                                    "${LocaleKeys.profilePage_Name}", nameController, false)
-                                                              ],
-                                                            )),
-                                                          )); */
   }
 
   changeModalPass() {}
