@@ -1,21 +1,24 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
-abstract class LocaleKeys {
+
+abstract class  LocaleKeys {
   static const routeFailed = 'routeFailed';
-  static const signIn = 'signIn';
-  static const email = 'email';
-  static const password = 'password';
-  static const forgotPassword = 'forgotPassword';
-  static const dontHaveAnAccount = 'dontHaveAnAccount';
-  static const signUp = 'signUp';
-  static const nameSurname = 'nameSurname';
-  static const phoneNumber = 'phoneNumber';
-  static const dateOfBirth = 'dateOfBirth';
-  static const alreadySignedUp = 'alreadySignedUp';
-  static const Achievements = 'Achievements';
-  static const Resolved = 'Resolved';
-  static const Published = 'Published';
-  static const ChangePassword = 'ChangePassword';
-  static const Logout = 'Logout';
+  static const authStrings_signIn = 'authStrings.signIn';
+  static const authStrings_email = 'authStrings.email';
+  static const authStrings_password = 'authStrings.password';
+  static const authStrings_forgotPassword = 'authStrings.forgotPassword';
+  static const authStrings_dontHaveAnAccount = 'authStrings.dontHaveAnAccount';
+  static const authStrings_signUp = 'authStrings.signUp';
+  static const authStrings_nameSurname = 'authStrings.nameSurname';
+  static const authStrings_phoneNumber = 'authStrings.phoneNumber';
+  static const authStrings_dateOfBirth = 'authStrings.dateOfBirth';
+  static const authStrings_alreadySignedUp = 'authStrings.alreadySignedUp';
+  static const authStrings = 'authStrings';
+  static const profilePage_Achievements = 'profilePage.Achievements';
+  static const profilePage_Resolved = 'profilePage.Resolved';
+  static const profilePage_Published = 'profilePage.Published';
+  static const profilePage_ChangePassword = 'profilePage.ChangePassword';
+  static const profilePage_Logout = 'profilePage.Logout';
+  static const profilePage = 'profilePage';
   static const announcementTypes_Food = 'announcementTypes.Food';
   static const announcementTypes_Lost = 'announcementTypes.Lost';
   static const announcementTypes_Ownership = 'announcementTypes.Ownership';
