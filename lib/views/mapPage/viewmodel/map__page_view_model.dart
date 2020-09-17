@@ -56,8 +56,8 @@ abstract class _MapPageViewModelBase with Store {
         data.description ?? "",
         data.date ?? "",
         data.status ?? "",
-        data.coordinates.length == 2 ? data.coordinates.first : 0.0,
         data.coordinates.length == 2 ? data.coordinates.last : 0.0,
+        data.coordinates.length == 2 ? data.coordinates.first : 0.0,
         type,
       ));
     }
