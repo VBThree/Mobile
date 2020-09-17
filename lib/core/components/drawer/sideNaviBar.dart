@@ -1,35 +1,37 @@
+import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 
+typedef LocaleValue = Locale Function(Locale);
+
 class MyNavBar extends StatefulWidget {
   final Function onTap;
+  LocaleValue callback;
 
-  MyNavBar({this.onTap});
+  MyNavBar(callback, {this.onTap});
 
   @override
   _MyNavBarState createState() => _MyNavBarState();
 }
 
 class _MyNavBarState extends State<MyNavBar> {
+  toggleButton() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final tr = LanguageManager.instance.trLocale;
+      final en = LanguageManager.instance.enLocale;
+      EasyLocalization.of(context).locale = context.locale == tr ? en : tr;
+    });
+  }
+
+  toggleButton2() {}
+
   @override
   Widget build(BuildContext context) {
-
     bool toggleValue2 = false;
     bool toggleValue = false;
-
-    toggleButton() {
-      setState(() {
-        toggleValue = !toggleValue;
-      });
-    }
-
-    toggleButton2() {
-      setState(() {
-        toggleValue2 = !toggleValue2;
-      });
-    }
 
     var container2 = Container(
       child: AnimatedContainer(
@@ -141,7 +143,9 @@ class _MyNavBarState extends State<MyNavBar> {
             ListTile(
               leading: Icon(Icons.person),
               title: Text(LocaleKeys.NavBar_Profile.locale),
-              onTap: () => widget.onTap(context, 0),
+              onTap: () => {
+                Navigator.pushNamed(context, "/profilePage"),
+              },
             ),
             ListTile(
               leading: Icon(Icons.announcement),
