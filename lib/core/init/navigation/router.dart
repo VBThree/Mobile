@@ -1,5 +1,6 @@
 import 'package:VBThreeMobile/views/forgotPassword/forgotPassword.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
 import 'package:VBThreeMobile/views/mapPage/view/mapPageView.dart';
 import 'package:VBThreeMobile/views/profile_page/profile.dart';
@@ -12,6 +13,10 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case onboarding:
+      case splashScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => SplashScreenView(),
+        );
       case profilePage:
         return MaterialPageRoute(
           builder: (_) => ProfilePage(),
@@ -21,12 +26,10 @@ class Router {
         return MaterialPageRoute(
           builder: (_) => OnboardingPage(),
         );
-      case homeRoute:
-
+      case mapRoute:
         return MaterialPageRoute(
           builder: (_) => MapPage(),
         );
-  
 
       case forgotPasswordRoute:
         return MaterialPageRoute(
@@ -54,7 +57,8 @@ class Router {
   }
 }
 
-const String homeRoute = '/';
+const String mapRoute = '/';
+const String splashScreenRoute = '/splashScreen';
 const String onboarding = '/onboarding';
 const String loginRoute = '/loginPage';
 const String forgotPasswordRoute = '/forgotpassword';
