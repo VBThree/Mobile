@@ -31,6 +31,6 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         theme: Provider.of<ThemeNotifier>(context, listen: true).currentTheme,
         onGenerateRoute: Router.generateRoute,
-        initialRoute: forgotPassword_newPass);
+        initialRoute: onBoarding);
   }
 }
