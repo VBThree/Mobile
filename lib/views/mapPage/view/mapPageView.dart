@@ -1,5 +1,7 @@
 import 'dart:collection';
+import 'dart:convert';
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
+import 'package:VBThreeMobile/core/base/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -37,8 +39,7 @@ class MapPage extends StatefulWidget implements MapPageInterface {
   @override
   void setAnnotations() {
     viewModel.getAllAnnouncements();
-    print(viewModel.deneme);
-    //mapPage.setAnnotations(viewModel.annotations);
+    mapPage.setAnnotations(viewModel.annotations);
   }
 
   @override
@@ -51,25 +52,24 @@ class _MapPage extends BaseState<MapPage> {
   Set<Marker> _annotations = HashSet<Marker>();
   var iconsMap = Map<MapPageTypes, BitmapDescriptor>();
   Location location = new Location();
+  LatLng currentLocationData = LatLng(1.0, 1.0);
   bool showInfoCard = false;
   bool showInfoCardDetail = false;
   AlignmentGeometry _alignment = Alignment(0, 2);
   MapPageModel selectedAnnotationData = MapPageModel(
-      "12345",
-      "Title",
-      "https://lh3.googleusercontent.com/proxy/OeeFLvXMk1IGUA2DCnlf5hHYnFLHE-8J8f19a5EuauXccW3DDKHYQ68NHo55ikdADiJxCgAuBK1ROwFd7AstlMtfM78-2j2i3KBAsrkcxfsOtBCx6yWE69ZOKWOd",
-      "desc",
-      "17.09.2020",
-      12.7,
-      "Bekliyor",
-      36.00,
-      30.704044,
+      "",
+      "",
+      "https://cdn.icon-icons.com/icons2/2108/PNG/512/flutter_icon_130936.png",
+      "",
+      "",
+      "",
+      1.0,
+      1.0,
       MapPageTypes.FOOD); // TODO this must remove, find any solution
 
   @override
   void initState() {
     _setAnnotationIcon();
-
     super.initState();
   }
 
@@ -102,13 +102,16 @@ class _MapPage extends BaseState<MapPage> {
 
   void _setAnnotationIcon() async {
     iconsMap[MapPageTypes.FOOD] = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(), "assets/images/beach.png");
+        ImageConfiguration(), "assets/images/mapImage/Food.png");
 
     iconsMap[MapPageTypes.LOST] = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(), "assets/images/beach.png");
+        ImageConfiguration(), "assets/images/mapImage/Lost.png");
 
     iconsMap[MapPageTypes.OWNERSHIP] = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(), "assets/images/beach.png");
+        ImageConfiguration(), "assets/images/mapImage/Ownership.png");
+
+    iconsMap[MapPageTypes.VACCINATION] = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(), "assets/images/mapImage/Vaccination.png");
   }
 
 // maybe generic?
@@ -134,21 +137,34 @@ class _MapPage extends BaseState<MapPage> {
 
     await location.getLocation().then((currentLocation) {
       setState(() {
-        widget._controller.animateCamera(CameraUpdate.newLatLng(
-            LatLng(currentLocation.latitude, currentLocation.longitude)));
+        currentLocationData =
+            LatLng(currentLocation.latitude, currentLocation.longitude);
+        widget._controller
+            .animateCamera(CameraUpdate.newLatLng(currentLocationData));
       });
     });
 
     location.onLocationChanged.listen((LocationData currentLocation) {
       setState(() {
-        widget._controller.animateCamera(CameraUpdate.newLatLng(
-            LatLng(currentLocation.latitude, currentLocation.longitude)));
+        currentLocationData =
+            LatLng(currentLocation.latitude, currentLocation.longitude);
+        widget._controller
+            .animateCamera(CameraUpdate.newLatLng(currentLocationData));
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    return BaseView(
+        onPageBuilder: (context, value) => buildScaffold(),
+        viewModel: widget.viewModel,
+        onModelReady: (model) {
+          widget.viewModel = model;
+        });
+  }
+
+  Scaffold buildScaffold() {
     return Scaffold(
       floatingActionButton: Visibility(
         visible: !showInfoCard,
@@ -217,7 +233,9 @@ class _MapPage extends BaseState<MapPage> {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    fit: BoxFit.cover, image: NetworkImage("asdasd"))),
+                  fit: BoxFit.cover,
+                  image: NetworkImage(selectedAnnotationData.imageURL),
+                )),
           ),
         ),
         Column(
@@ -225,10 +243,15 @@ class _MapPage extends BaseState<MapPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "asdas",
+              selectedAnnotationData.name,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text(selectedAnnotationData.distance.toString() + "km"),
+            Text(widget.viewModel
+                .getDistanceFromGPSPointsInRoute(
+                    LatLng(selectedAnnotationData.latitude,
+                        selectedAnnotationData.longitude),
+                    currentLocationData)
+                .toString()),
             Text(selectedAnnotationData.date),
             Text(selectedAnnotationData.status)
           ],
