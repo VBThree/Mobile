@@ -17,7 +17,18 @@
         "Resolved": "Çözüldü",
         "Published": "Yayınlanan",
         "ChangePassword": "Parola Değiştir",
-        "Logout": "Çıkış Yap"
+        "Logout": "Çıkış Yap",
+        "Name": "İsim",
+        "Phone": "Telefon",
+        "Email": "E-mail",
+        "BirtdayDate": "Doğum Günü",
+        "Change":"Değiştir",
+        "EnterYourOldPassword" :"Eski Şifrenizi Giriniz",
+        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz",
+        "EditProfile": "Profili Düzenle",
+        "Update": "Güncelle"
+        
+
     },
     "announcementTypes": {
         "Food": "Besleme",
@@ -64,11 +75,22 @@
         "new_pass": "Yeni şifre",
         "save": "Kaydet",
         "continue": "Devam",
-        "digitcode":"6 haneli kodu girin"
+        "digitcode": "6 haneli kodu girin"
     },
     "ForgotPassword": {
-        "forgotton_password_title": "şifremi Unuttum",
-        "email_forgotPage": "E-mail Adres",
-        "send_forgotPage": "Gönder"
-    }
+        "forgotton_password_title": "Unutulmuş Şifre",
+        "send_forgotPage": "Gönder",
+        "email_forgotPage": "E-mail Adresi",
+        "reset_pass": "Şifreyi Sıfırla",
+        "new_pass": "Yeni Şifre Gir",
+        "save": "Kaydet",
+        "continue": "Devam Et",
+        "digitcode": "Mailinize Gelen 6 Haneli Kodu Giriniz"
+    },
+    "signIn": "Giriş Yap",
+    "email": "E-mail",
+    "password": "Şifre",
+    "forgotPassword": "Şifremi Unuttum",
+    "dontHaveAnAccount": "Hesabım Yok",
+    "signUp": "Kayıt Ol"
 }

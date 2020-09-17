@@ -3,9 +3,10 @@ import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_code.dart';
 import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_newPass.dart';
 import 'package:VBThreeMobile/views/loginPage/loginPage.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
 import 'package:VBThreeMobile/views/mapPage/view/mapPageView.dart';
-import 'package:VBThreeMobile/views/profile_page/profile.dart';
+import 'package:VBThreeMobile/views/profile_page/view/profile.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_add_image_view.dart';
 import 'package:VBThreeMobile/views/post_announcement_page/view/post_announcement_view.dart';
 import 'package:VBThreeMobile/views/register/view/register.dart';
@@ -25,7 +26,7 @@ class Router {
         return MaterialPageRoute(
           builder: (_) => OnboardingPage(),
         );
-      case homeRoute:
+      case mapRoute:
         return MaterialPageRoute(
           builder: (_) => MapPage(),
         );
@@ -73,7 +74,8 @@ class Router {
   }
 }
 
-const String homeRoute = '/';
+const String mapRoute = '/';
+const String splashScreenRoute = '/splashScreen';
 const String onboarding = '/onboarding';
 const String loginRoute = '/loginPage';
 const String forgotPasswordRoute = '/forgotpassword';

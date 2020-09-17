@@ -111,7 +111,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
               viewModel.phone = phoneController.text;
               viewModel.dateOfBirth = dateController.text;
               viewModel.password = passwordController.text;
-              viewModel.sendData();
+              viewModel.signUp();
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

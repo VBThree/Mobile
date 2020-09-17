@@ -1,6 +1,6 @@
 import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
 import 'package:VBThreeMobile/core/init/navigation/router.dart';
-import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_code.dart';
+//import 'package:VBThreeMobile/views/forgotPassword/forgotPassword_code.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +31,6 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         theme: Provider.of<ThemeNotifier>(context, listen: true).currentTheme,
         onGenerateRoute: Router.generateRoute,
-        initialRoute: onBoarding);
+        initialRoute: postAnnouncementPage);
   }
 }

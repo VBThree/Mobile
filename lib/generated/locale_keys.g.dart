@@ -18,6 +18,15 @@ abstract class  LocaleKeys {
   static const profilePage_Published = 'profilePage.Published';
   static const profilePage_ChangePassword = 'profilePage.ChangePassword';
   static const profilePage_Logout = 'profilePage.Logout';
+  static const profilePage_Name = 'profilePage.Name';
+  static const profilePage_Phone = 'profilePage.Phone';
+  static const profilePage_Email = 'profilePage.Email';
+  static const profilePage_BirtdayDate = 'profilePage.BirtdayDate';
+  static const profilePage_Change = 'profilePage.Change';
+  static const profilePage_EnterYourOldPassword = 'profilePage.EnterYourOldPassword';
+  static const profilePage_EnterYourNewPassword = 'profilePage.EnterYourNewPassword';
+  static const profilePage_EditProfile = 'profilePage.EditProfile';
+  static const profilePage_Update = 'profilePage.Update';
   static const profilePage = 'profilePage';
   static const announcementTypes_Food = 'announcementTypes.Food';
   static const announcementTypes_Lost = 'announcementTypes.Lost';
@@ -49,21 +58,21 @@ abstract class  LocaleKeys {
   static const NavBar_Languages = 'NavBar.Languages';
   static const NavBar_DarkMode = 'NavBar.DarkMode';
   static const NavBar_Logout = 'NavBar.Logout';
+  static const NavBar_signIn = 'NavBar.signIn';
+  static const NavBar_email = 'NavBar.email';
+  static const NavBar_password = 'NavBar.password';
+  static const NavBar_forgotPassword = 'NavBar.forgotPassword';
+  static const NavBar_dontHaveAnAccount = 'NavBar.dontHaveAnAccount';
+  static const NavBar_signUp = 'NavBar.signUp';
   static const NavBar = 'NavBar';
   static const ForgotPassword_forgotton_password_title = 'ForgotPassword.forgotton_password_title';
-  static const ForgotPassword_send_forgotPage = 'ForgotPassword.send_forgotPage';
   static const ForgotPassword_email_forgotPage = 'ForgotPassword.email_forgotPage';
+  static const ForgotPassword_send_forgotPage = 'ForgotPassword.send_forgotPage';
   static const ForgotPassword_reset_pass = 'ForgotPassword.reset_pass';
   static const ForgotPassword_new_pass = 'ForgotPassword.new_pass';
   static const ForgotPassword_save = 'ForgotPassword.save';
   static const ForgotPassword_continue = 'ForgotPassword.continue';
   static const ForgotPassword_digitcode = 'ForgotPassword.digitcode';
   static const ForgotPassword = 'ForgotPassword';
-  static const signIn = 'signIn';
-  static const email = 'email';
-  static const password = 'password';
-  static const forgotPassword = 'forgotPassword';
-  static const dontHaveAnAccount = 'dontHaveAnAccount';
-  static const signUp = 'signUp';
 
 }

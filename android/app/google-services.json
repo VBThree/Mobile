@@ -1,0 +1,41 @@
+{
+    "project_info": {
+      "project_number": "120094222364",
+      "firebase_url": "https://superpaw-vbt.firebaseio.com",
+      "project_id": "superpaw-vbt",
+      "storage_bucket": "superpaw-vbt.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:120094222364:android:4cbbddce35cd54bf4c97d9",
+          "android_client_info": {
+            "package_name": "com.example.VBThreeMobile"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "120094222364-81p5qmd1la376aji4lgks71ocnkrifqh.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBfVUBoy6G_sPHUxO17a4VRfYdK2KLg_oI"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "120094222364-81p5qmd1la376aji4lgks71ocnkrifqh.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
+  

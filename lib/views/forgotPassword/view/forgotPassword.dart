@@ -1,18 +1,20 @@
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/views/forgotPassword/viewmodel/forgot_password_viewmodel.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
-String password = "";
-const String artwork = "assets/images/forgotPassword/img2.svg";
+const String artwork = "assets/images/forgotPassword/img1.svg";
+var forgotPasswordPageViewModel = ForgotPasswordViewModel();
 
-class ForgotPassword_new extends StatefulWidget {
+class ForgotPassword extends StatefulWidget {
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword_new> {
-  TextEditingController nameController = TextEditingController();
+class _ForgotPasswordState extends State<ForgotPassword> {
+  TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +30,18 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
                   Expanded(flex: 1, child: buildTitle()),
                   Expanded(flex: 2, child: buildPicture()),
                   Expanded(flex: 1, child: buildTextField()),
-                  Expanded(flex: 1, child: buildSave()),
+                  Expanded(flex: 1, child: buildSend()),
                   Spacer(
                     flex: 1,
                   ),
+                  Expanded(child: buildSignUp()),
                 ],
               ),
             )));
   }
 
   Text buildTitle() => Text(
-        LocaleKeys.ForgotPassword_reset_pass.locale,
+        LocaleKeys.ForgotPassword_forgotton_password_title.locale,
         style: TextStyle(
             color: Color.fromRGBO(201, 87, 64, 1),
             fontSize: 30.0,
@@ -54,10 +57,10 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
           Expanded(
             flex: 14,
             child: TextField(
-              controller: nameController,
+              controller: emailController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: (LocaleKeys.ForgotPassword_new_pass.locale),
+                labelText: (LocaleKeys.ForgotPassword_email_forgotPage.tr()),
               ),
             ),
           ),
@@ -67,7 +70,28 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
     );
   }
 
-  Container buildSave() {
+  Container buildSignUp() {
+    return Container(
+        child: Row(
+      children: <Widget>[
+        Text(
+          LocaleKeys.NavBar_signUp.locale,
+          style: TextStyle(fontSize: 20),
+        ),
+        FlatButton(
+          textColor: Colors.blue,
+          child: Text(
+            LocaleKeys.NavBar_signUp.locale,
+            style: TextStyle(fontSize: 20),
+          ),
+          onPressed: () {},
+        )
+      ],
+      mainAxisAlignment: MainAxisAlignment.center,
+    ));
+  }
+
+  Container buildSend() {
     return Container(
       height: 50,
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -79,11 +103,15 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
           Expanded(
             flex: 18,
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                forgotPasswordPageViewModel.email = emailController.text;
+                forgotPasswordPageViewModel.sendEmail();
+                Navigator.pushNamed(context, "/forgotPassword_code");
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               child: Text(
-                LocaleKeys.ForgotPassword_save.locale,
+                LocaleKeys.ForgotPassword_send_forgotPage.locale,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

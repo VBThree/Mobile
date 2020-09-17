@@ -1,12 +1,11 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
+import 'package:VBThreeMobile/views/loginPage/viewModel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 const String artwork = "assets/images/profilePage/profilePageArtwork.svg";
-String email = "";
-String password = "";
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,6 +13,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends BaseState<LoginPage> {
+  LoginViewModel viewModel = LoginViewModel();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +62,9 @@ class _LoginPageState extends BaseState<LoginPage> {
         Expanded(
           flex: 14,
           child: RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              viewModel.signIn();
+            },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Text(
@@ -81,7 +84,7 @@ class _LoginPageState extends BaseState<LoginPage> {
           flex: 14,
           child: TextField(
             onChanged: (inputPassword) {
-              password = inputPassword;
+              viewModel.password = inputPassword;
             },
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
@@ -105,7 +108,7 @@ class _LoginPageState extends BaseState<LoginPage> {
             child: TextField(
               style: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
               onChanged: (inputEmail) {
-                email = inputEmail;
+                viewModel.email = inputEmail;
               },
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
