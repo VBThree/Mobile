@@ -1,10 +1,12 @@
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/views/forgotPassword/viewmodel/forgot_password_viewmodel.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter_svg/svg.dart';
 
-String email = "";
 const String artwork = "assets/images/forgotPassword/img1.svg";
+var forgotPasswordPageViewModel = ForgotPasswordViewModel();
 
 class ForgotPassword extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +57,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           Expanded(
             flex: 14,
             child: TextField(
-              controller: nameController,
+              controller: emailController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: (LocaleKeys.ForgotPassword_email_forgotPage.locale),
+                labelText: (LocaleKeys.ForgotPassword_email_forgotPage.tr()),
               ),
             ),
           ),
@@ -79,7 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         FlatButton(
           textColor: Colors.blue,
           child: Text(
-            LocaleKeys.signUp.locale,
+            LocaleKeys.signUp.tr(),
             style: TextStyle(fontSize: 20),
           ),
           onPressed: () {},
@@ -101,7 +103,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           Expanded(
             flex: 18,
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                forgotPasswordPageViewModel.email = emailController.text;
+                forgotPasswordPageViewModel.sendEmail();
+                Navigator.pushNamed(context, "/forgotPassword_code");
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               child: Text(

@@ -1,7 +1,9 @@
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword.dart';
 
 String password = "";
 const String artwork = "assets/images/forgotPassword/img2.svg";
@@ -12,7 +14,7 @@ class ForgotPassword_new extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword_new> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +56,10 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
           Expanded(
             flex: 14,
             child: TextField(
-              controller: nameController,
+              controller: passwordController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: (LocaleKeys.ForgotPassword_new_pass.locale),
+                labelText: (LocaleKeys.ForgotPassword_new_pass.tr()),
               ),
             ),
           ),
@@ -79,7 +81,11 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
           Expanded(
             flex: 18,
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                forgotPasswordPageViewModel.newPassword =
+                    passwordController.text;
+                forgotPasswordPageViewModel.sendNewPassword();
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               child: Text(
