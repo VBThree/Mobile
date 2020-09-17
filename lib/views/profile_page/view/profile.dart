@@ -6,8 +6,8 @@ import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/constants/radius.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
-import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/views/profile_page/viewmodel/profile_viewmodel.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +20,14 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends BaseState<ProfilePage> {
+  ProfileViewModel viewmodel = ProfileViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    viewmodel.getUserData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

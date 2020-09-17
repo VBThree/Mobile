@@ -84,20 +84,6 @@ mixin _$RegisterViewModel on _RegisterViewModelBase, Store {
     });
   }
 
-  final _$_RegisterViewModelBaseActionController =
-      ActionController(name: '_RegisterViewModelBase');
-
-  @override
-  void sendData() {
-    final _$actionInfo = _$_RegisterViewModelBaseActionController.startAction(
-        name: '_RegisterViewModelBase.sendData');
-    try {
-      return super.sendData();
-    } finally {
-      _$_RegisterViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''

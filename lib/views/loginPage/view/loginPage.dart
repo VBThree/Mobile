@@ -1,6 +1,7 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
+import 'package:VBThreeMobile/views/loginPage/viewModel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -14,6 +15,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends BaseState<LoginPage> {
+  LoginViewModel viewmodel = LoginViewModel();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +64,9 @@ class _LoginPageState extends BaseState<LoginPage> {
         Expanded(
           flex: 14,
           child: RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              viewmodel.signIn();
+            },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Text(
