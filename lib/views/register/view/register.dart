@@ -87,7 +87,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
     return FlatButton(
       onPressed: () {},
       child: Text(
-        LocaleKeys.signIn.locale,
+        LocaleKeys.authStrings_signIn.locale,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       color: Colors.transparent,
@@ -95,7 +95,8 @@ class _RegisterPageState extends BaseState<RegisterPage> {
     );
   }
 
-  Text alreadySignedUpText() => Text(LocaleKeys.alreadySignedUp.locale);
+  Text alreadySignedUpText() =>
+      Text(LocaleKeys.authStrings_alreadySignedUp.locale);
 
   Row signUpButton() {
     return Row(
@@ -115,7 +116,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Text(
-              LocaleKeys.signUp.locale,
+              LocaleKeys.authStrings_signUp.locale,
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
@@ -134,7 +135,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
               flex: 14,
               child: SignUpTextField(
                   controller: passwordController,
-                  title: LocaleKeys.password.locale,
+                  title: LocaleKeys.authStrings_password.locale,
                   height: dynamicHeight(0.04))),
           Spacer(flex: 3)
         ],
@@ -147,7 +148,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
               flex: 14,
               child: SignUpTextField(
                   controller: dateController,
-                  title: LocaleKeys.dateOfBirth.locale,
+                  title: LocaleKeys.authStrings_dateOfBirth.locale,
                   height: dynamicHeight(0.04))),
           Spacer(flex: 3)
         ],
@@ -160,7 +161,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
               flex: 14,
               child: SignUpTextField(
                   controller: phoneController,
-                  title: LocaleKeys.phoneNumber.locale,
+                  title: LocaleKeys.authStrings_phoneNumber.locale,
                   height: dynamicHeight(0.04))),
           Spacer(flex: 3)
         ],
@@ -173,7 +174,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
               flex: 14,
               child: SignUpTextField(
                   controller: emailController,
-                  title: LocaleKeys.email.locale,
+                  title: LocaleKeys.authStrings_email.locale,
                   height: dynamicHeight(0.04))),
           Spacer(flex: 3)
         ],
@@ -186,13 +187,13 @@ class _RegisterPageState extends BaseState<RegisterPage> {
               flex: 14,
               child: SignUpTextField(
                   controller: nameController,
-                  title: LocaleKeys.nameSurname.locale,
+                  title: LocaleKeys.authStrings_nameSurname.locale,
                   height: dynamicHeight(0.04))),
           Spacer(flex: 3)
         ],
       );
 
-  Text signUpText() => Text(LocaleKeys.signUp.locale,
+  Text signUpText() => Text(LocaleKeys.authStrings_signUp.locale,
       style: TextStyle(
           color: Color.fromRGBO(201, 87, 64, 50),
           fontWeight: FontWeight.bold,
