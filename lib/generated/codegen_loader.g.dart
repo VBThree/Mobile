@@ -14,76 +14,7 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> en = {
-  "routeFailed": "There is a problem!",
-  "authStrings": {
-    "signIn": "Sign In",
-    "email": "E-mail",
-    "password": "Password",
-    "forgotPassword": "Forgot Password?",
-    "dontHaveAnAccount": "Don't have an account?",
-    "signUp": "Sign Up",
-    "nameSurname": "Name Surname",
-    "phoneNumber": "Phone number",
-    "dateOfBirth": "Date of birth",
-    "alreadySignedUp": "Already Signed Up?"
-  },
-  "profilePage": {
-    "Achievements": "Achievements",
-    "Resolved": "Resolved",
-    "Published": "Published",
-    "ChangePassword": "Change Password",
-    "Logout": "Logout"
-  },
-  "announcementTypes": {
-    "Food": "Food",
-    "Lost": "Lost",
-    "Ownership": "Ownership",
-    "Vaccination": "Vaccination"
-  },
-  "genders": {
-    "maleHumanAndAnimal": "Male",
-    "femaleAnimal": "Female",
-    "femaleHuman": "Female"
-  },
-  "animalNames": {
-    "Dog": "Dog",
-    "Cat": "Cat",
-    "Bird": "Bird",
-    "Rabbit": "Rabbit"
-  },
-  "postAnnouncementPage": {
-    "otherAnimals": "Other",
-    "title": "Save The\nAnimals",
-    "announcementTypeHint": "Announcement Type",
-    "speciesHint": "Species",
-    "breedHint": "Breed",
-    "genderHint": "Gender",
-    "descriptionHint": "Description (optional)",
-    "pleaseAddImages": "Please upload clear and relevant images.",
-    "images": "Images",
-    "addPhotoButton": "Add Images"
-  },
-  "NavBar": {
-    "Profile": "Profile",
-    "Announcements": "Announcements",
-    "Languages": "Languages",
-    "DarkMode": "Dark/Light Mode",
-    "Logout": "Log out"
-  },
-  "ForgotPassword": {
-    "forgotton_password_title": "Forgotten Password",
-    "send_forgotPage": "Send",
-    "email_forgotPage": "E-mail Address"
-  },
-  "signIn": "Sign In",
-  "email": "E-mail",
-  "password": "Password",
-  "forgotPassword": "Forgot Password?",
-  "dontHaveAnAccount": "Don't have an account?",
-  "signUp": "Sign Up"
-};
-static const Map<String,dynamic> tr = {
+  static const Map<String,dynamic> tr = {
   "routeFailed": "Bir sorun oluştu!",
   "authStrings": {
     "signIn": "Giriş Yap",
@@ -102,7 +33,13 @@ static const Map<String,dynamic> tr = {
     "Resolved": "Çözüldü",
     "Published": "Yayınlanan",
     "ChangePassword": "Parola Değiştir",
-    "Logout": "Çıkış Yap"
+    "Logout": "Çıkış Yap",
+    "Name": "İsim",
+    "Phone": "Telefon",
+    "Email": "E-mail",
+    "BirtdayDate": "Doğum Günü",
+    "Change": "Değiştir",
+    "EnterYourOldPassword": "Eski Şifrenizi Giriniz"
   },
   "announcementTypes": {
     "Food": "Besleme",
@@ -152,5 +89,80 @@ static const Map<String,dynamic> tr = {
     "send_forgotPage": "Gönder"
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
+static const Map<String,dynamic> en = {
+  "routeFailed": "There is a problem!",
+  "authStrings": {
+    "signIn": "Sign In",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "nameSurname": "Name Surname",
+    "phoneNumber": "Phone number",
+    "dateOfBirth": "Date of birth",
+    "alreadySignedUp": "Already Signed Up?"
+  },
+  "profilePage": {
+    "Achievements": "Achievements",
+    "Resolved": "Resolved",
+    "Published": "Published",
+    "ChangePassword": "Change Password",
+    "Logout": "Logout",
+    "Name": "Name",
+    "Phone": "Phone",
+    "Email": "E-mail",
+    "BirtdayDate": "Birtday Date",
+    "Change": "Change",
+    "EnterYourOldPassword": "Enter Your Old Password"
+  },
+  "announcementTypes": {
+    "Food": "Food",
+    "Lost": "Lost",
+    "Ownership": "Ownership",
+    "Vaccination": "Vaccination"
+  },
+  "genders": {
+    "maleHumanAndAnimal": "Male",
+    "femaleAnimal": "Female",
+    "femaleHuman": "Female"
+  },
+  "animalNames": {
+    "Dog": "Dog",
+    "Cat": "Cat",
+    "Bird": "Bird",
+    "Rabbit": "Rabbit"
+  },
+  "postAnnouncementPage": {
+    "otherAnimals": "Other",
+    "title": "Save The\nAnimals",
+    "announcementTypeHint": "Announcement Type",
+    "speciesHint": "Species",
+    "breedHint": "Breed",
+    "genderHint": "Gender",
+    "descriptionHint": "Description (optional)",
+    "pleaseAddImages": "Please upload clear and relevant images.",
+    "images": "Images",
+    "addPhotoButton": "Add Images"
+  },
+  "NavBar": {
+    "Profile": "Profile",
+    "Announcements": "Announcements",
+    "Languages": "Languages",
+    "DarkMode": "Dark/Light Mode",
+    "Logout": "Log out"
+  },
+  "ForgotPassword": {
+    "forgotton_password_title": "Forgotten Password",
+    "send_forgotPage": "Send",
+    "email_forgotPage": "E-mail Address"
+  },
+  "signIn": "Sign In",
+  "email": "E-mail",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signUp": "Sign Up"
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"tr": tr, "en": en};
 }

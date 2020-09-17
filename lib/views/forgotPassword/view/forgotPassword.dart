@@ -70,13 +70,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         child: Row(
       children: <Widget>[
         Text(
-          LocaleKeys.dontHaveAnAccount.locale,
+          LocaleKeys.NavBar_signUp.locale,
           style: TextStyle(fontSize: 20),
         ),
         FlatButton(
           textColor: Colors.blue,
           child: Text(
-            LocaleKeys.signUp.locale,
+            LocaleKeys.NavBar_signUp.locale,
             style: TextStyle(fontSize: 20),
           ),
           onPressed: () {},

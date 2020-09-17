@@ -52,7 +52,7 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   FlatButton forgotPasswordButton() => FlatButton(
         onPressed: () {},
-        child: Text(LocaleKeys.forgotPassword.locale),
+        child: Text(LocaleKeys.NavBar_forgotPassword.locale),
         textColor: Colors.blue[400],
       );
 
@@ -65,7 +65,7 @@ class _LoginPageState extends BaseState<LoginPage> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Text(
-              LocaleKeys.signIn.locale,
+              LocaleKeys.NavBar_signIn.locale,
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
@@ -85,7 +85,7 @@ class _LoginPageState extends BaseState<LoginPage> {
             },
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-                hintText: LocaleKeys.password.locale,
+                hintText: LocaleKeys.NavBar_password.locale,
                 hintStyle: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -109,7 +109,7 @@ class _LoginPageState extends BaseState<LoginPage> {
               },
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                  hintText: LocaleKeys.email.locale,
+                  hintText: LocaleKeys.NavBar_email.locale,
                   hintStyle: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -123,7 +123,7 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   SvgPicture buildArtwork() => SvgPicture.asset(artwork, fit: BoxFit.fill);
 
-  Text signInText() => Text(LocaleKeys.signIn.locale,
+  Text signInText() => Text(LocaleKeys.NavBar_signIn.locale,
       style: TextStyle(
           color: Color.fromRGBO(201, 87, 64, 1),
           fontWeight: FontWeight.bold,
@@ -142,12 +142,12 @@ class _LoginPageState extends BaseState<LoginPage> {
   FlatButton signUpButton() => FlatButton(
         onPressed: () {},
         child: Text(
-          LocaleKeys.signUp.locale,
+          LocaleKeys.NavBar_signUp.locale,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         color: Colors.transparent,
         textColor: Colors.black,
       );
 
-  Text askAccountText() => Text(LocaleKeys.dontHaveAnAccount.locale);
+  Text askAccountText() => Text(LocaleKeys.NavBar_dontHaveAnAccount.locale);
 }
