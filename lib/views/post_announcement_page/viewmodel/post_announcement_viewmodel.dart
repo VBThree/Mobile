@@ -99,7 +99,7 @@ abstract class _PostAnnouncementViewModelBase with Store {
       """;
     print(postAnnouncementDataQuery);
     var response = await NetworkManager.instance
-        .postAnnouncementData(postAnnouncementDataQuery, headers);
+        .postGraphqlQuery(postAnnouncementDataQuery, headers);
     print(response.body);
   }
 }

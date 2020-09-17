@@ -16,8 +16,23 @@ abstract class _RegisterViewModelBase with Store {
   @observable
   String password;
 
-  Future<void> sendData() async {
-    var response = await NetworkManager.instance.postRegisterData();
+  void signUp() async {
+    String postRegisterDataQuery = """
+        mutation{ 
+          register(
+            name:"$nameSurname",
+          email:"$email",
+          password:"$password",
+          phone:"$phone",
+          birthday:"$dateOfBirth",
+          )
+        }
+          """;
+    print(postRegisterDataQuery);
+    Map<String, String> headers = {"Content-Type": "application/graphql"};
+    var response = await NetworkManager.instance
+        .postGraphqlQuery(postRegisterDataQuery, headers);
+
     print(response.body);
   }
 }

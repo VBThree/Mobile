@@ -6,7 +6,24 @@ class ProfileViewModel = _ProfileViewModelBase with _$ProfileViewModel;
 
 abstract class _ProfileViewModelBase with Store {
   void getUserData() async {
-    var response = await NetworkManager.instance.getUserData();
+    var query = """
+        { 
+          me{
+            name
+            phone
+            email
+            publishedCount
+            resolvedCount
+            id
+            birthday
+
+          }
+        }
+          """;
+    Map<String, String> headers = {"Content-Type": "application/graphql"};
+
+    var response =
+        await NetworkManager.instance.postGraphqlQuery(query, headers);
     print(response.body);
   }
 }

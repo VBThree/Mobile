@@ -7,7 +7,7 @@ class ForgotPasswordViewModel = _ForgotPasswordViewModelBase
 
 abstract class _ForgotPasswordViewModelBase with Store {
   Future<void> postForgotPasswordData() async {
-    var response = await NetworkManager.instance.postForgotPasswordData();
+    var response = await NetworkManager.instance.postGraphqlQuery("ads", "asd");
     print(response.body);
   }
 }
