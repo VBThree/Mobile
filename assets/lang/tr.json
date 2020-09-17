@@ -23,7 +23,8 @@
         "Email": "E-mail",
         "BirtdayDate": "Doğum Günü",
         "Change":"Değiştir",
-        "EnterYourOldPassword" :"Eski Şifrenizi Giriniz"
+        "EnterYourOldPassword" :"Eski Şifrenizi Giriniz",
+        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz"
         
 
     },

@@ -23,7 +23,9 @@
         "Email": "E-mail",
         "BirtdayDate": "Birtday Date",
         "Change":"Change",
-        "EnterYourOldPassword":"Enter Your Old Password"
+        "EnterYourOldPassword":"Enter Your Old Password",
+        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz"
+        
     },
 
     "announcementTypes": {

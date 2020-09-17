@@ -1,6 +1,7 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
 import 'package:VBThreeMobile/core/components/profile_card_text.dart';
+import 'package:VBThreeMobile/core/components/profile_change_password.dart';
 import 'package:VBThreeMobile/core/components/profile_edit_text_input.dart';
 import 'package:VBThreeMobile/core/components/profile_listTile_widget.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
@@ -251,10 +252,12 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          TextFormField(
-                            controller: oldPasswordController,
-                          ),
-                          TextFormField(),
+                          ProfileChangePassTextInput(
+                              "${LocaleKeys.profilePage_EnterYourOldPassword.locale}",
+                              oldPasswordController),
+                          ProfileChangePassTextInput(
+                              "${LocaleKeys.profilePage_EnterYourNewPassword.locale}",
+                              oldPasswordController),
                           ShadedButton(
                               "${LocaleKeys.profilePage_Change.locale}",
                               changeModalPass)
