@@ -1,3 +1,4 @@
+import 'package:VBThreeMobile/views/forgotPassword/forgotPassword.dart';
 import 'package:VBThreeMobile/views/onboarding/onboardingPage.dart';
 import 'package:VBThreeMobile/views/wrong_route_page/wrong_route_page_view.dart';
 import 'package:VBThreeMobile/views/loginPage/loginPage.dart';
@@ -11,10 +12,17 @@ class Router {
           builder: (_) => OnboardingPage(),
         );
       case homeRoute:
+
       case loginRoute:
         return MaterialPageRoute(
           builder: (_) => LoginPage(),
         );
+
+      case forgotPasswordRoute:
+        return MaterialPageRoute(
+          builder: (_) => ForgotPassword(),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (_) => WrongRouteView(),
@@ -26,3 +34,4 @@ class Router {
 const String homeRoute = '/';
 const String onboarding = '/onboarding';
 const String loginRoute = '/loginPage';
+const String forgotPasswordRoute = '/forgotpassword';
