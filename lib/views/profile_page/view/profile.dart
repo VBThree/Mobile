@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
 import 'package:VBThreeMobile/core/components/profile_card_text.dart';
@@ -13,6 +15,7 @@ import 'package:VBThreeMobile/views/profile_page/viewmodel/profile_viewmodel.dar
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/components/shadedButton.dart';
 import '../../../generated/locale_keys.g.dart';
@@ -44,6 +47,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   var dateController = TextEditingController();
   var oldPasswordController = TextEditingController();
   var newPasswordController = TextEditingController();
+  File _sellectedImage;
   String profileName = "Abdullah Oğuz";
   String profilePhoneNumber = "+90 545 xxx xx xx";
   String profileEmailInfo = "oguzabdullah@gmail.com";
@@ -294,10 +298,16 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CircleAvatar(
-                        radius: dynamicWidth(0.1),
-                        child: Icon(Icons.add_a_photo),
-                      ),
+                      InkWell(
+                          onTap: uploadImage,
+                          child: _sellectedImage == null
+                              ? CircleAvatar(
+                                  radius: dynamicWidth(0.1),
+                                  child: Icon(Icons.add_a_photo))
+                              : CircleAvatar(
+                                  radius: dynamicWidth(0.1),
+                                  backgroundImage: FileImage(_sellectedImage),
+                                )),
                       Expanded(
                         child: ProfileTextInputWidget(
                           Icons.person,
@@ -344,19 +354,26 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     );
 
     /*   showDialog(
-                                  context: this.context,
-                                  builder: (_) {},
-                                  child: AlertDialog(
-                                    content: Form(
-                                        child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ProfileTextInputWidget(Feather.phone,
-                                            "${LocaleKeys.profilePage_Name}", nameController, false)
-                                      ],
-                                    )),
-                                  )); */
+                                                          context: this.context,
+                                                          builder: (_) {},
+                                                          child: AlertDialog(
+                                                            content: Form(
+                                                                child: Column(
+                                                              mainAxisSize: MainAxisSize.min,
+                                                              children: [
+                                                                ProfileTextInputWidget(Feather.phone,
+                                                                    "${LocaleKeys.profilePage_Name}", nameController, false)
+                                                              ],
+                                                            )),
+                                                          )); */
   }
 
   changeModalPass() {}
+
+  uploadImage() async {
+    var galleryImage = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _sellectedImage = galleryImage;
+    });
+  }
 }
