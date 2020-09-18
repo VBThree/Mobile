@@ -1,4 +1,5 @@
 import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
@@ -72,7 +73,7 @@ class _LoggedDrawerState extends State<LoggedDrawer> {
       onTap: () {
         splashScreenViewModel.isLoggedIn = false;
         NetworkManager.instance.setLocaleStringData("token", null);
-        Navigator.popAndPushNamed(context, "/loginPage");
+        Navigator.pushNamedAndRemoveUntil(context, loginRoute, (e) => false);
       },
     );
   }
@@ -99,7 +100,8 @@ class _LoggedDrawerState extends State<LoggedDrawer> {
     return ListTile(
       leading: Icon(Icons.announcement),
       title: Text(LocaleKeys.NavBar_Announcements.locale),
-      onTap: () => {Navigator.popAndPushNamed(context, "/")},
+      onTap: () =>
+          {Navigator.pushNamedAndRemoveUntil(context, mapRoute, (e) => false)},
     );
   }
 
@@ -108,7 +110,7 @@ class _LoggedDrawerState extends State<LoggedDrawer> {
       leading: Icon(Icons.person),
       title: Text(LocaleKeys.NavBar_Profile.locale),
       onTap: () => {
-        Navigator.popAndPushNamed(context, "/profilePage"),
+        Navigator.pushNamedAndRemoveUntil(context, profilePage, (e) => false),
       },
     );
   }
@@ -127,13 +129,13 @@ class _LoggedDrawerState extends State<LoggedDrawer> {
           SizedBox(
             height: 6,
           ),
-          Text(
+         /* Text(
             'Başak Günay',
             style: TextStyle(
                 fontSize: dynamicWidth(0.5),
                 fontWeight: FontWeight.w600,
                 color: Colors.black),
-          )
+          )*/
         ],
       ),
     );
@@ -142,7 +144,7 @@ class _LoggedDrawerState extends State<LoggedDrawer> {
   CircleAvatar buildCircleAvatar() {
     return CircleAvatar(
       backgroundImage: NetworkImage(
-          "https://avatars3.githubusercontent.com/u/49794486?s=460&u=b9ebbb62859daa7e4b57591ec22200e0acdd9846&v=4"),
+          "https://w0.pngwave.com/png/873/489/avatar-youtube-cat-cute-dog-png-clip-art.png"),
     );
   }
 

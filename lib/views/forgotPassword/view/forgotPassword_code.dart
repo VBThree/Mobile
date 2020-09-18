@@ -80,7 +80,7 @@ Container buildContainerButton(BuildContext context) {
             onPressed: () async {
               var isMatched = await forgotPasswordPageViewModel.sendKey();
               if (isMatched == true) {
-                Navigator.popAndPushNamed(context, forgotPassword_newPass);
+                Navigator.pushNamedAndRemoveUntil(context, forgotPassword_newPass,(e) => false);
               } else {
                 showDialog(
                   context: context,

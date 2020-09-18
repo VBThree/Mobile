@@ -100,7 +100,7 @@ class _ForgotPasswordState extends State<ForgotPassword_new> {
                 var isSuccessfull =
                     await forgotPasswordPageViewModel.sendNewPassword();
                 if (isSuccessfull == true) {
-                  Navigator.popAndPushNamed(context, loginRoute);
+                  Navigator.pushNamedAndRemoveUntil(context, loginRoute,(e) => false);
                 } else {
                   showDialog(
                     context: context,

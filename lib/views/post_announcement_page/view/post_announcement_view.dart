@@ -1,3 +1,4 @@
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -24,7 +25,6 @@ class PostAnnouncementView extends StatefulWidget {
 }
 
 class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
-  final GlobalKey _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,6 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
   }
 
   Scaffold buildScaffold() => Scaffold(
-        key: _scaffoldKey,
         drawer: GuestDrawer(),
         body: buildSingleChildScrollViewAsScaffoldBody(),
         appBar: AppBar(
@@ -100,7 +99,8 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
   ShadedButton buildSubmitButton() =>
       ShadedButton(LocaleKeys.postAnnouncementPage_addPhotoButton.locale.tr(),
           () {
-        Navigator.popAndPushNamed(context, "/postAnnouncementPageAddImageView");
+        Navigator.pushNamedAndRemoveUntil(
+            context, postAnnouncementPageAddImageView, (e) => false);
       });
 
   Observer buildForm() {

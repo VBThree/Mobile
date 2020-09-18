@@ -92,7 +92,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
   FlatButton signInButton() {
     return FlatButton(
       onPressed: () {
-        Navigator.popAndPushNamed(context, "/loginPage");
+        Navigator.pushNamedAndRemoveUntil(context, loginRoute,(e) => false);
       },
       child: Text(
         LocaleKeys.authStrings_signIn.locale,
@@ -124,7 +124,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
               if (isSuccessfull == true) {
                 splashScreenViewModel.isLoggedIn = true;
 
-                Navigator.popAndPushNamed(context, mapRoute);
+                Navigator.pushNamedAndRemoveUntil(context, mapRoute,(e) => false);
               } else {
                 showDialog(
                   context: context,

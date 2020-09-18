@@ -23,7 +23,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
     splashScreenViewModel.checkToken();
     Timer(Duration(seconds: 1), () {
       // 5s over, navigate to a new page
-      Navigator.popAndPushNamed(context, mapRoute);
+      Navigator.pushNamedAndRemoveUntil(context, mapRoute, (e) => false);
     });
   }
 

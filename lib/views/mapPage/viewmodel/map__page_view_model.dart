@@ -35,6 +35,7 @@ abstract class _MapPageViewModelBase with Store {
     String query = """
        {
          announcements{
+           id
            createdBy{
              id
              name
@@ -78,7 +79,7 @@ abstract class _MapPageViewModelBase with Store {
         type = MapPageTypes.VACCINATION;
       }
       annotations.add(MapPageModel(
-        data.createdBy.id ?? "",
+        data.id ?? "",
         data.createdBy.name ?? "",
         data.photo.length > 0 ? data.photo.first : "",
         data.description ?? "",

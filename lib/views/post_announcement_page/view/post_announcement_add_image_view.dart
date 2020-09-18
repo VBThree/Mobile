@@ -8,6 +8,7 @@ import 'package:VBThreeMobile/core/components/drawer/loggedInDrawer.dart';
 import 'package:VBThreeMobile/core/components/shadedButton.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:VBThreeMobile/core/init/network/cloud_storage_result.dart';
 import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
 import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
@@ -38,25 +39,9 @@ class _PostAnnouncementAddImageViewState
   Widget build(BuildContext context) {
     return BaseView(
       onPageBuilder: (contex, value) => Scaffold(
-                drawer: splashScreenViewModel.isLoggedIn?LoggedDrawer():GuestDrawer(),
-
-        appBar: AppBar(
-          actions: [
-            IconButton(
-                icon: Icon(Icons.cached),
-                onPressed: () {
-                  Provider.of<ThemeNotifier>(context, listen: false)
-                      .changeTheme();
-                }),
-            IconButton(
-                icon: Icon(Icons.language),
-                onPressed: () {
-                  final tr = LanguageManager.instance.trLocale;
-                  final en = LanguageManager.instance.enLocale;
-                  context.locale = context.locale == tr ? en : tr;
-                })
-          ],
-        ),
+        drawer:
+            splashScreenViewModel.isLoggedIn ? LoggedDrawer() : GuestDrawer(),
+        appBar: AppBar(),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -106,9 +91,25 @@ class _PostAnnouncementAddImageViewState
               ),
             ),
             Expanded(
-                child: ShadedButton("Gönder", () {
-              postAnnouncementViewModel.postAnnouncement();
-            }))
+                child: postAnnouncementViewModel.isLoading == true
+                    ? CircularProgressIndicator()
+                    : ShadedButton("Gönder", () async {
+                        var isLoaded =
+                            await postAnnouncementViewModel.postAnnouncement();
+                        if (isLoaded == true) {
+                          Navigator.pushNamedAndRemoveUntil(context, mapRoute,(e) => false);
+                        } else {
+                          showDialog(
+                            context: context,
+                            child: AlertDialog(
+                              title:
+                                  Text(LocaleKeys.authStrings_wrongInfo.locale),
+                              content: Text(
+                                  LocaleKeys.authStrings_wrongInfoTitle.locale),
+                            ),
+                          );
+                        }
+                      }))
           ],
         ),
       ),

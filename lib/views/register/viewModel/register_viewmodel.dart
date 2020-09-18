@@ -39,6 +39,7 @@ abstract class _RegisterViewModelBase with Store {
     if (jsonResponse['errors'] != null) {
       return false;
     } else {
+      
       await NetworkManager.instance
           .setLocaleStringData("token", jsonResponse["data"]["register"]);
 

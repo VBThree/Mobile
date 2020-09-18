@@ -79,7 +79,7 @@ class _GuestDrawerState extends State<GuestDrawer> {
     return ListTile(
       leading: Icon(Icons.map),
       title: Text(LocaleKeys.NavBar_Announcements.locale),
-      onTap: () => {Navigator.popAndPushNamed(context, "/")},
+      onTap: () => {Navigator.pushNamedAndRemoveUntil(context, "/",(e) => false)},
     );
   }
 
@@ -88,7 +88,7 @@ class _GuestDrawerState extends State<GuestDrawer> {
       leading: Icon(Octicons.sign_in),
       title: Text(LocaleKeys.signIn.locale),
       onTap: () => {
-        Navigator.popAndPushNamed(context, loginRoute),
+        Navigator.pushNamedAndRemoveUntil(context, loginRoute,(e) => false),
       },
     );
   }
@@ -98,7 +98,7 @@ class _GuestDrawerState extends State<GuestDrawer> {
       leading: Icon(Icons.account_box),
       title: Text(LocaleKeys.signUp.locale),
       onTap: () => {
-        Navigator.popAndPushNamed(context, register),
+        Navigator.pushNamedAndRemoveUntil(context, register,(e) => false),
       },
     );
   }

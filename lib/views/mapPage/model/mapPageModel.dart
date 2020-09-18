@@ -45,6 +45,8 @@ class AnnouncementsApiData {
 }
 
 class Announcements {
+  String id;
+
   CreatedBy createdBy;
   String date;
   String type;
@@ -59,7 +61,8 @@ class Announcements {
   List<String> photo;
 
   Announcements(
-      {this.createdBy,
+      {this.id,
+      this.createdBy,
       this.date,
       this.type,
       this.species,
@@ -76,6 +79,7 @@ class Announcements {
     createdBy = json['createdBy'] != null
         ? new CreatedBy.fromJson(json['createdBy'])
         : null;
+    id = json['id'];
     date = json['date'];
     type = json['type'];
     species = json['species'];
@@ -96,7 +100,7 @@ class Announcements {
 
 class CreatedBy {
   String id;
-  Null name;
+  String name;
 
   CreatedBy({this.id, this.name});
 

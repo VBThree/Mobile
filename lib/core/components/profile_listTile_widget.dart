@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ProfileListTile extends StatelessWidget {
   IconData icon;
   String title;
-  int score;
+  String score;
 
   ProfileListTile(this.icon, this.title, this.score);
   @override
@@ -32,7 +32,7 @@ class ProfileListTile extends StatelessWidget {
           width: height * 0.06,
           child: Center(
               child: Text(
-            score.toString(),
+            score,
             style:
                 TextStyle(fontSize: height * 0.02, fontWeight: FontWeight.w600),
           )),

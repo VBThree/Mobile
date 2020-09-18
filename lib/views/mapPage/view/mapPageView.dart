@@ -148,20 +148,18 @@ class _MapPage extends BaseState<MapPage> {
       });
     });
 
-    location.onLocationChanged.listen((LocationData currentLocation) {
+    /*location.onLocationChanged.listen((LocationData currentLocation) {
       setState(() {
         currentLocationData =
             LatLng(currentLocation.latitude, currentLocation.longitude);
       });
-    });
+    });*/
   }
 
   @override
   Widget build(BuildContext context) {
     return BaseView(
-        onPageBuilder: (context, value) => viewModel.annotationsMarkers.isEmpty
-            ? CircularProgressIndicator()
-            : buildScaffold(),
+        onPageBuilder: (context, value) => buildScaffold(),
         viewModel: viewModel,
         onModelReady: (model) {
           viewModel = model;
@@ -170,18 +168,20 @@ class _MapPage extends BaseState<MapPage> {
 
   Scaffold buildScaffold() {
     return Scaffold(
-      drawer: splashScreenViewModel.isLoggedIn ? LoggedDrawer() : GuestDrawer(),
+      drawer: splashScreenViewModel.isLoggedIn == true
+          ? LoggedDrawer()
+          : GuestDrawer(),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
           iconTheme: IconThemeData(color: AllColors.PROFILE_DARK_GREY_BLUE),
           backgroundColor: Colors.transparent,
           elevation: 0),
       floatingActionButton: Visibility(
-        visible: !showInfoCard,
+        visible: !(showInfoCard || showInfoCardDetail),
         child: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            Navigator.popAndPushNamed(context, postAnnouncementPage);
+            Navigator.pushNamedAndRemoveUntil(context, postAnnouncementPage,(e) => false);
           },
         ),
       ),
@@ -203,6 +203,8 @@ class _MapPage extends BaseState<MapPage> {
           child: GestureDetector(
             onTap: () {
               setState(() {
+                showInfoCard = true;
+
                 showInfoCardDetail = true;
               });
             },
@@ -258,12 +260,12 @@ class _MapPage extends BaseState<MapPage> {
               selectedAnnotationData.name,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text(viewModel
+            /*Text(viewModel
                 .getDistanceFromGPSPointsInRoute(
                     LatLng(selectedAnnotationData.latitude,
                         selectedAnnotationData.longitude),
                     currentLocationData)
-                .toString()),
+                .toString()),*/
             Text(selectedAnnotationData.date),
             Text(selectedAnnotationData.status)
           ],
@@ -284,11 +286,13 @@ class _MapPage extends BaseState<MapPage> {
   GoogleMap buildGoogleMap() {
     return GoogleMap(
         onTap: (_) {
-          setState(() {
-            showInfoCard = false;
-            _alignment = showInfoCard ? Alignment(0, 1) : Alignment(0, 2);
-            showInfoCardDetail = false;
-          });
+          if (showInfoCard == true || showInfoCardDetail == true) {
+            setState(() {
+              showInfoCard = false;
+              _alignment = showInfoCard ? Alignment(0, 1) : Alignment(0, 2);
+              showInfoCardDetail = false;
+            });
+          }
         },
         onMapCreated: _onMapCreated,
         markers: viewModel.annotationsMarkers,

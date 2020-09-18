@@ -30,7 +30,7 @@ abstract class _LoginViewModelBase with Store {
     Map jsonResponse = json.decode(response.body);
 
     if (jsonResponse['errors'] != null) {
-       return false;
+      return false;
     } else {
       print(jsonResponse["data"]["login"]);
       await NetworkManager.instance

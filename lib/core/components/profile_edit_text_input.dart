@@ -1,3 +1,4 @@
+import 'package:VBThreeMobile/views/mapPage/view/mapPageView.dart';
 import 'package:flutter/material.dart';
 
 class ProfileTextInputWidget extends StatelessWidget {
@@ -6,15 +7,17 @@ class ProfileTextInputWidget extends StatelessWidget {
   var formKey = GlobalKey<FormState>();
   bool passwordType;
   IconData icon;
-
+  String initialString;
   ProfileTextInputWidget(
     this.icon,
     this.labelName,
     this.controller,
     this.passwordType,
+    this.initialString,
   );
   @override
   Widget build(BuildContext context) {
+    controller.text = initialString;
     double width = MediaQuery.of(context).size.width;
     return Container(
       width: width * 0.9,

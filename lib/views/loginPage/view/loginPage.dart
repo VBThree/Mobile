@@ -65,7 +65,7 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   FlatButton forgotPasswordButton() => FlatButton(
         onPressed: () {
-          Navigator.popAndPushNamed(context, forgotPasswordRoute);
+          Navigator.pushNamedAndRemoveUntil(context, forgotPasswordRoute,(e) => false);
         },
         child: Text(LocaleKeys.ForgotPassword_forgotton_password_title.locale),
         textColor: Colors.blue[400],
@@ -84,7 +84,7 @@ class _LoginPageState extends BaseState<LoginPage> {
               if (isSuccessfull == true) {
                 splashScreenViewModel.isLoggedIn = true;
 
-                Navigator.popAndPushNamed(context, mapRoute);
+                Navigator.pushNamedAndRemoveUntil(context, mapRoute,(e) => false);
               } else {
                 showDialog(
                   context: context,
@@ -168,7 +168,7 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   FlatButton signUpButton() => FlatButton(
         onPressed: () {
-          Navigator.popAndPushNamed(context, "/registerPage");
+          Navigator.pushNamedAndRemoveUntil(context, register,(e) => false);
         },
         child: Text(
           LocaleKeys.signUp.locale,

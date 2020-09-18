@@ -17,6 +17,7 @@ import 'package:VBThreeMobile/core/init/network/cloud_storage_result.dart';
 import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
 import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/views/mapPage/view/mapPageView.dart';
 import 'package:VBThreeMobile/views/profile_page/viewmodel/profile_viewmodel.dart';
 import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -25,8 +26,6 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../core/components/shadedButton.dart';
 import '../../../generated/locale_keys.g.dart';
-
-final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
@@ -60,8 +59,8 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: LoggedDrawer(),
         appBar: profileAppBar(),
-        key: _scaffoldKey,
         body: viewmodel.isLoaded != null
             ? profileBody()
             : Center(child: CircularProgressIndicator()));
@@ -115,10 +114,14 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       child: Column(
         children: [
           achievementsText(),
-          ProfileListTile(Icons.assignment_turned_in,
-              LocaleKeys.profilePage_Resolved.locale, 50),
           ProfileListTile(
-              Icons.assignment, LocaleKeys.profilePage_Published.locale, 80),
+              Icons.assignment_turned_in,
+              LocaleKeys.profilePage_Resolved.locale,
+              viewmodel.currentResolvedCount),
+          ProfileListTile(
+              Icons.assignment,
+              LocaleKeys.profilePage_Published.locale,
+              viewmodel.currentPublishedCount),
         ],
       ),
     );
@@ -205,9 +208,12 @@ class _ProfilePageState extends BaseState<ProfilePage> {
           Container(
             child: CircleAvatar(
               radius: dynamicWidth(0.18),
-              backgroundImage: NetworkImage(
-                "https://avatars3.githubusercontent.com/u/34376691?s=460&u=bb49f483424c3330768c12112b67fc93273896d9&v=4",
-              ),
+              backgroundImage: viewmodel.currentPhotoUrl != null
+                  ? NetworkImage(
+                      viewmodel.currentPhotoUrl,
+                    )
+                  : NetworkImage(
+                      "https://w0.pngwave.com/png/873/489/avatar-youtube-cat-cute-dog-png-clip-art.png"),
             ),
           ),
           SizedBox(
@@ -230,10 +236,6 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     return AppBar(
       backgroundColor: AllColors.PROFILE_LIGHT_PEACH,
       shadowColor: Colors.transparent,
-      toolbarOpacity: 0.7,
-      iconTheme: IconThemeData(
-        color: AllColors.PROFILE_DARK_GREY_BLUE,
-      ),
       actions: [
         Padding(
           padding: EdgeInsets.only(right: dynamicWidth(0.03)),
@@ -287,10 +289,12 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   void logoutOnpress() {
     splashScreenViewModel.isLoggedIn = false;
     NetworkManager.instance.setLocaleStringData("token", null);
-    Navigator.popAndPushNamed(context, "/loginPage");
+    Navigator.pushNamedAndRemoveUntil(context, loginRoute, (e) => false);
   }
 
   void editOnPress() {
+    viewmodel.postUserData();
+    Navigator.pushNamedAndRemoveUntil(context, profilePage, (e) => false);
     showDialog(
       context: context,
       builder: (_) => new AlertDialog(
@@ -319,39 +323,43 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                                 )),
                       Expanded(
                         child: ProfileTextInputWidget(
-                          Icons.person,
-                          "${LocaleKeys.profilePage_Name.locale}",
-                          nameController,
-                          false,
-                        ),
+                            Icons.person,
+                            "${LocaleKeys.profilePage_Name.locale}",
+                            nameController,
+                            false,
+                            viewmodel.currentName),
                       ),
                       Expanded(
                         child: ProfileTextInputWidget(
-                          Feather.phone,
-                          "${LocaleKeys.profilePage_Phone.locale}",
-                          phoneController,
-                          false,
-                        ),
+                            Feather.phone,
+                            "${LocaleKeys.profilePage_Phone.locale}",
+                            phoneController,
+                            false,
+                            viewmodel.currentPhone),
                       ),
                       Expanded(
                         child: ProfileTextInputWidget(
-                          Feather.mail,
-                          "${LocaleKeys.profilePage_Email.locale}",
-                          emailController,
-                          false,
-                        ),
+                            Feather.mail,
+                            "${LocaleKeys.profilePage_Email.locale}",
+                            emailController,
+                            false,
+                            viewmodel.currentEmail),
                       ),
                       Expanded(
                         child: ProfileTextInputWidget(
-                          Feather.mail,
-                          "${LocaleKeys.profilePage_BirtdayDate.locale}",
-                          dateController,
-                          false,
-                        ),
+                            Feather.mail,
+                            "${LocaleKeys.profilePage_BirtdayDate.locale}",
+                            dateController,
+                            false,
+                            viewmodel.currentBirthday),
                       ),
                       ShadedButton(
                         "${LocaleKeys.profilePage_Change.locale}",
-                        changeModalPass,
+                        () {
+                          changeModalPass();
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, profilePage, (e) => false);
+                        },
                         foregroundColor: AllColors.PROFILE_TWILIGHT,
                       ),
                     ],
@@ -363,6 +371,8 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     );
   }
 
+  //changeModalPass
+
   changeModalPass() {
     viewmodel.currentName = nameController.text.trim();
     viewmodel.currentEmail = emailController.text.trim();
@@ -370,7 +380,6 @@ class _ProfilePageState extends BaseState<ProfilePage> {
     viewmodel.currentBirthday = dateController.text.trim();
 
     viewmodel.postUserData();
-    Navigator.popAndPushNamed(context, profilePage);
   }
 
   void uploadImage() async {

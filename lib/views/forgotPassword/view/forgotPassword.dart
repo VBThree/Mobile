@@ -119,7 +119,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               onPressed: () {
                 forgotPasswordPageViewModel.email = emailController.text;
                 forgotPasswordPageViewModel.sendEmail();
-                Navigator.popAndPushNamed(context, "/forgotPassword_code");
+                Navigator.pushNamedAndRemoveUntil(context, "/forgotPassword_code",(e) => false);
               },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),

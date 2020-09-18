@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:VBThreeMobile/core/constants/breeds.dart';
 import 'package:VBThreeMobile/core/init/network/cloud_storage_result.dart';
 import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
@@ -13,8 +15,7 @@ class PostAnnouncementViewModel = _PostAnnouncementViewModelBase
 
 abstract class _PostAnnouncementViewModelBase with Store {
   Map<String, String> headers = {
-    "Authorization":
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjFiZmQ1ZTBlNTQ5MTJjNTE0M2VjMiIsImlhdCI6MTYwMDM0NTI2MSwiZXhwIjoxNjMxOTAyODYxfQ._VmUw581XSFrxt8Xt4JqVetKWnfrS5yusc_E0H7UVb8",
+    "Authorization": null,
     "Content-Type": "application/graphql"
   };
   String postAnnouncementDataQuery;
@@ -53,6 +54,9 @@ abstract class _PostAnnouncementViewModelBase with Store {
     images[index] = _image;
   }
 
+  @observable
+  bool isLoading;
+
   List<String> resultUrlList = List<String>();
 
   @action
@@ -74,7 +78,7 @@ abstract class _PostAnnouncementViewModelBase with Store {
     }
   }
 
-  void postAnnouncement() async {
+  Future<bool> postAnnouncement() async {
     Location location = Location();
     var coordinates;
     await location.getLocation().then((currentLocation) {
@@ -91,7 +95,7 @@ abstract class _PostAnnouncementViewModelBase with Store {
           breed:"$breed",
           description:"$description",
           status:Active,
-          date:"2013-10-01T00:00:00.000Z",
+          date:"2013-10-01",
           coordinates:$coordinates,
           photo:${[...resultUrlList]},
           
@@ -101,8 +105,19 @@ abstract class _PostAnnouncementViewModelBase with Store {
         }
       }
       """;
+    isLoading = true;
+    String token = await NetworkManager.instance.getLocaleStringData("token");
+    headers["Authorization"] = token;
     var response = await NetworkManager.instance
         .postGraphqlQuery(postAnnouncementDataQuery, headers);
     print(response.body);
+    isLoading = false;
+    Map jsonResponse = json.decode(response.body);
+
+    if (jsonResponse['errors'] != null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
