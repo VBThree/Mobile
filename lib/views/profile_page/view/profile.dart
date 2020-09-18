@@ -41,9 +41,11 @@ class _ProfilePageState extends BaseState<ProfilePage> {
 
   @override
   void initState() {
-    viewmodel.getUserData();
-
     super.initState();
+    viewmodel.getUserData().then((value) {
+      viewmodel.isLoaded = true;
+      setState(() {});
+    });
   }
 
   var formkey = GlobalKey<FormState>();
@@ -62,7 +64,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         key: _scaffoldKey,
         body: viewmodel.isLoaded != null
             ? profileBody()
-            : CircularProgressIndicator());
+            : Center(child: CircularProgressIndicator()));
   }
 
   Container profileBody() {
