@@ -2,9 +2,11 @@ import 'dart:collection';
 import 'dart:convert';
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
 import 'package:VBThreeMobile/core/base/view/base_view.dart';
-import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/components/drawer/guestDrawer.dart';
+import 'package:VBThreeMobile/core/components/drawer/loggedInDrawer.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/init/navigation/router.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -143,8 +145,6 @@ class _MapPage extends BaseState<MapPage> {
       setState(() {
         currentLocationData =
             LatLng(currentLocation.latitude, currentLocation.longitude);
-        widget._controller
-            .animateCamera(CameraUpdate.newLatLng(currentLocationData));
       });
     });
 
@@ -152,8 +152,6 @@ class _MapPage extends BaseState<MapPage> {
       setState(() {
         currentLocationData =
             LatLng(currentLocation.latitude, currentLocation.longitude);
-        widget._controller
-            .animateCamera(CameraUpdate.newLatLng(currentLocationData));
       });
     });
   }
@@ -172,7 +170,7 @@ class _MapPage extends BaseState<MapPage> {
 
   Scaffold buildScaffold() {
     return Scaffold(
-      drawer: MyNavBar(),
+      drawer: splashScreenViewModel.isLoggedIn ? LoggedDrawer() : GuestDrawer(),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
           iconTheme: IconThemeData(color: AllColors.PROFILE_DARK_GREY_BLUE),

@@ -26,11 +26,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         theme: Provider.of<ThemeNotifier>(context, listen: true).currentTheme,
         onGenerateRoute: Router.generateRoute,
-        initialRoute: register);
+        initialRoute: splashScreenRoute);
   }
 }

@@ -12,6 +12,14 @@ abstract class  LocaleKeys {
   static const authStrings_phoneNumber = 'authStrings.phoneNumber';
   static const authStrings_dateOfBirth = 'authStrings.dateOfBirth';
   static const authStrings_alreadySignedUp = 'authStrings.alreadySignedUp';
+  static const authStrings_failedSignUp = 'authStrings.failedSignUp';
+  static const authStrings_failedSignUpContent = 'authStrings.failedSignUpContent';
+  static const authStrings_wrongInfoTitle = 'authStrings.wrongInfoTitle';
+  static const authStrings_wrongInfo = 'authStrings.wrongInfo';
+  static const authStrings_wrongKeyTitle = 'authStrings.wrongKeyTitle';
+  static const authStrings_wrongKey = 'authStrings.wrongKey';
+  static const authStrings_sameOldPasswordTitle = 'authStrings.sameOldPasswordTitle';
+  static const authStrings_sameOldPassword = 'authStrings.sameOldPassword';
   static const authStrings = 'authStrings';
   static const profilePage_Achievements = 'profilePage.Achievements';
   static const profilePage_Resolved = 'profilePage.Resolved';
@@ -74,5 +82,7 @@ abstract class  LocaleKeys {
   static const forgotPassword = 'forgotPassword';
   static const dontHaveAnAccount = 'dontHaveAnAccount';
   static const signUp = 'signUp';
+  static const GuestDrawer_guestName = 'GuestDrawer.guestName';
+  static const GuestDrawer = 'GuestDrawer';
 
 }

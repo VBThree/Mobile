@@ -1,9 +1,12 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
-import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/components/drawer/guestDrawer.dart';
+import 'package:VBThreeMobile/core/components/drawer/loggedInDrawer.dart';
 import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/views/loginPage/viewModel/login_viewmodel.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,7 +27,8 @@ class _LoginPageState extends BaseState<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: MyNavBar(),
+        drawer:
+            splashScreenViewModel.isLoggedIn ? LoggedDrawer() : GuestDrawer(),
         appBar: AppBar(),
         backgroundColor: Color.fromRGBO(131, 175, 175, 75),
         body: Container(
@@ -72,10 +76,24 @@ class _LoginPageState extends BaseState<LoginPage> {
         Expanded(
           flex: 14,
           child: RaisedButton(
-            onPressed: () {
+            onPressed: () async {
               viewModel.email = emailController.text;
               viewModel.password = passwordController.text;
-              viewModel.signIn();
+              var isSuccessfull = await viewModel.signIn();
+
+              if (isSuccessfull == true) {
+                splashScreenViewModel.isLoggedIn = true;
+
+                Navigator.popAndPushNamed(context, mapRoute);
+              } else {
+                showDialog(
+                  context: context,
+                  child: AlertDialog(
+                    title: Text(LocaleKeys.authStrings_wrongInfo.locale),
+                    content: Text(LocaleKeys.authStrings_wrongInfoTitle.locale),
+                  ),
+                );
+              }
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

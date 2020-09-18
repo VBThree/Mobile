@@ -1,4 +1,3 @@
-
 import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword.dart';
 import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword_code.dart';
 import 'package:VBThreeMobile/views/forgotPassword/view/forgotPassword_newPass.dart';
@@ -17,7 +16,10 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case onboarding:
-
+      case splashScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => SplashScreenView(),
+        );
       case profilePage:
         return MaterialPageRoute(
           builder: (_) => ProfilePage(),

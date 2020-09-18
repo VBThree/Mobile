@@ -26,7 +26,15 @@ class CodegenLoader extends AssetLoader{
     "nameSurname": "Name Surname",
     "phoneNumber": "Phone number",
     "dateOfBirth": "Date of birth",
-    "alreadySignedUp": "Already Signed Up?"
+    "alreadySignedUp": "Already Signed Up?",
+    "failedSignUp": "Kayıt Başarısız",
+    "failedSignUpContent": "Girdiğiniz bilgileri kontrol ediniz.",
+    "wrongInfoTitle": "Wrong Credentials",
+    "wrongInfo": "Email or password is incorrect.",
+    "wrongKeyTitle": "Wrong Key",
+    "wrongKey": "Given key is incorrect.",
+    "sameOldPasswordTitle": "Warning!",
+    "sameOldPassword": "New password is same with old password."
   },
   "profilePage": {
     "Achievements": "Achievements",
@@ -95,7 +103,10 @@ class CodegenLoader extends AssetLoader{
   "password": "Password",
   "forgotPassword": "Forgot Password?",
   "dontHaveAnAccount": "Don't have an account?",
-  "signUp": "Sign Up"
+  "signUp": "Sign Up",
+  "GuestDrawer": {
+    "guestName": "Guest User"
+  }
 };
 static const Map<String,dynamic> tr = {
   "routeFailed": "Bir sorun oluştu!",
@@ -109,7 +120,15 @@ static const Map<String,dynamic> tr = {
     "nameSurname": "İsim Soyisim",
     "phoneNumber": "Telefon Numarası",
     "dateOfBirth": "Doğum Tarihi",
-    "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
+    "alreadySignedUp": "Zaten kayıtlı hesabın var mı?",
+    "wrongInfoTitle": "Hatalı Deneme",
+    "wrongInfo": "Email ya da şifre yanlış girildi.",
+    "failedSignUp": "Kayıt Başarısız",
+    "failedSignUpContent": "Girdiğiniz bilgileri kontrol ediniz.",
+    "wrongKeyTitle": "Yanlış Kod",
+    "wrongKey": "Lütfen doğru kodu giriniz",
+    "sameOldPasswordTitle": "Uyarı!",
+    "sameOldPassword": "Yeni şifre ile eski şifre aynı olamaz"
   },
   "profilePage": {
     "Achievements": "Başarılar",
@@ -189,7 +208,10 @@ static const Map<String,dynamic> tr = {
   "password": "Şifre",
   "forgotPassword": "Şifremi Unuttum",
   "dontHaveAnAccount": "Hesabım Yok",
-  "signUp": "Kayıt Ol"
+  "signUp": "Kayıt Ol",
+  "GuestDrawer": {
+    "guestName": "Misafir Kullanıcı"
+  }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
 }

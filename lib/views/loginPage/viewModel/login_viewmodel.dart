@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:mobx/mobx.dart';
 part 'login_viewmodel.g.dart';
@@ -10,7 +12,7 @@ abstract class _LoginViewModelBase with Store {
   @observable
   String password;
 
-  void signIn() async {
+  Future<bool> signIn() async {
     var postLoginDataQuery = """
         mutation{ 
           login(
@@ -25,6 +27,15 @@ abstract class _LoginViewModelBase with Store {
     var response = await NetworkManager.instance
         .postGraphqlQuery(postLoginDataQuery, headers);
 
-    print(response.body);
+    Map jsonResponse = json.decode(response.body);
+
+    if (jsonResponse['errors'] != null) {
+       return false;
+    } else {
+      print(jsonResponse["data"]["login"]);
+      await NetworkManager.instance
+          .setLocaleStringData("token", jsonResponse["data"]["login"]);
+      return true;
+    }
   }
 }

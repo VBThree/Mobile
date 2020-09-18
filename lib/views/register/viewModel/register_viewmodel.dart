@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:mobx/mobx.dart';
 part 'register_viewmodel.g.dart';
@@ -16,7 +18,7 @@ abstract class _RegisterViewModelBase with Store {
   @observable
   String password;
 
-  void signUp() async {
+  Future<bool> signUp() async {
     String postRegisterDataQuery = """
         mutation{ 
           register(
@@ -28,11 +30,19 @@ abstract class _RegisterViewModelBase with Store {
           )
         }
           """;
-    print(postRegisterDataQuery);
     Map<String, String> headers = {"Content-Type": "application/graphql"};
     var response = await NetworkManager.instance
         .postGraphqlQuery(postRegisterDataQuery, headers);
 
-    print(response.body);
+    Map jsonResponse = json.decode(response.body);
+    print(jsonResponse);
+    if (jsonResponse['errors'] != null) {
+      return false;
+    } else {
+      await NetworkManager.instance
+          .setLocaleStringData("token", jsonResponse["data"]["register"]);
+
+      return true;
+    }
   }
 }

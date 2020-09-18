@@ -16,7 +16,7 @@ class SignUpTextField extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
             isDense: true,
-            hintStyle: TextStyle(color: Color.fromRGBO(245, 245, 245, 1)),
+            hintStyle: TextStyle(color: Colors.black),
             hintText: title,
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(

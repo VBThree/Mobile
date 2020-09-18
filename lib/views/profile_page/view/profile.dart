@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
-import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/components/drawer/guestDrawer.dart';
+import 'package:VBThreeMobile/core/components/drawer/loggedInDrawer.dart';
 import 'package:VBThreeMobile/core/components/profile_card_text.dart';
 import 'package:VBThreeMobile/core/components/profile_change_password.dart';
 import 'package:VBThreeMobile/core/components/profile_edit_text_input.dart';
@@ -11,19 +13,20 @@ import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/core/constants/radius.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/core/init/navigation/router.dart';
+import 'package:VBThreeMobile/core/init/network/cloud_storage_result.dart';
+import 'package:VBThreeMobile/core/init/network/cloud_storage_service.dart';
+import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/profile_page/viewmodel/profile_viewmodel.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/components/shadedButton.dart';
 import '../../../generated/locale_keys.g.dart';
-import '../../../generated/locale_keys.g.dart';
-import '../../../generated/locale_keys.g.dart';
-import '../../../generated/locale_keys.g.dart';
-import '../../../generated/locale_keys.g.dart';
+
+final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
@@ -34,11 +37,13 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends BaseState<ProfilePage> {
   ProfileViewModel viewmodel = ProfileViewModel();
+  CloudStorageService imageService = CloudStorageService();
 
   @override
   void initState() {
-    super.initState();
     viewmodel.getUserData();
+
+    super.initState();
   }
 
   var formkey = GlobalKey<FormState>();
@@ -49,17 +54,15 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   var oldPasswordController = TextEditingController();
   var newPasswordController = TextEditingController();
   File _sellectedImage;
-  String profileName = "Abdullah Oğuz";
-  String profilePhoneNumber = "+90 545 xxx xx xx";
-  String profileEmailInfo = "oguzabdullah@gmail.com";
-  String profileDateInfo = "dd/mm/yyyy";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyNavBar(),
-      appBar: profileAppBar(),
-      body: profileBody(),
-    );
+        appBar: profileAppBar(),
+        key: _scaffoldKey,
+        body: viewmodel.isLoaded != null
+            ? profileBody()
+            : CircularProgressIndicator());
   }
 
   Container profileBody() {
@@ -150,9 +153,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ProfileCardText(Feather.phone, profilePhoneNumber),
-          ProfileCardText(Fontisto.email, profileEmailInfo),
-          ProfileCardText(Icons.date_range, profileDateInfo),
+          ProfileCardText(Feather.phone, viewmodel.currentPhone),
+          ProfileCardText(Fontisto.email, viewmodel.currentEmail),
+          ProfileCardText(Icons.date_range, viewmodel.currentBirthday),
         ],
       ),
       decoration: BoxDecoration(
@@ -209,7 +212,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
             height: dynamicHeight(0.01),
           ),
           Text(
-            profileName,
+            viewmodel.currentName,
             style: TextStyle(
                 color: AllColors.PROFILE_DARK_GREY_BLUE,
                 fontSize: dynamicWidth(0.06),
@@ -280,7 +283,9 @@ class _ProfilePageState extends BaseState<ProfilePage> {
   }
 
   void logoutOnpress() {
-    Navigator.popAndPushNamed(context, loginRoute);
+    splashScreenViewModel.isLoggedIn = false;
+    NetworkManager.instance.setLocaleStringData("token", null);
+    Navigator.popAndPushNamed(context, "/loginPage");
   }
 
   void editOnPress() {
@@ -307,7 +312,8 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                                   child: Icon(Icons.add_a_photo))
                               : CircleAvatar(
                                   radius: dynamicWidth(0.1),
-                                  backgroundImage: FileImage(_sellectedImage),
+                                  backgroundImage:
+                                      NetworkImage(viewmodel.currentPhotoUrl),
                                 )),
                       Expanded(
                         child: ProfileTextInputWidget(
@@ -353,28 +359,23 @@ class _ProfilePageState extends BaseState<ProfilePage> {
         ),
       ),
     );
-
-    /*   showDialog(
-                                                          context: this.context,
-                                                          builder: (_) {},
-                                                          child: AlertDialog(
-                                                            content: Form(
-                                                                child: Column(
-                                                              mainAxisSize: MainAxisSize.min,
-                                                              children: [
-                                                                ProfileTextInputWidget(Feather.phone,
-                                                                    "${LocaleKeys.profilePage_Name}", nameController, false)
-                                                              ],
-                                                            )),
-                                                          )); */
   }
 
-  changeModalPass() {}
+  changeModalPass() {
+    viewmodel.currentName = nameController.text.trim();
+    viewmodel.currentEmail = emailController.text.trim();
+    viewmodel.currentPhone = phoneController.text.trim();
+    viewmodel.currentBirthday = dateController.text.trim();
 
-  uploadImage() async {
-    var galleryImage = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      _sellectedImage = galleryImage;
-    });
+    viewmodel.postUserData();
+    Navigator.popAndPushNamed(context, profilePage);
+  }
+
+  void uploadImage() async {
+    var galleryImage =
+        await ImagePicker().getImage(source: ImageSource.gallery);
+    CloudStorageResult result =
+        await imageService.uploadImage(imageToUpload: File(galleryImage.path));
+    viewmodel.currentPhotoUrl = result.imageUrl;
   }
 }

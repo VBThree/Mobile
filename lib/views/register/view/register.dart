@@ -1,8 +1,12 @@
 import 'package:VBThreeMobile/core/base/state/base_state.dart';
+import 'package:VBThreeMobile/core/components/drawer/guestDrawer.dart';
+import 'package:VBThreeMobile/core/components/drawer/loggedInDrawer.dart';
+import 'package:VBThreeMobile/core/init/navigation/router.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
 import 'package:VBThreeMobile/views/_widgets/textfields/signUpTextField.dart';
 import 'package:VBThreeMobile/views/register/viewModel/register_viewmodel.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -21,6 +25,8 @@ class _RegisterPageState extends BaseState<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer:
+            splashScreenViewModel.isLoggedIn ? LoggedDrawer() : GuestDrawer(),
         appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
         backgroundColor: Colors.blue[600],
         body: SingleChildScrollView(
@@ -107,13 +113,28 @@ class _RegisterPageState extends BaseState<RegisterPage> {
         Expanded(
           flex: 14,
           child: RaisedButton(
-            onPressed: () {
+            onPressed: () async {
               viewModel.nameSurname = nameController.text;
               viewModel.email = emailController.text;
               viewModel.phone = phoneController.text;
               viewModel.dateOfBirth = dateController.text;
               viewModel.password = passwordController.text;
-              viewModel.signUp();
+              var isSuccessfull = await viewModel.signUp();
+              print(isSuccessfull);
+              if (isSuccessfull == true) {
+                splashScreenViewModel.isLoggedIn = true;
+
+                Navigator.popAndPushNamed(context, mapRoute);
+              } else {
+                showDialog(
+                  context: context,
+                  child: AlertDialog(
+                    title: Text(LocaleKeys.authStrings_failedSignUp.locale),
+                    content:
+                        Text(LocaleKeys.authStrings_failedSignUpContent.locale),
+                  ),
+                );
+              }
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

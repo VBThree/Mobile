@@ -1,5 +1,7 @@
 import 'package:VBThreeMobile/core/init/lang/language_manager.dart';
+import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,16 +9,16 @@ import 'package:VBThreeMobile/core/extension/string_extension.dart';
 
 typedef LocaleValue = Locale Function(Locale);
 
-class MyNavBar extends StatefulWidget {
+class LoggedDrawer extends StatefulWidget {
   final Function onTap;
 
-  MyNavBar({this.onTap});
+  LoggedDrawer({this.onTap});
 
   @override
-  _MyNavBarState createState() => _MyNavBarState();
+  _LoggedDrawerState createState() => _LoggedDrawerState();
 }
 
-class _MyNavBarState extends State<MyNavBar> {
+class _LoggedDrawerState extends State<LoggedDrawer> {
   toggleButton() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final tr = LanguageManager.instance.trLocale;
@@ -67,7 +69,11 @@ class _MyNavBarState extends State<MyNavBar> {
     return ListTile(
       leading: Icon(Icons.exit_to_app),
       title: Text(LocaleKeys.NavBar_Logout.locale),
-      onTap: () => Navigator.popAndPushNamed(context, "/loginPage"),
+      onTap: () {
+        splashScreenViewModel.isLoggedIn = false;
+        NetworkManager.instance.setLocaleStringData("token", null);
+        Navigator.popAndPushNamed(context, "/loginPage");
+      },
     );
   }
 

@@ -10,7 +10,16 @@
         "nameSurname": "Name Surname",
         "phoneNumber": "Phone number",
         "dateOfBirth": "Date of birth",
-        "alreadySignedUp": "Already Signed Up?"
+        "alreadySignedUp": "Already Signed Up?",
+        "failedSignUp": "Kayıt Başarısız",
+        "failedSignUpContent": "Girdiğiniz bilgileri kontrol ediniz.",
+        "wrongInfoTitle": "Wrong Credentials",
+        "wrongInfo": "Email or password is incorrect.",
+        "wrongKeyTitle": "Wrong Key",
+        "wrongKey": "Given key is incorrect.",
+        "sameOldPasswordTitle": "Warning!",
+        "sameOldPassword": "New password is same with old password."
+
     },
     "profilePage": {
         "Achievements": "Achievements",
@@ -22,12 +31,12 @@
         "Phone": "Phone",
         "Email": "E-mail",
         "BirtdayDate": "Birtday Date",
-        "Change":"Change",
-        "EnterYourOldPassword":"Enter Your Old Password",
-        "EnterYourNewPassword" :"Yeni Şifrenizi Giriniz",
+        "Change": "Change",
+        "EnterYourOldPassword": "Enter Your Old Password",
+        "EnterYourNewPassword": "Yeni Şifrenizi Giriniz",
         "EditProfile": "Profili Düzenle",
         "Update": "Update"
-        
+
     },
 
     "announcementTypes": {
@@ -72,19 +81,23 @@
         "Logout": "Log out"
     },
     "ForgotPassword": {
-        "forgotton_password_title":"Forgotten Password",
+        "forgotton_password_title": "Forgotten Password",
         "send_forgotPage": "Send",
-        "email_forgotPage": "E-mail Address" ,
-        "reset_pass":"Reset Password",
-        "new_pass":"Enter new password",
-        "save":"Save",
-        "continue":"Continue",
-        "digitcode":"Enter your 6-digit number"
+        "email_forgotPage": "E-mail Address",
+        "reset_pass": "Reset Password",
+        "new_pass": "Enter new password",
+        "save": "Save",
+        "continue": "Continue",
+        "digitcode": "Enter your 6-digit number"
     },
     "signIn": "Sign In",
     "email": "E-mail",
     "password": "Password",
     "forgotPassword": "Forgot Password?",
     "dontHaveAnAccount": "Don't have an account?",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "GuestDrawer": {
+        "guestName": "Guest User"
+    }
+
 }

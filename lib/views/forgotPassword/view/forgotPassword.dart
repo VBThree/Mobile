@@ -1,7 +1,9 @@
-import 'package:VBThreeMobile/core/components/drawer/sideNaviBar.dart';
+import 'package:VBThreeMobile/core/components/drawer/guestDrawer.dart';
+import 'package:VBThreeMobile/core/components/drawer/loggedInDrawer.dart';
 import 'package:VBThreeMobile/core/constants/colors.dart';
 import 'package:VBThreeMobile/generated/locale_keys.g.dart';
 import 'package:VBThreeMobile/views/forgotPassword/viewmodel/forgot_password_viewmodel.dart';
+import 'package:VBThreeMobile/views/splashScreen/view/splash_screen_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:VBThreeMobile/core/extension/string_extension.dart';
@@ -21,29 +23,34 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            drawer: MyNavBar(),
-            appBar: AppBar(
-              iconTheme: IconThemeData(
-            color: AllColors.PROFILE_DARK_GREY_BLUE,
-          ),
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
-            ),
-            body: Container(
-              child: Column(
-                children: [
-                  Expanded(flex: 1, child: buildTitle()),
-                  Expanded(flex: 2, child: buildPicture()),
-                  Expanded(flex: 1, child: buildTextField()),
-                  Expanded(flex: 1, child: buildSend()),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Expanded(child: buildSignUp()),
-                ],
+        child: WillPopScope(
+        onWillPop: () async => false,
+
+                  child: Scaffold(
+
+          drawer: splashScreenViewModel.isLoggedIn?LoggedDrawer():GuestDrawer(),
+              appBar: AppBar(
+                iconTheme: IconThemeData(
+                  color: AllColors.PROFILE_DARK_GREY_BLUE,
+                ),
+                backgroundColor: Colors.transparent,
+                elevation: 0.0,
               ),
-            )));
+              body: Container(
+                child: Column(
+                  children: [
+                    Expanded(flex: 1, child: buildTitle()),
+                    Expanded(flex: 2, child: buildPicture()),
+                    Expanded(flex: 1, child: buildTextField()),
+                    Expanded(flex: 1, child: buildSend()),
+                    Spacer(
+                      flex: 1,
+                    ),
+                    Expanded(child: buildSignUp()),
+                  ],
+                ),
+              )),
+        ));
   }
 
   Text buildTitle() => Text(

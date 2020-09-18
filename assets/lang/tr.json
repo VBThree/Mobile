@@ -10,7 +10,15 @@
         "nameSurname": "İsim Soyisim",
         "phoneNumber": "Telefon Numarası",
         "dateOfBirth": "Doğum Tarihi",
-        "alreadySignedUp": "Zaten kayıtlı hesabın var mı?"
+        "alreadySignedUp": "Zaten kayıtlı hesabın var mı?",
+        "wrongInfoTitle": "Hatalı Deneme",
+        "wrongInfo": "Email ya da şifre yanlış girildi.",
+        "failedSignUp": "Kayıt Başarısız",
+        "failedSignUpContent": "Girdiğiniz bilgileri kontrol ediniz.",
+        "wrongKeyTitle": "Yanlış Kod",
+        "wrongKey": "Lütfen doğru kodu giriniz",
+        "sameOldPasswordTitle": "Uyarı!",
+        "sameOldPassword": "Yeni şifre ile eski şifre aynı olamaz"
     },
     "profilePage": {
         "Achievements": "Başarılar",
@@ -92,5 +100,9 @@
     "password": "Şifre",
     "forgotPassword": "Şifremi Unuttum",
     "dontHaveAnAccount": "Hesabım Yok",
-    "signUp": "Kayıt Ol"
+    "signUp": "Kayıt Ol",
+    "GuestDrawer": {
+        "guestName": "Misafir Kullanıcı"
+    }
+
 }

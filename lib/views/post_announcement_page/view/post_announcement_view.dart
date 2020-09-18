@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/base/state/base_state.dart';
 import '../../../core/base/view/base_view.dart';
 import '../../../core/components/customed_dropdown_container.dart';
-import '../../../core/components/drawer/sideNaviBar.dart';
+import '../../../core/components/drawer/guestDrawer.dart';
 import '../../../core/components/shadedButton.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors.dart';
@@ -39,7 +39,7 @@ class _PostAnnouncementViewState extends BaseState<PostAnnouncementView> {
 
   Scaffold buildScaffold() => Scaffold(
         key: _scaffoldKey,
-        drawer: MyNavBar(),
+        drawer: GuestDrawer(),
         body: buildSingleChildScrollViewAsScaffoldBody(),
         appBar: AppBar(
           iconTheme: IconThemeData(

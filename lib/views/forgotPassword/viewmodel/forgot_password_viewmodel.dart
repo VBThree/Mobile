@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:VBThreeMobile/core/init/network/network_manager.dart';
 import 'package:mobx/mobx.dart';
 part 'forgot_password_viewmodel.g.dart';
@@ -23,7 +25,7 @@ abstract class _ForgotPasswordViewModelBase with Store {
     print(response.body);
   }
 
-  Future<void> sendKey() async {
+  Future<bool> sendKey() async {
     String keyQuery = """
       mutation{
         confirmReset(resetToken:"$resetToken")
@@ -34,10 +36,17 @@ abstract class _ForgotPasswordViewModelBase with Store {
 
     var response =
         await NetworkManager.instance.postGraphqlQuery(keyQuery, headers);
-    print(response.body);
+    
+    Map jsonResponse = json.decode(response.body);
+
+    if (jsonResponse['errors'] != null) {
+       return false;
+    } else {
+      return true;
+    }
   }
 
-  Future<void> sendNewPassword() async {
+  Future<bool> sendNewPassword() async {
     String query = """
       mutation{
         resetPassword(resetToken:"$resetToken",newPassword:"$newPassword")
@@ -48,6 +57,13 @@ abstract class _ForgotPasswordViewModelBase with Store {
 
     var response =
         await NetworkManager.instance.postGraphqlQuery(query, headers);
-    print(response.body);
+   
+    Map jsonResponse = json.decode(response.body);
+
+    if (jsonResponse['errors'] != null) {
+       return false;
+    } else {
+      return true;
+    }
   }
 }
