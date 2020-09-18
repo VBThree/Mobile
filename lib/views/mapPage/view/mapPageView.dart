@@ -25,10 +25,6 @@ class MapPage extends StatefulWidget implements MapPageInterface {
   GoogleMapController _controller;
   _MapPage mapPage = _MapPage();
 
-  MapPage() {
-    viewModel.page = this;
-  }
-
   @override
   State<StatefulWidget> createState() {
     return mapPage;
@@ -73,30 +69,32 @@ class _MapPage extends BaseState<MapPage> {
 
   @override
   void initState() {
+    super.initState();
     _setAnnotationIcon();
     viewModel.getAllAnnouncements();
-
-    super.initState();
   }
 
   void setAnnotations() {
     for (var annotation in viewModel.annotations) {
-      setState(() {
-        viewModel.annotationsMarkers.add(
-          Marker(
-              markerId: MarkerId(annotation.uuid),
-              position: LatLng(annotation.latitude, annotation.longitude),
-              onTap: () {
-                setState(() {
-                  selectedAnnotationData = widget.selectData(annotation.uuid);
-                  showInfoCard = !showInfoCard;
-                  _alignment = showInfoCard ? Alignment(0, 1) : Alignment(0, 2);
-                  showInfoCardDetail = false;
-                });
-              },
-              icon: iconsMap[annotation.type]),
-        );
-      });
+      if (this.mounted) {
+        setState(() {
+          viewModel.annotationsMarkers.add(
+            Marker(
+                markerId: MarkerId(annotation.uuid),
+                position: LatLng(annotation.latitude, annotation.longitude),
+                onTap: () {
+                  setState(() {
+                    selectedAnnotationData = widget.selectData(annotation.uuid);
+                    showInfoCard = !showInfoCard;
+                    _alignment =
+                        showInfoCard ? Alignment(0, 1) : Alignment(0, 2);
+                    showInfoCardDetail = false;
+                  });
+                },
+                icon: iconsMap[annotation.type]),
+          );
+        });
+      }
     }
   }
 
@@ -142,10 +140,12 @@ class _MapPage extends BaseState<MapPage> {
     }
 
     await location.getLocation().then((currentLocation) {
-      setState(() {
-        currentLocationData =
-            LatLng(currentLocation.latitude, currentLocation.longitude);
-      });
+      if (this.mounted) {
+        setState(() {
+          currentLocationData =
+              LatLng(currentLocation.latitude, currentLocation.longitude);
+        });
+      }
     });
 
     /*location.onLocationChanged.listen((LocationData currentLocation) {
@@ -181,7 +181,8 @@ class _MapPage extends BaseState<MapPage> {
         child: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            Navigator.pushNamedAndRemoveUntil(context, postAnnouncementPage,(e) => false);
+            Navigator.pushNamedAndRemoveUntil(
+                context, postAnnouncementPage, (e) => false);
           },
         ),
       ),
@@ -202,11 +203,13 @@ class _MapPage extends BaseState<MapPage> {
         child: SafeArea(
           child: GestureDetector(
             onTap: () {
-              setState(() {
-                showInfoCard = true;
+              if (this.mounted) {
+                setState(() {
+                  showInfoCard = true;
 
-                showInfoCardDetail = true;
-              });
+                  showInfoCardDetail = true;
+                });
+              }
             },
             child: detailCardWidget(),
           ),
@@ -287,11 +290,13 @@ class _MapPage extends BaseState<MapPage> {
     return GoogleMap(
         onTap: (_) {
           if (showInfoCard == true || showInfoCardDetail == true) {
-            setState(() {
-              showInfoCard = false;
-              _alignment = showInfoCard ? Alignment(0, 1) : Alignment(0, 2);
-              showInfoCardDetail = false;
-            });
+            if (this.mounted) {
+              setState(() {
+                showInfoCard = false;
+                _alignment = showInfoCard ? Alignment(0, 1) : Alignment(0, 2);
+                showInfoCardDetail = false;
+              });
+            }
           }
         },
         onMapCreated: _onMapCreated,
@@ -299,6 +304,6 @@ class _MapPage extends BaseState<MapPage> {
         myLocationEnabled: true,
         myLocationButtonEnabled: false,
         initialCameraPosition:
-            CameraPosition(target: LatLng(36.88000, 30.704044), zoom: 12));
+            CameraPosition(target: LatLng(39.953288, 32.5679904), zoom: 15));
   }
 }

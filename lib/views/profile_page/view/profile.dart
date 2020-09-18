@@ -66,15 +66,20 @@ class _ProfilePageState extends BaseState<ProfilePage> {
             : Center(child: CircularProgressIndicator()));
   }
 
-  Container profileBody() {
-    return Container(
-      child: Column(
-        children: [
-          Expanded(flex: 4, child: topCardArea()),
-          Expanded(flex: 1, child: dynamicBoxArea()),
-          Expanded(flex: 2, child: achievementsListTileArea()),
-          Expanded(flex: 2, child: buttonArea())
-        ],
+  SingleChildScrollView profileBody() {
+    return SingleChildScrollView(
+      child: Builder(
+        builder: (context) => Container(
+          height: dynamicHeight(1) - Scaffold.of(context).appBarMaxHeight,
+          child: Column(
+            children: [
+              Expanded(flex: 4, child: topCardArea()),
+              Expanded(flex: 1, child: dynamicBoxArea()),
+              Expanded(flex: 2, child: achievementsListTileArea()),
+              Expanded(flex: 2, child: buttonArea())
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -260,7 +265,7 @@ class _ProfilePageState extends BaseState<ProfilePage> {
                 content: Builder(
                   builder: (context) {
                     return Container(
-                      height: dynamicHeight(0.23),
+                      height: dynamicHeight(0.3),
                       width: dynamicHeight(0.4),
                       child: Form(
                           child: Column(

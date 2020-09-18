@@ -31,24 +31,31 @@ class _LoginPageState extends BaseState<LoginPage> {
             splashScreenViewModel.isLoggedIn ? LoggedDrawer() : GuestDrawer(),
         appBar: AppBar(),
         backgroundColor: Color.fromRGBO(131, 175, 175, 75),
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Spacer(flex: 2),
-              Expanded(flex: 2, child: signInText()),
-              Expanded(flex: 6, child: buildArtwork()),
-              Spacer(flex: 1),
-              Expanded(
-                flex: 5,
-                child: emailAndPasswordTextField(),
+        body: SingleChildScrollView(
+          child: Builder(
+            builder: (context) => Container(
+              child: Container(
+                height: dynamicHeight(1)-Scaffold.of(context).appBarMaxHeight,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Spacer(flex: 2),
+                    Expanded(flex: 2, child: signInText()),
+                    Expanded(flex: 6, child: buildArtwork()),
+                    Spacer(flex: 1),
+                    Expanded(
+                      flex: 5,
+                      child: emailAndPasswordTextField(),
+                    ),
+                    Spacer(flex: 1),
+                    Expanded(flex: 1, child: signInButton()),
+                    Expanded(flex: 1, child: forgotPasswordButton()),
+                    Spacer(flex: 6),
+                    Expanded(flex: 1, child: bottomAreaWidgets())
+                  ],
+                ),
               ),
-              Spacer(flex: 1),
-              Expanded(flex: 1, child: signInButton()),
-              Expanded(flex: 1, child: forgotPasswordButton()),
-              Spacer(flex: 6),
-              Expanded(flex: 1, child: bottomAreaWidgets())
-            ],
+            ),
           ),
         ));
   }
@@ -65,7 +72,8 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   FlatButton forgotPasswordButton() => FlatButton(
         onPressed: () {
-          Navigator.pushNamedAndRemoveUntil(context, forgotPasswordRoute,(e) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, forgotPasswordRoute, (e) => false);
         },
         child: Text(LocaleKeys.ForgotPassword_forgotton_password_title.locale),
         textColor: Colors.blue[400],
@@ -84,7 +92,8 @@ class _LoginPageState extends BaseState<LoginPage> {
               if (isSuccessfull == true) {
                 splashScreenViewModel.isLoggedIn = true;
 
-                Navigator.pushNamedAndRemoveUntil(context, mapRoute,(e) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, mapRoute, (e) => false);
               } else {
                 showDialog(
                   context: context,
@@ -168,7 +177,7 @@ class _LoginPageState extends BaseState<LoginPage> {
 
   FlatButton signUpButton() => FlatButton(
         onPressed: () {
-          Navigator.pushNamedAndRemoveUntil(context, register,(e) => false);
+          Navigator.pushNamedAndRemoveUntil(context, register, (e) => false);
         },
         child: Text(
           LocaleKeys.signUp.locale,
